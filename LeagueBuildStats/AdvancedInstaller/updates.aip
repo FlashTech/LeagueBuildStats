@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.2.1" version="11.2.1" Modules="update" RootPath="." Language="en" Id="{7BAA04F1-5559-4E5F-9393-017EC31D5FE0}">
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;aiu-ue.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;aiu-ue_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.UpdaterEditorComponent">
+    <ROW Section="Update" Key="Name" Value="League Build Stats"/>
+    <ROW Section="Update" Key="ProductVersion" Value="0.0.9.0"/>
+    <ROW Section="Update" Key="URL" Value="http://www.example.com/downloads/LeagueBuildStatsInstall.exe"/>
+    <ROW Section="Update" Key="Size" Value="Setup Files\LeagueBuildStatsInstall.exe"/>
+    <ROW Section="Update" Key="MD5" Value="Setup Files\LeagueBuildStatsInstall.exe"/>
+    <ROW Section="Update" Key="ServerFileName" Value="LeagueBuildStatsInstall.exe"/>
+    <ROW Section="Update" Key="Flags" Value="Critical"/>
+    <ROW Section="Update" Key="RegistryKey" Value="HKUD\Software\Steven Lyon\League Build Stats\Version"/>
+    <ROW Section="Update" Key="Version" Value="0.0.9.0"/>
+    <ATTRIBUTE name="OutputFileName" value=".txt"/>
+  </COMPONENT>
+</DOCUMENT>

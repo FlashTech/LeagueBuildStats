@@ -38,6 +38,7 @@
 			this.Stats = new DevExpress.XtraTab.XtraTabPage();
 			this.picBoxCursor2 = new System.Windows.Forms.PictureBox();
 			this.panelCtlMainTopBar = new DevExpress.XtraEditors.PanelControl();
+			this.picBoxInfoButton = new System.Windows.Forms.PictureBox();
 			this.popupMenuVersions = new DevExpress.XtraBars.PopupMenu(this.components);
 			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -51,6 +52,8 @@
 			this.xtraTabControl.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxCursor2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.panelCtlMainTopBar)).BeginInit();
+			this.panelCtlMainTopBar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -114,11 +117,23 @@
 			// 
 			// panelCtlMainTopBar
 			// 
+			this.panelCtlMainTopBar.Controls.Add(this.picBoxInfoButton);
 			this.panelCtlMainTopBar.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panelCtlMainTopBar.Location = new System.Drawing.Point(0, 0);
 			this.panelCtlMainTopBar.Name = "panelCtlMainTopBar";
 			this.panelCtlMainTopBar.Size = new System.Drawing.Size(1130, 102);
 			this.panelCtlMainTopBar.TabIndex = 9;
+			// 
+			// picBoxInfoButton
+			// 
+			this.picBoxInfoButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.picBoxInfoButton.Image = global::LeagueBuildStats.Properties.Resources.Info;
+			this.picBoxInfoButton.Location = new System.Drawing.Point(1093, 5);
+			this.picBoxInfoButton.Name = "picBoxInfoButton";
+			this.picBoxInfoButton.Size = new System.Drawing.Size(32, 32);
+			this.picBoxInfoButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxInfoButton.TabIndex = 0;
+			this.picBoxInfoButton.TabStop = false;
 			// 
 			// popupMenuVersions
 			// 
@@ -202,12 +217,13 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(810, 685);
 			this.Name = "Form1";
-			this.Text = "League Build Stats - For League of Legends (LoL) - Non distributable work in prog" +
-    "ress";
+			this.Text = "League Build Stats - For League of Legends (LoL)";
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).EndInit();
 			this.xtraTabControl.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.picBoxCursor2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.panelCtlMainTopBar)).EndInit();
+			this.panelCtlMainTopBar.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -234,6 +250,7 @@
 		private DevExpress.XtraBars.BarDockControl barDockControlRight;
 		private DevExpress.XtraBars.Bar bar1;
 		private System.Windows.Forms.PictureBox picBoxCursor2;
+		private System.Windows.Forms.PictureBox picBoxInfoButton;
 	}
 }
 

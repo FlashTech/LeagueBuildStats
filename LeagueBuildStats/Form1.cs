@@ -22,6 +22,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraRichEdit;
 using LeagueBuildStats.UserControls.MainTopBar;
 using System.Timers;
+using System.Reflection;
 
 
 namespace LeagueBuildStats
@@ -105,6 +106,11 @@ namespace LeagueBuildStats
 			
 			InitializeComponent();
 
+			InitializeEvents();
+
+			string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			this.Text = "League Build Stats " + assemblyVersion + " - For League of Legends (LoL)";
+
 			this.BackColor = panelCtlMainTopBar.BackColor;
 
 			if (CreateFolders())
@@ -146,13 +152,42 @@ namespace LeagueBuildStats
 			SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
 
 			SplashForm.CloseForm();
-			this.Focus();
+			//this.TopMost = true;
+			//this.Focus();
+			//this.BringToFront();
+			//this.TopMost = false;
+			this.Activate();
+			//this.ShowDialog();
 
 			//This timer is used to show a dragging image
 			//0.002 second
 			_timer1.Interval = 2;
 			_timer1.Tick+=_timer1_Tick;
 			_timer1.Start();
+		}
+
+		private void InitializeEvents()
+		{
+			picBoxInfoButton.Image = Bitmap.FromHicon(SystemIcons.Information.Handle);
+			picBoxInfoButton.MouseClick += picBoxInfoButton_MouseClick;
+		}
+
+		void picBoxInfoButton_MouseClick(object sender, MouseEventArgs e)
+		{
+			string message = string.Format(@"LeagueBuildStats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone 
+officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or
+registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.");
+
+			string caption = "League Build Stats - Information";
+			MessageBoxButtons buttons = MessageBoxButtons.OK;
+			DialogResult result;
+
+			result = XtraMessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Information);
+
+			if (result == DialogResult.OK)
+			{
+				//do nothing
+			}
 		}
 
 		System.Windows.Forms.Timer _timer1 = new System.Windows.Forms.Timer();
