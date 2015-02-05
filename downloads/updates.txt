@@ -1,14 +1,13 @@
 ;aiu;
 
-[MyEditor45]
-Name = MyEditor 4.5
-URL = http://www.myeditor.com/download/myeditor.msi
-Size = 3023788
-Description = This is the latest version of MyEditor
+[LeagueBuildStats]
+Name = LeagueBuildStats
+URL = http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsInstall.exe
+Description = This is the latest version of LeagueBuildStats
 Feature = Support for other file types 
 Feature1 = Support for different encodings
 BugFix = Fix bug with file open
 BugFix1 = Fix crash when opening large files
 BugFix2 = Fix bug with search in file feature
-FilePath = %ProgramFiles%\MyEditor\MyEditor.exe
-Version = 4.5
+FilePath = %ProgramFiles%\League Build Stats\LeagueBuildStats.exe
+Version = 0.0.0.8
