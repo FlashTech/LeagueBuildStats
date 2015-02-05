@@ -3,7 +3,7 @@
 [LeagueBuildStats]
 Name = LeagueBuildStats
 URL = http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsInstall.exe
-Size = 20482359
+Size = 20482413
 Description = This is the latest version of LeagueBuildStats
 Feature = Support for other file types 
 Feature1 = Support for different encodings
