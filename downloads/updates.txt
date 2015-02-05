@@ -11,4 +11,4 @@ BugFix = Fix bug with file open
 BugFix1 = Fix crash when opening large files
 BugFix2 = Fix bug with search in file feature
 FilePath = %ProgramFiles%\League Build Stats\LeagueBuildStats.exe
-Version = 0.0.0.8
+Version = 0.0.9
