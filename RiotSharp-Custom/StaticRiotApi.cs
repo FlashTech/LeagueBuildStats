@@ -38,8 +38,8 @@ namespace RiotSharp
         private const string RealmRootUrl = "/api/lol/static-data/{0}/v1.2/realm";
 
         private const string IdUrl = "/{0}";
-
-        private const string RootDomain = "global.api.pvp.net";
+		//Todo: this was changed due the league of legends changing from global to na, etc.
+        private const string RootDomain = "na.api.pvp.net";
 
         private Requester requester;
 
