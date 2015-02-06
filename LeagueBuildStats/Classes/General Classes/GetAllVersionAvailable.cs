@@ -49,8 +49,11 @@ namespace LeagueBuildStats.Classes
 			}
 			catch (Exception ex)
 			{
+				
 				//TODO: correctly handle errors rather than this
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(@"There was a problem downloading Versions from League of Legends.
+								" + ex.Message + @"
+								  " + ex.ToString());
 				//System.NullReferenceException means no interenet connection or something
 			}
 			if (success)
