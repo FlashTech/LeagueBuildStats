@@ -2,15 +2,19 @@
 
 [v0.0.1.11 patch]
 Name=League Build Stats 0.0.1.11 Patch
-ProductVersion=0.0.1.11
-URL=http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.exe
-Size=468614
-MD5=6986afe5b4c56d16e77e5f754071bbad
-ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.exe
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.msp
+Size=28672
+MD5=fde27f80698192d8910e00451ca84afe
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.msp
+Flags=IsPatch
 FilePath=[APPDIR]League Build Stats.exe
 Version=0.0.1.11
 UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.11]
 Description=This is a test Patch.
+Description1=This is a test description.
 Feature=Awesome feature.
+Feature1=Awesome feature 2.
 Enhancement=Awesome enhancement.
+Enhancement1=Awesome enhancement 2.
 BugFix=Bugs squashed.
+BugFix1=Bugs squashed 2.
