@@ -155,6 +155,7 @@
     <ROW Dialog_="AdminWelcomeDlg" Control="Title" Type="Text" X="24" Y="7" Width="332" Height="11" Attributes="196611" Text="[ProductNameVersion] [Wizard]" TextStyle="Title" Order="600" TextLocId="Air.Control.Text.WelcomeDlg#Title" MsiKey="AdminWelcomeDlg#Title"/>
     <ROW Dialog_="AdminWelcomeDlg" Control="SubTitle" Type="Text" X="36" Y="41" Width="317" Height="18" Attributes="196611" Text="Welcome to the [ProductName] [Wizard]" TextStyle="SubTitle" Order="700" TextLocId="Control.Text.AdminWelcomeDlg#Title" MsiKey="AdminWelcomeDlg#SubTitle"/>
     <ROW Dialog_="AdminWelcomeDlg" Control="Description" Type="Text" X="37" Y="119" Width="308" Height="33" Attributes="196611" Text="The [Wizard] will create a server image of [ProductName], at a specified network location.  Click &quot;[Text_Next]&quot; to continue or &quot;Cancel&quot; to exit the [Wizard]." Order="800" TextLocId="Control.Text.AdminWelcomeDlg#Description" MsiKey="AdminWelcomeDlg#Description"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="Text_1" Type="Text" X="36" Y="183" Width="314" Height="62" Attributes="196611" Text="League Build Stats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc." Order="900" TextLocId="Control.Text.WelcomeDlg#Description"/>
     <ROW Dialog_="BrowseDlg" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="304" Attributes="1" Text="[Background]" Order="100" MsiKey="BrowseDlg#Bitmap"/>
     <ROW Dialog_="CancelDlg" Control="Text" Type="Text" X="52" Y="15" Width="189" Height="30" Attributes="196611" Text="Are you sure you want to cancel [ProductNameVersion] installation?" TextStyle="SubTitle8" Order="300" TextLocId="Control.Text.CancelDlg#Text" MsiKey="CancelDlg#Text"/>
     <ROW Dialog_="CustomizeDlg" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="304" Attributes="1" Text="[Background]" Order="100" MsiKey="CustomizeDlg#Bitmap"/>
@@ -448,7 +449,7 @@
     <ROW Registry="Version" Root="-1" Key="Software\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~1.EXE|League Build Stats.exe" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~2|League Build Stats" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="LeagueBuildStats.exe_1" Directory_="DesktopFolder" Name="LEAGUE~1.EXE|League Build Stats.exe" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="LeagueBuildStatsUpdater" Directory_="SHORTCUTDIR" Name="LEAGUE~1|LeagueBuildStatsUpdater" Component_="updater.exe" Target="[#updater.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
   </COMPONENT>
@@ -482,7 +483,7 @@
     <ROW SearchKey="FB44691010D74C6D89B33E019630EAF6ValueName" Prereq="FB44691010D74C6D89B33E019630EAF6" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G378388" Order="1" Property="PreReqSearch_FB44691010D74C6D89B33E019630EAF6"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.ScheduledTasksComponent">
-    <ROW TaskId="AI_LeagueBuildStatsUpdater" TaskName="LeagueBuildStatsUpdater" Run="[#updater.exe]" WorkDir="[APPDIR]" UserProp="[%UserDomain]\[LogonUser]" StartTime="24576" Flags="26112" Trigger="1|1|1|1|0|0|0|" Condition="1" TaskVersion="2.0"/>
+    <ROW TaskId="AI_LeagueBuildStatsUpdater" TaskName="LeagueBuildStatsUpdater" Run="[#updater.exe]" CmdLine="/silent" WorkDir="[APPDIR]" UserProp="[%UserDomain]\[LogonUser]" StartTime="25024" Flags="26112" Trigger="1|1|1|1|0|0|0|" Condition="1" TaskVersion="2.0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.UpdaterComponent">
     <ROW Updater="updater.exe" URL="URL" SearchFreq="CheckFrequency" DownloadsFolder="DownloadsFolder" ID="ID" TargetDir="AppDir" AppName="ApplicationName" AppVersion="ApplicationVersion" CompanyName="CompanyName" DefCommandLine="DefaultCommandLine" Flags="Flags" IconPath="..\..\..\..\GreenShot Screenshots\Leauge Build Stats League of Legends - Install.ico" IconIndex="0" UnistallCASeq="AI_UPDATER_UNINSTALL" TaskId="AI_LeagueBuildStatsUpdater" Description="[|UpdaterName] [|ProductVersion] © [|Manufacturer], 2015"/>
