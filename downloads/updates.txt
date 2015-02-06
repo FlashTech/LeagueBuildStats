@@ -2,14 +2,14 @@
 
 [v0.0.1.11 patch]
 Name=League Build Stats 0.0.1.11 Patch
+ProductVersion=0.0.1.11
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.msp
 Size=28672
 MD5=fde27f80698192d8910e00451ca84afe
 ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.msp
 Flags=IsPatch
-FilePath=[APPDIR]League Build Stats.exe
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
 Version=0.0.1.11
-UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.11]
 Description=This is a test Patch.
 Description1=This is a test description.
 Feature=Awesome feature.
