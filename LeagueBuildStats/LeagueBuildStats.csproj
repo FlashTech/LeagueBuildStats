@@ -335,7 +335,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Release\Data\Runes\Images\4.20.1\rune0.png" />
     <Content Include="Resources\blank item icon.png" />
     <Content Include="Resources\blank profile icon.png" />
     <None Include="Resources\do not delete this!.png" />

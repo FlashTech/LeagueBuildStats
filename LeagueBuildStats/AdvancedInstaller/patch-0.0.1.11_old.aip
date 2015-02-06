@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.2.1" version="11.2.1" Modules="patch" RootPath="." Language="en" Id="{8E5ED99F-85D1-4DFA-820E-118A1F5C5139}">
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="MspValidation.aip" Path="&lt;AI_FRAGS&gt;MspValidation.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspImageFamiliesComponent">
+    <ROW Family="Family1" MediaDiskId="2" FileSequenceStart="23"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspPropertiesComponent">
+    <ROW Name="AllowProductCodeMismatches" Value="1"/>
+    <ROW Name="AllowProductVersionMajorMismatches" Value="1"/>
+    <ROW Name="ListOfTargetProductCodes" Value="*"/>
+    <ROW Name="PatchSourceList" Value="PatchSourceList"/>
+    <ATTRIBUTE name="Author" value="Steven Lyon"/>
+    <ATTRIBUTE name="Comments" value="This patch contains the logic and data required to modify &lt;product name&gt;."/>
+    <ATTRIBUTE name="KeepPCPFile" value="false"/>
+    <ATTRIBUTE name="Subject" value="League Build Stats"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspTargetImagesComponent">
+    <ROW Target="v0_0_1_105" MsiPath="MsiBuildSetupFiles\LeagueBuildStatsInstall-0.0.1.10.msi" Upgraded="v0_0_1_115" Order="0" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspUpgradedImagesComponent">
+    <ROW Upgraded="v0_0_1_115" MsiPath="MsiBuildSetupFiles\LeagueBuildStatsInstall-0.0.1.11.msi" Family="Family1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PatchMetadataComponent">
+    <ROW Property="AllowRemoval" Value="0"/>
+    <ROW Property="DisplayName" Value="LeagueBuildStatsPatch-0.0.1.11"/>
+    <ROW Property="Classification" Value="Update"/>
+    <ROW Property="Description" Value="League Build Stats 0.0.1.11"/>
+    <ROW Property="TargetProductName" Value="League Build Stats"/>
+    <ROW Property="MoreInfoURL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/version_notes.txt"/>
+  </COMPONENT>
+</DOCUMENT>

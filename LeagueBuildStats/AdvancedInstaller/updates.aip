@@ -5,15 +5,20 @@
     <ROW Path="&lt;AI_DICTS&gt;aiu-ue_en.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.UpdaterEditorComponent">
-    <ROW Section="Update" Key="Name" Value="League Build Stats"/>
-    <ROW Section="Update" Key="ProductVersion" Value="0.0.9.0"/>
-    <ROW Section="Update" Key="URL" Value="http://www.example.com/downloads/LeagueBuildStatsInstall.exe"/>
-    <ROW Section="Update" Key="Size" Value="Setup Files\LeagueBuildStatsInstall.exe"/>
-    <ROW Section="Update" Key="MD5" Value="Setup Files\LeagueBuildStatsInstall.exe"/>
-    <ROW Section="Update" Key="ServerFileName" Value="LeagueBuildStatsInstall.exe"/>
-    <ROW Section="Update" Key="Flags" Value="Critical"/>
-    <ROW Section="Update" Key="RegistryKey" Value="HKUD\Software\Steven Lyon\League Build Stats\Version"/>
-    <ROW Section="Update" Key="Version" Value="0.0.9.0"/>
+    <ROW Section="v0.0.1.11 patch" Key="Name" Value="League Build Stats 0.0.1.11 Patch"/>
+    <ROW Section="v0.0.1.11 patch" Key="ProductVersion" Value="0.0.1.11"/>
+    <ROW Section="v0.0.1.11 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="Size" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="MD5" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="Flags" Value="IsPatch"/>
+    <ROW Section="v0.0.1.11 patch" Key="RegistryKey" Value="HKUD\SOFTWARE\League Build Stats\Version"/>
+    <ROW Section="v0.0.1.11 patch" Key="Version" Value="0.0.1.11"/>
+    <ROW Section="v0.0.1.11 patch" Key="UpdatedApplications" Value="League Build Stats[0.0.1.10-0.0.1.11]"/>
+    <ROW Section="v0.0.1.11 patch" Key="Description" Value="This is a test Patch.&#13;&#10;This is a test description."/>
+    <ROW Section="v0.0.1.11 patch" Key="Feature" Value="Awesome feature.&#13;&#10;Awesome feature 2."/>
+    <ROW Section="v0.0.1.11 patch" Key="Enhancement" Value="Awesome enhancement.&#13;&#10;Awesome enhancement 2."/>
+    <ROW Section="v0.0.1.11 patch" Key="BugFix" Value="Bugs squashed.&#13;&#10;Bugs squashed 2."/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>
