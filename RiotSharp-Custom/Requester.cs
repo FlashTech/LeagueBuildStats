@@ -44,12 +44,12 @@ namespace RiotSharp
             HttpWebRequest request = null;
             if (addedArguments == null)
             {
-                request = (HttpWebRequest)WebRequest.Create(string.Format("http://{0}{1}?api_key={2}"
+                request = (HttpWebRequest)WebRequest.Create(string.Format("https://{0}{1}?api_key={2}"
                     , rootDomain, relativeUrl, ApiKey));
             }
             else
             {
-                request = (HttpWebRequest)WebRequest.Create(string.Format("http://{0}{1}?{2}api_key={3}"
+                request = (HttpWebRequest)WebRequest.Create(string.Format("https://{0}{1}?{2}api_key={3}"
                     , rootDomain, relativeUrl, BuildArgumentsString(addedArguments), ApiKey));
             }
             request.Method = "GET";
@@ -110,20 +110,28 @@ namespace RiotSharp
 
         private void HandleWebException(WebException ex)
         {
-            HttpWebResponse response = (HttpWebResponse)ex.Response;
-            switch (response.StatusCode)
-            {
-                case HttpStatusCode.ServiceUnavailable:
-                    throw new RiotSharpException("503, Service unavailable");
-                case HttpStatusCode.InternalServerError:
-                    throw new RiotSharpException("500, Internal server error");
-                case HttpStatusCode.Unauthorized:
-                    throw new RiotSharpException("401, Unauthorized");
-                case HttpStatusCode.BadRequest:
-                    throw new RiotSharpException("400, Bad request");
-                case HttpStatusCode.NotFound:
-                    throw new RiotSharpException("404, Resource not found");
-            }
+			if (ex.Response == null)
+			{
+				throw new RiotSharpException("Unable to connect to League of Legends Data");
+			}
+			else
+			{
+				HttpWebResponse response = (HttpWebResponse)ex.Response;
+				switch (response.StatusCode)
+				{
+					case HttpStatusCode.ServiceUnavailable:
+						throw new RiotSharpException("503, Service unavailable");
+					case HttpStatusCode.InternalServerError:
+						throw new RiotSharpException("500, Internal server error");
+					case HttpStatusCode.Unauthorized:
+						throw new RiotSharpException("401, Unauthorized");
+					case HttpStatusCode.BadRequest:
+						throw new RiotSharpException("400, Bad request");
+					case HttpStatusCode.NotFound:
+						throw new RiotSharpException("404, Resource not found");
+
+				}
+			}
         }
     }
 }
