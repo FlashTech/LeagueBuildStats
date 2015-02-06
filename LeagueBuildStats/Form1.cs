@@ -169,7 +169,22 @@ namespace LeagueBuildStats
 		private void InitializeEvents()
 		{
 			picBoxInfoButton.Image = Bitmap.FromHicon(SystemIcons.Information.Handle);
+
 			picBoxInfoButton.MouseClick += picBoxInfoButton_MouseClick;
+			btnCheckUpdates.MouseClick += btnCheckUpdates_MouseClick;
+		}
+
+		void btnCheckUpdates_MouseClick(object sender, MouseEventArgs e)
+		{
+			try
+			{
+				string folderPath = Assembly.GetExecutingAssembly().Location.Replace(Assembly.GetExecutingAssembly().GetName().Name + ".exe", "");
+				System.Diagnostics.Process.Start(folderPath + "LeagueBuildStatsUpdater.exe");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
 		}
 
 		void picBoxInfoButton_MouseClick(object sender, MouseEventArgs e)

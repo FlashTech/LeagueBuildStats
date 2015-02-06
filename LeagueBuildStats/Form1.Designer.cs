@@ -38,6 +38,7 @@
 			this.Stats = new DevExpress.XtraTab.XtraTabPage();
 			this.picBoxCursor2 = new System.Windows.Forms.PictureBox();
 			this.panelCtlMainTopBar = new DevExpress.XtraEditors.PanelControl();
+			this.btnCheckUpdates = new System.Windows.Forms.Button();
 			this.picBoxInfoButton = new System.Windows.Forms.PictureBox();
 			this.popupMenuVersions = new DevExpress.XtraBars.PopupMenu(this.components);
 			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -109,7 +110,7 @@
 			// picBoxCursor2
 			// 
 			this.picBoxCursor2.Image = global::LeagueBuildStats.Properties.Resources.do_not_delete_this;
-			this.picBoxCursor2.Location = new System.Drawing.Point(413, 95);
+			this.picBoxCursor2.Location = new System.Drawing.Point(-38, -40);
 			this.picBoxCursor2.Name = "picBoxCursor2";
 			this.picBoxCursor2.Size = new System.Drawing.Size(48, 48);
 			this.picBoxCursor2.TabIndex = 5;
@@ -117,12 +118,25 @@
 			// 
 			// panelCtlMainTopBar
 			// 
+			this.panelCtlMainTopBar.Controls.Add(this.picBoxCursor2);
+			this.panelCtlMainTopBar.Controls.Add(this.btnCheckUpdates);
 			this.panelCtlMainTopBar.Controls.Add(this.picBoxInfoButton);
 			this.panelCtlMainTopBar.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panelCtlMainTopBar.Location = new System.Drawing.Point(0, 0);
 			this.panelCtlMainTopBar.Name = "panelCtlMainTopBar";
 			this.panelCtlMainTopBar.Size = new System.Drawing.Size(1130, 102);
 			this.panelCtlMainTopBar.TabIndex = 9;
+			// 
+			// btnCheckUpdates
+			// 
+			this.btnCheckUpdates.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(70)))));
+			this.btnCheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnCheckUpdates.Location = new System.Drawing.Point(977, 9);
+			this.btnCheckUpdates.Name = "btnCheckUpdates";
+			this.btnCheckUpdates.Size = new System.Drawing.Size(110, 23);
+			this.btnCheckUpdates.TabIndex = 1;
+			this.btnCheckUpdates.Text = "Check for Updates";
+			this.btnCheckUpdates.UseVisualStyleBackColor = true;
 			// 
 			// picBoxInfoButton
 			// 
@@ -207,7 +221,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
 			this.ClientSize = new System.Drawing.Size(1130, 647);
-			this.Controls.Add(this.picBoxCursor2);
 			this.Controls.Add(this.panelCtlMainTopBar);
 			this.Controls.Add(this.xtraTabControl);
 			this.Controls.Add(this.barDockControlLeft);
@@ -251,6 +264,7 @@
 		private DevExpress.XtraBars.Bar bar1;
 		private System.Windows.Forms.PictureBox picBoxCursor2;
 		private System.Windows.Forms.PictureBox picBoxInfoButton;
+		private System.Windows.Forms.Button btnCheckUpdates;
 	}
 }
 
