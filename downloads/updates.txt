@@ -10,6 +10,7 @@ ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.msp
 Flags=IsPatch
 RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
 Version=0.0.1.11
+UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.11]
 Description=This is a test Patch.
 Description1=This is a test description.
 Feature=Awesome feature.
