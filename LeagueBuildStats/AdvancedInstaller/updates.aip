@@ -15,10 +15,8 @@
     <ROW Section="v0.0.1.11 patch" Key="RegistryKey" Value="HKUD\SOFTWARE\League Build Stats\Version"/>
     <ROW Section="v0.0.1.11 patch" Key="Version" Value="0.0.1.11"/>
     <ROW Section="v0.0.1.11 patch" Key="UpdatedApplications" Value="League Build Stats[0.0.1.10-0.0.1.11]"/>
-    <ROW Section="v0.0.1.11 patch" Key="Description" Value="This is a test Patch.&#13;&#10;This is a test description."/>
-    <ROW Section="v0.0.1.11 patch" Key="Feature" Value="Awesome feature.&#13;&#10;Awesome feature 2."/>
-    <ROW Section="v0.0.1.11 patch" Key="Enhancement" Value="Awesome enhancement.&#13;&#10;Awesome enhancement 2."/>
-    <ROW Section="v0.0.1.11 patch" Key="BugFix" Value="Bugs squashed.&#13;&#10;Bugs squashed 2."/>
+    <ROW Section="v0.0.1.11 patch" Key="Description" Value="This is a small patch, just you you : )"/>
+    <ROW Section="v0.0.1.11 patch" Key="BugFix" Value="Made &quot;Check for Updates&quot; and &quot;Info&quot; buttons anchor to the top right.&#13;&#10;Fixed Desktop shortcut name."/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>

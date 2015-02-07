@@ -415,7 +415,7 @@
     <ROW Registry="Version" Root="-1" Key="Software\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~1.EXE|League Build Stats.exe" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~2|League Build Stats" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="LeagueBuildStats.exe_1" Directory_="DesktopFolder" Name="LEAGUE~1.EXE|League Build Stats.exe" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="LeagueBuildStatsUpdater" Directory_="SHORTCUTDIR" Name="LEAGUE~1|LeagueBuildStatsUpdater" Component_="updater.exe" Target="[#updater.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
   </COMPONENT>
