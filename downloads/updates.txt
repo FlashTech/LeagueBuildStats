@@ -11,6 +11,6 @@ Flags=IsPatch
 RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
 Version=0.0.1.11
 UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.11]
-Description=This is a small patch, just you you : )
+Description=This is a small patch, just you : )
 BugFix=Made "Check for Updates" and "Info" buttons anchor to the top right.
 BugFix1=Fixed Desktop shortcut name.
