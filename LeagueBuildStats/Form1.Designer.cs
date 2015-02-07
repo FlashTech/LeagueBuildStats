@@ -129,6 +129,7 @@
 			// 
 			// btnCheckUpdates
 			// 
+			this.btnCheckUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCheckUpdates.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(70)))));
 			this.btnCheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnCheckUpdates.Location = new System.Drawing.Point(977, 9);
@@ -140,6 +141,7 @@
 			// 
 			// picBoxInfoButton
 			// 
+			this.picBoxInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.picBoxInfoButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.picBoxInfoButton.Image = global::LeagueBuildStats.Properties.Resources.Info;
 			this.picBoxInfoButton.Location = new System.Drawing.Point(1093, 5);
