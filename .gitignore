@@ -1,8 +1,10 @@
 ## Ignore AdvancedInstaller build folders
 
-ExeBuildSetupFiles/
-AdvancedInstaller/images
-MsiBuildSetupFiles
+LeagueBuildStats/AdvancedInstaller/ExeBuildSetupFiles/
+LeagueBuildStats/AdvancedInstaller/images
+LeagueBuildStats/AdvancedInstaller/patch-*/
+LeagueBuildStats/AdvancedInstaller/setup-*/
+LeagueBuildStats/AdvancedInstaller/MsiBuildSetupFiles/
 
 
 
