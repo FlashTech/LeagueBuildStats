@@ -25,10 +25,10 @@
     <ROW Property="ProductVersion" Value="0.0.1.10" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{355D30B6-A3DF-46BD-8407-A992D99CFBDC}"/>
-    <ROW Property="WindowsType9X" MultiBuildValue="MsiBuild:Windows 9x/ME" ValueLocId="-"/>
-    <ROW Property="WindowsType9XDisplay" MultiBuildValue="MsiBuild:Windows 9x/ME" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT40" MultiBuildValue="MsiBuild:Windows NT 4.0" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="MsiBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="ExeBuild:Windows 9x/ME#MsiBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="ExeBuild:Windows 9x/ME#MsiBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="ExeBuild:Windows NT 4.0#MsiBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="ExeBuild:Windows NT 4.0#MsiBuild:Windows NT 4.0" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -96,8 +96,12 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|ProductName]\prerequisites" EulaPath="gpl-3.0.rtf" EulaPathLocId="*" IntroTextPathLocId="*"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="MsiBuild" BuildName="MsiBuild" BuildOrder="1" BuildType="1" PackageFolder="MsiBuildSetupFiles\[|ProductVersion]" PackageFileName="LeagueBuildStatsInstall" Languages="en" InstallationType="4" ExtUI="true" UseLargeSchema="true"/>
+    <ROW BuildKey="ExeBuild" BuildName="ExeBuild" BuildOrder="1" BuildType="1" PackageFolder="ExeBuildSetupFiles\[|ProductVersion]" PackageFileName="LeagueBuildStatsInstall" Languages="en" InstallationType="2" CabsLocation="1" CompressCabs="false" UseLzma="true" LzmaMethod="2" LzmaCompressionLevel="2" PackageType="1" FilesInsideExe="true" ExeIconPath="..\..\..\..\GreenShot Screenshots\Leauge Build Stats League of Legends - Install.ico" ExtractionFolder="[AppDataFolder]\[|ProductName] [|ProductVersion]\install" KeepMsiFiles="true" UseLargeSchema="true" ExeName="LeagueBuildStatsInstall"/>
+    <ROW BuildKey="MsiBuild" BuildName="MsiBuild" BuildOrder="2" BuildType="1" PackageFolder="MsiBuildSetupFiles\[|ProductVersion]" PackageFileName="LeagueBuildStatsInstall" Languages="en" InstallationType="4" ExtUI="true" UseLargeSchema="true"/>
     <ATTRIBUTE name="CurrentBuild" value="MsiBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.CacheComponent">
+    <ATTRIBUTE name="Enable" value="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
@@ -138,6 +142,7 @@
     <ROW Name="aischeduler.dll" SourcePath="&lt;AI_CUSTACTS&gt;aischeduler.dll"/>
     <ROW Name="aischeduler2.dll" SourcePath="&lt;AI_CUSTACTS&gt;aischeduler2.dll"/>
     <ROW Name="fioracropped1.jpg" SourcePath="Resources\fiora cropped1.jpg"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
     <ATTRIBUTE name="DeletedRows" value="applogoicon@folderlogoicon@installlogoicon"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCheckBoxComponent">
@@ -350,10 +355,13 @@
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DATA_SETTER_1" Type="51" Source="CustomActionData" Target="LeagueBuildStats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends &#13;\nand Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc. |League Build Stats - Information |MB_OK,MB_ICONINFORMATION,MB_DEFBUTTON1|BTN_PRESSED|[CLIENTPROCESSID]"/>
+    <ROW Action="AI_DATA_SETTER_2" Type="51" Source="AI_DeleteUninstallLzma" Target="[AI_EXPANDED_EXTRACTION_PATH]"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteUninstallLzma" Type="1537" Source="lzmaextractor.dll" Target="DeleteExtractionPath" AdditionalSeq="AI_DATA_SETTER_2"/>
     <ROW Action="AI_DoRemoveExternalUIStub" Type="3585" Source="ExternalUICleaner.dll" Target="DoRemoveExternalUIStub" WithoutSeq="true"/>
     <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_EstimateExtractFiles" Type="1" Source="Prereq.dll" Target="EstimateExtractFiles"/>
+    <ROW Action="AI_ExpandExtractionPath" Type="1" Source="lzmaextractor.dll" Target="ExpandExtractionPath"/>
     <ROW Action="AI_ExtractFiles" Type="1025" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
     <ROW Action="AI_Internet" Type="1" Source="aicustact.dll" Target="ActiveInternetConnection"/>
@@ -415,21 +423,24 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1502"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1503"/>
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="51"/>
     <ROW Action="AI_Internet" Condition="1" Sequence="399"/>
-    <ROW Action="AI_RemoveExternalUIStub" Condition="(REMOVE=&quot;ALL&quot;) AND ((VersionNT &gt; 500) OR((VersionNT = 500) AND (ServicePackLevel &gt;= 4)))" Sequence="1501"/>
+    <ROW Action="AI_RemoveExternalUIStub" Condition="(REMOVE=&quot;ALL&quot;) AND ((VersionNT &gt; 500) OR((VersionNT = 500) AND (ServicePackLevel &gt;= 4)))" Sequence="1502"/>
     <ROW Action="InstallFinalize" Sequence="6598" SeqType="0" MsiKey="InstallFinalize"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="AI_UPDATER_UNINSTALL" Condition="($updater.exe = 2) AND (?updater.exe = 3) AND NOT (UPGRADINGPRODUCTCODE)" Sequence="1551"/>
-    <ROW Action="AI_ExtractFiles" Sequence="3998"/>
-    <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
-    <ROW Action="AI_EstimateExtractFiles" Sequence="3999"/>
     <ROW Action="AI_ProcessTasks" Condition="REMOVE&lt;&gt;&quot;ALL&quot;" Sequence="1623"/>
     <ROW Action="AI_UninstallTasks" Condition="REMOVE=&quot;ALL&quot;" Sequence="1698"/>
     <ROW Action="AI_ProcessTasks2" Condition="(VersionNT &gt;= 600) AND (REMOVE&lt;&gt;&quot;ALL&quot;)" Sequence="1624"/>
     <ROW Action="AI_UninstallTasks2" Condition="(VersionNT &gt;= 600) AND (REMOVE=&quot;ALL&quot;)" Sequence="1699"/>
+    <ROW Action="AI_ExpandExtractionPath" Condition="(REMOVE=&quot;ALL&quot;) AND (NOT AI_SETUPEXEPATH)" Sequence="1501" Builds="ExeBuild"/>
+    <ROW Action="AI_DeleteUninstallLzma" Condition="(REMOVE=&quot;ALL&quot;) AND (NOT AI_SETUPEXEPATH)" Sequence="5970" Builds="ExeBuild"/>
+    <ROW Action="AI_DATA_SETTER_2" Condition="(REMOVE=&quot;ALL&quot;) AND (NOT AI_SETUPEXEPATH)" Sequence="5969"/>
+    <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="ExeBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
+    <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="ExeBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
@@ -441,16 +452,16 @@
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
-    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="MsiBuild"/>
-    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="MsiBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="ExeBuild;MsiBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="ExeBuild;MsiBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
     <ROW Registry="Path" Root="-1" Key="Software\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~2|League Build Stats" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
-    <ROW Shortcut="LeagueBuildStats.exe_1" Directory_="DesktopFolder" Name="LEAGUE~1.EXE|League Build Stats.exe" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="LeagueBuildStats.exe" Directory_="SHORTCUTDIR" Name="LEAGUE~2|League Build Stats" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="LeagueBuildStats.exe_1" Directory_="DesktopFolder" Name="LEAGUE~1|League Build Stats" Component_="LeagueBuildStats.exe" Target="[#LeagueBuildStats.exe]" Description="League Build Stats" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
     <ROW Shortcut="LeagueBuildStatsUpdater" Directory_="SHORTCUTDIR" Name="LEAGUE~1|LeagueBuildStatsUpdater" Component_="updater.exe" Target="[#updater.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">

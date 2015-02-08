@@ -99,6 +99,9 @@
     <ROW BuildKey="MsiBuild" BuildName="MsiBuild" BuildOrder="1" BuildType="1" PackageFolder="MsiBuildSetupFiles\[|ProductVersion]" PackageFileName="LeagueBuildStatsInstall" Languages="en" InstallationType="4" ExtUI="true" UseLargeSchema="true"/>
     <ATTRIBUTE name="CurrentBuild" value="MsiBuild"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.CacheComponent">
+    <ATTRIBUTE name="Enable" value="false"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
     <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
