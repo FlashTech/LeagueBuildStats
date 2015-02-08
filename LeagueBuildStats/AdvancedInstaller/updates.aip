@@ -7,7 +7,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.UpdaterEditorComponent">
     <ROW Section="v0.0.1.11 patch" Key="Name" Value="League Build Stats 0.0.1.11 Patch"/>
     <ROW Section="v0.0.1.11 patch" Key="ProductVersion" Value="0.0.1.11"/>
-    <ROW Section="v0.0.1.11 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.11/LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="Size" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="MD5" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.11.msp"/>

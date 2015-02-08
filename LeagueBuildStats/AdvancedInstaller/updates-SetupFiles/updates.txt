@@ -3,7 +3,7 @@
 [v0.0.1.11 patch]
 Name=League Build Stats 0.0.1.11 Patch
 ProductVersion=0.0.1.11
-URL=http://flashtech.github.io/LeagueBuildStats/downloads/LeagueBuildStatsPatcher-0.0.1.11.msp
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.11/LeagueBuildStatsPatcher-0.0.1.11.msp
 Size=24576
 MD5=17b7243c04b77c6d5bfbcd7e3efd457a
 ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.msp
