@@ -122,9 +122,9 @@ namespace LeagueBuildStats.Classes.Items
 						}
 					}
 				}
-
-				ItemDataCorrections.RunCorrections(items);
 			}
+
+			
 
 			itemGold_Names.Sort(Compare2);
 
@@ -155,6 +155,9 @@ namespace LeagueBuildStats.Classes.Items
 					}
 				}
 			}
+
+			ItemDataCorrections.RunCorrections(items);
+
 			Version = items.Version;
 		}
 

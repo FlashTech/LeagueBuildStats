@@ -114,6 +114,8 @@ namespace LeagueBuildStats
 				{
 					ItemDesc += "<br/><br/>" + enchantBaseItem.Description;
 				}
+				//Todo, 
+				thisItem.Value.Description = ItemDesc;
 				thisItemDisplayName = enchantBaseItem.Name + " - " + thisItemDisplayName.After("Enchantment: ");
 
 			}
