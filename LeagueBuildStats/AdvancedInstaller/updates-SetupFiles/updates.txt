@@ -1,10 +1,32 @@
 ;aiu;
 
+[v0.0.1.13 patch]
+Name=League Build Stats 0.0.1.13 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.13/LeagueBuildStatsPatcher-0.0.1.13.msp
+Size=188416
+ReleaseDate=10/02/2015
+MD5=979dc1d7dfc6ad645b5a56179b930def
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.13.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.13
+UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.13];League Build Stats[0.0.1.11-0.0.1.13];League build Stats[0.0.1.12-0.0.1.13]
+Description=Important patch that brings the Items Tab to +95% bug free.
+Feature=Made double clicking + click-dragging show unique stats on tooltip for items from Item Tab.
+BugFix=Fixed ill-formed html having random </i> in Soul Anchor and Bone Tooth Necklace Fixed #6, Fixed #9, Fixed #21.
+BugFix1=Fixed random <mana></mana> on Tear of the Goddess (Crystal Scar), Fixed #11, Fixed #19.
+BugFix2=Fixed extra </span> in Youmuu's Ghostblade, Fixed #40.
+BugFix3=Created SlowResistance stat for items and mastery and Stats Tab, Fixed #17.
+BugFix4=Created PercentManaAsAbility and PercentManaAsAttack stats, Fixed #32.
+BugFix5=Created PercentMaxHealthAsHealthRegen stat, Fixed #36.
+Replaces=All
+
 [v0.0.1.12 patch]
 Name=League Build Stats 0.0.1.12 Patch
 ProductVersion=0.0.1.12
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.12/LeagueBuildStatsPatcher-0.0.1.12.msp
 Size=139264
+ReleaseDate=09/02/2015
 MD5=84df27bdb106fed5b238de110a86a05a
 ServerFileName=LeagueBuildStatsPatcher-0.0.1.12.msp
 Flags=IsPatch
@@ -36,6 +58,7 @@ Name=League Build Stats 0.0.1.11 Patch
 ProductVersion=0.0.1.11
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.11/LeagueBuildStatsPatcher-0.0.1.11.msp
 Size=24576
+ReleaseDate=07/02/2015
 MD5=17b7243c04b77c6d5bfbcd7e3efd457a
 ServerFileName=LeagueBuildStatsPatcher-0.0.1.11.msp
 Flags=IsPatch

@@ -27,6 +27,18 @@ namespace RiotSharp.StaticDataEndpoint
 		//Todo
 		public double PercentIncreasedDamageMod { get; set; }
 
+		//Todo
+		public double PercentSlowReistance { get; set; }
+
+		//Todo
+		public double PercentManaAsBonusAttack { get; set; }
+
+		//Todo
+		public double PercentManaAsBonusAbility { get; set; }
+
+		//Todo
+		public double PercentMaxHealthAsHealthRegen { get; set; }
+
         public double FlatArmorMod { get; set; }
 
         public double FlatAttackSpeedMod { get; set; }

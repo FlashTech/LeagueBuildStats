@@ -188,6 +188,16 @@ namespace LeagueBuildStats.Classes.Masteries
 					temp.StatsList[pos].PercentTenacityMod = Convert.ToDouble(value) / 100;
 					bContinue = false;
 				}
+				matches = Regex.Matches(temp.Description[pos], "Reduces the effectiveness of slows by [^%]{1,4}%", RegexOptions.IgnoreCase);
+				if (bContinue && matches.Count > 0 && temp.StatsList[pos].PercentSlowReistance == 0.0)
+				{
+					string found = matches[0].ToString();
+					int start = found.LastIndexOf(" ") + 1;
+					int end = found.LastIndexOf("%");
+					string value = found.Substring(start, end - start);
+					temp.StatsList[pos].PercentSlowReistance = Convert.ToDouble(value) / 100;
+					bContinue = false;
+				}
 
 				//Utility Tree
 

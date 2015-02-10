@@ -99,7 +99,7 @@ namespace LeagueBuildStats.UserControls
 				double dTenacity = statsStatic.PercentTenacityMod * 100;//(1 - (1 - 0.35)*(1 - 0.25)*(1 - 0.15)) * 100; //todo there is no tenacity stat
 
 				double dDamabeReduction = 0.0 + statsStatic.FlatBlockMod; //todo there is no damamge reduction stat
-				double dAbsorbShield = 0.0; //todo there is no absorb shield stat
+				double dSlowResist = statsStatic.PercentSlowReistance * 100; 
 
 				double dEffPhysicalHealth = dHealth * (100 + dArmor) / (100 * (1 - (dDamabeReduction / 100)));
 				double dEffMagicalHealth = dHealth * (100 + dMagicResist) / (100 * (1 - (dDamabeReduction / 100)));
@@ -114,7 +114,7 @@ namespace LeagueBuildStats.UserControls
 				lblCtrlMagicResist.Text = Math.Round(dMagicResist, MidpointRounding.AwayFromZero).ToString();
 				lblCtrlTenacity.Text = Math.Round(dTenacity, MidpointRounding.AwayFromZero).ToString() + "%";
 				lblCtrlDmgReduction.Text = Math.Round(dDamabeReduction, 1, MidpointRounding.AwayFromZero).ToString() + "%";
-				lblCtrlAbsorbShield.Text = Math.Round(dAbsorbShield, MidpointRounding.AwayFromZero).ToString();
+				lblCtrlSlowResist.Text = Math.Round(dSlowResist, MidpointRounding.AwayFromZero).ToString() + "%";
 
 				lblCtrlEffPhysHealth.Text = Math.Round(dEffPhysicalHealth, MidpointRounding.AwayFromZero).ToString();
 				lblCtrlEffMagHealth.Text = Math.Round(dEffMagicalHealth, MidpointRounding.AwayFromZero).ToString();
@@ -174,6 +174,7 @@ namespace LeagueBuildStats.UserControls
 				if (p.Tag != null)
 				{
 					//TODO: it is possible to loop through these like on the runes tab
+					statsStatic.PercentSlowReistance = (1 - (1 - ((CreateItemDiv)p.Tag).aItem.Value.Stats.PercentSlowReistance) * (1 - statsStatic.PercentSlowReistance));
 					statsStatic.PercentTenacityMod = (1 - (1 - ((CreateItemDiv)p.Tag).aItem.Value.Stats.PercentTenacityMod)* (1 - statsStatic.PercentTenacityMod));
 					statsStatic.FlatArmorMod += ((CreateItemDiv)p.Tag).aItem.Value.Stats.FlatArmorMod;
 					statsStatic.FlatAttackSpeedMod += ((CreateItemDiv)p.Tag).aItem.Value.Stats.FlatAttackSpeedMod;
@@ -256,6 +257,8 @@ namespace LeagueBuildStats.UserControls
 						PictureBox p = c as PictureBox;
 						if (p.Tag != null)
 						{
+							statsStatic.PercentSlowReistance += ((RuneStatic)p.Tag).Stats.PercentSlowReistance;
+							statsStatic.PercentTenacityMod += ((RuneStatic)p.Tag).Stats.PercentTenacityMod;
 							statsStatic.FlatArmorMod += ((RuneStatic)p.Tag).Stats.FlatArmorMod;
 							statsStatic.FlatAttackSpeedMod += ((RuneStatic)p.Tag).Stats.FlatAttackSpeedMod;
 							statsStatic.FlatBlockMod += ((RuneStatic)p.Tag).Stats.FlatBlockMod;

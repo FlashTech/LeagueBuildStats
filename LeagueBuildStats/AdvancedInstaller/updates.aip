@@ -9,6 +9,7 @@
     <ROW Section="v0.0.1.11 patch" Key="ProductVersion" Value="0.0.1.11"/>
     <ROW Section="v0.0.1.11 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.11/LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="Size" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
+    <ROW Section="v0.0.1.11 patch" Key="ReleaseDate" Value="17991"/>
     <ROW Section="v0.0.1.11 patch" Key="MD5" Value="patch-0.0.1.11-SetupFiles\LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.11.msp"/>
     <ROW Section="v0.0.1.11 patch" Key="Flags" Value="IsPatch"/>
@@ -21,6 +22,7 @@
     <ROW Section="v0.0.1.12 patch" Key="ProductVersion" Value="0.0.1.12"/>
     <ROW Section="v0.0.1.12 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.12/LeagueBuildStatsPatcher-0.0.1.12.msp"/>
     <ROW Section="v0.0.1.12 patch" Key="Size" Value="patch-0.0.1.12-SetupFiles\LeagueBuildStatsPatcher-0.0.1.12.msp"/>
+    <ROW Section="v0.0.1.12 patch" Key="ReleaseDate" Value="17993"/>
     <ROW Section="v0.0.1.12 patch" Key="MD5" Value="patch-0.0.1.12-SetupFiles\LeagueBuildStatsPatcher-0.0.1.12.msp"/>
     <ROW Section="v0.0.1.12 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.12.msp"/>
     <ROW Section="v0.0.1.12 patch" Key="Flags" Value="IsPatch"/>
@@ -31,6 +33,20 @@
     <ROW Section="v0.0.1.12 patch" Key="Enhancement" Value="Fixed a coding error that looped item stat corrections unnecessarily 70,000+ times vs the needed 250+ times. This sould improve application start up time."/>
     <ROW Section="v0.0.1.12 patch" Key="BugFix" Value="Separated unique stats when doing stat corrections, Fixed #1, Fixed #3, Fixed #5.&#13;&#10;Updated the tooltip tester to also look at these new Unique stats.&#13;&#10;Fixed Mana regen items giving HP regen instead, Fixed #8, Fixed #31.&#13;&#10;Added check for bonus mana regen, health, and tenacity Fixed #10, Fixed #13, Fixed #14, Fixed #15, Fixed #33.&#13;&#10;Filtered out &quot;UNIQUE Passive - Point Runner&quot;, Fixed #18, Fixed #39, Fixed 42.&#13;&#10;Removed Ability Power addition if there was ability power per level, Fixed #20.&#13;&#10;Added detection of Sword of the Occult passive, assumes fully stacked, fixed #23.&#13;&#10;Filtered out &quot;UNIQUE Passive - Furor&quot;, Fixed #24.&#13;&#10;Combined Enchantment item descriptions before stat correction, Fixed #25, Fixed 28, Fixed #29, &#13;&#10;Moved the movement stat from &quot;UNIQUE Passive - Enchantment Movement&quot; to unique stat.&#13;&#10;Filtered out &quot;UNIQUE Passive - Captain&quot;, Fixed #26.&#13;&#10;Added correction for ignoring percent of magic resist, Fixed #34.&#13;&#10;Added correction for ignoring percent of armor, Fixed #35.&#13;&#10;Filtered out actived stats, Fixed #37.&#13;&#10;Added correction for increasing ability power by percent, Fixed #44, Fixed #45.&#13;&#10;Added correction for percent crit damage mod, Fixed #46, Fixed #47."/>
     <ROW Section="v0.0.1.12 patch" Key="Replaces" Value="v0.0.1.11 patch"/>
+    <ROW Section="v0.0.1.13 patch" Key="Name" Value="League Build Stats 0.0.1.13 Patch"/>
+    <ROW Section="v0.0.1.13 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.13/LeagueBuildStatsPatcher-0.0.1.13.msp"/>
+    <ROW Section="v0.0.1.13 patch" Key="Size" Value="patch-0.0.1.13-SetupFiles\LeagueBuildStatsPatcher-0.0.1.13.msp"/>
+    <ROW Section="v0.0.1.13 patch" Key="ReleaseDate" Value="17994"/>
+    <ROW Section="v0.0.1.13 patch" Key="MD5" Value="patch-0.0.1.13-SetupFiles\LeagueBuildStatsPatcher-0.0.1.13.msp"/>
+    <ROW Section="v0.0.1.13 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.13.msp"/>
+    <ROW Section="v0.0.1.13 patch" Key="Flags" Value="IsPatch"/>
+    <ROW Section="v0.0.1.13 patch" Key="RegistryKey" Value="HKUD\SOFTWARE\League Build Stats\Version"/>
+    <ROW Section="v0.0.1.13 patch" Key="Version" Value="0.0.1.13"/>
+    <ROW Section="v0.0.1.13 patch" Key="UpdatedApplications" Value="League Build Stats[0.0.1.10-0.0.1.13];League Build Stats[0.0.1.11-0.0.1.13];League build Stats[0.0.1.12-0.0.1.13]"/>
+    <ROW Section="v0.0.1.13 patch" Key="Description" Value="Important patch that brings the Items Tab to +95% bug free."/>
+    <ROW Section="v0.0.1.13 patch" Key="Feature" Value="Made double clicking + click-dragging show unique stats on tooltip for items from Item Tab."/>
+    <ROW Section="v0.0.1.13 patch" Key="BugFix" Value="Fixed ill-formed html having random &lt;/i&gt; in Soul Anchor and Bone Tooth Necklace Fixed #6, Fixed #9, Fixed #21.&#13;&#10;Fixed random &lt;mana&gt;&lt;/mana&gt; on Tear of the Goddess (Crystal Scar), Fixed #11, Fixed #19.&#13;&#10;Fixed extra &lt;/span&gt; in Youmuu&apos;s Ghostblade, Fixed #40.&#13;&#10;Created SlowResistance stat for items and mastery and Stats Tab, Fixed #17.&#13;&#10;Created PercentManaAsAbility and PercentManaAsAttack stats, Fixed #32.&#13;&#10;Created PercentMaxHealthAsHealthRegen stat, Fixed #36."/>
+    <ROW Section="v0.0.1.13 patch" Key="Replaces" Value="v0.0.1.11 patch;v0.0.1.12 patch"/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>

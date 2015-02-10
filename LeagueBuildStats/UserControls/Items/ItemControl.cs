@@ -14,6 +14,7 @@ using System.Threading;
 using LeagueBuildStats.Classes.DragUtils;
 using Infragistics.Win.UltraWinToolTip;
 using RiotSharp.StaticDataEndpoint;
+using DevExpress.XtraRichEdit;
 
 namespace LeagueBuildStats
 {
@@ -130,6 +131,20 @@ namespace LeagueBuildStats
 
 			sTooltip += "</p></div>";
 
+			//Todo: remved commented
+			//RichEditControl richEditTemp = new RichEditControl();
+
+			//using (Stream s = GenerateStreamFromString(item.htmlToolTipOfItem))
+			//{
+			//	richEditTemp.LoadDocument(s, DocumentFormat.Html);
+			//}
+
+			//sTooltip = richEditTemp.HtmlText;
+
+			//ParagraphProperties parProperties = richEditTemp.Document.BeginUpdateParagraphs(richEditTemp.Document.Selection);
+
+
+
 
 			//Todo: frm1.mainTopBar.Controls.Find("pnlItem1", true)[0]; should be changed to a public object to more easily reference faster
 			Control cTemp = frm1.mainTopBar.Controls.Find("pnlItem1", true)[0];
@@ -192,6 +207,18 @@ namespace LeagueBuildStats
 				frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
 				return;
 			}
+		}
+
+
+
+		public Stream GenerateStreamFromString(string s)
+		{
+			MemoryStream stream = new MemoryStream();
+			StreamWriter writer = new StreamWriter(stream);
+			writer.Write(s);
+			writer.Flush();
+			stream.Position = 0;
+			return stream;
 		}
 
 		

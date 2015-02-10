@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatsTab));
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
 			this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
 			this.grpCtrlBasicStats = new DevExpress.XtraEditors.GroupControl();
@@ -124,7 +125,7 @@
 			this.lblCtrlArmor = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl83 = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlHealthRegen1 = new DevExpress.XtraEditors.LabelControl();
-			this.lblCtrlAbsorbShield = new DevExpress.XtraEditors.LabelControl();
+			this.lblCtrlSlowResist = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlHealth = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
@@ -159,11 +160,11 @@
 			// 
 			// labelControl6
 			// 
-			this.labelControl6.Location = new System.Drawing.Point(298, 427);
+			this.labelControl6.Location = new System.Drawing.Point(164, 368);
 			this.labelControl6.Name = "labelControl6";
-			this.labelControl6.Size = new System.Drawing.Size(368, 13);
+			this.labelControl6.Size = new System.Drawing.Size(454, 104);
 			this.labelControl6.TabIndex = 50;
-			this.labelControl6.Text = "Note: This page is undergoing construction and currently does NOT function!";
+			this.labelControl6.Text = resources.GetString("labelControl6.Text");
 			// 
 			// grpCtrlBasicStats
 			// 
@@ -860,7 +861,7 @@
 			this.grpCtrlDefence.Controls.Add(this.lblCtrlArmor);
 			this.grpCtrlDefence.Controls.Add(this.labelControl83);
 			this.grpCtrlDefence.Controls.Add(this.lblCtrlHealthRegen1);
-			this.grpCtrlDefence.Controls.Add(this.lblCtrlAbsorbShield);
+			this.grpCtrlDefence.Controls.Add(this.lblCtrlSlowResist);
 			this.grpCtrlDefence.Controls.Add(this.lblCtrlHealth);
 			this.grpCtrlDefence.Controls.Add(this.labelControl32);
 			this.grpCtrlDefence.Controls.Add(this.labelControl33);
@@ -1048,13 +1049,13 @@
 			this.lblCtrlHealthRegen1.TabIndex = 38;
 			this.lblCtrlHealthRegen1.Text = "18.95/s";
 			// 
-			// lblCtrlAbsorbShield
+			// lblCtrlSlowResist
 			// 
-			this.lblCtrlAbsorbShield.Location = new System.Drawing.Point(123, 138);
-			this.lblCtrlAbsorbShield.Name = "lblCtrlAbsorbShield";
-			this.lblCtrlAbsorbShield.Size = new System.Drawing.Size(16, 13);
-			this.lblCtrlAbsorbShield.TabIndex = 37;
-			this.lblCtrlAbsorbShield.Text = "0.0";
+			this.lblCtrlSlowResist.Location = new System.Drawing.Point(123, 138);
+			this.lblCtrlSlowResist.Name = "lblCtrlSlowResist";
+			this.lblCtrlSlowResist.Size = new System.Drawing.Size(16, 13);
+			this.lblCtrlSlowResist.TabIndex = 37;
+			this.lblCtrlSlowResist.Text = "0.0";
 			// 
 			// lblCtrlHealth
 			// 
@@ -1132,9 +1133,9 @@
 			// 
 			this.labelControl41.Location = new System.Drawing.Point(17, 138);
 			this.labelControl41.Name = "labelControl41";
-			this.labelControl41.Size = new System.Drawing.Size(69, 13);
+			this.labelControl41.Size = new System.Drawing.Size(81, 13);
 			this.labelControl41.TabIndex = 25;
-			this.labelControl41.Text = "Absorb Shield:";
+			this.labelControl41.Text = "Slow Resistance:";
 			// 
 			// labelControl42
 			// 
@@ -1201,7 +1202,7 @@
 		private DevExpress.XtraEditors.LabelControl lblCtrlDmgReduction;
 		private DevExpress.XtraEditors.LabelControl lblCtrlArmor;
 		private DevExpress.XtraEditors.LabelControl lblCtrlHealthRegen1;
-		private DevExpress.XtraEditors.LabelControl lblCtrlAbsorbShield;
+		private DevExpress.XtraEditors.LabelControl lblCtrlSlowResist;
 		private DevExpress.XtraEditors.LabelControl lblCtrlHealth;
 		private DevExpress.XtraEditors.LabelControl labelControl32;
 		private DevExpress.XtraEditors.LabelControl labelControl33;

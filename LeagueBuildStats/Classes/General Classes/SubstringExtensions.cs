@@ -61,5 +61,17 @@ namespace LeagueBuildStats.Classes.General_Classes
 			}
 			return value.Substring(adjustedPosA);
 		}
+
+
+		public static string ReplaceLastOccurrence(string Source, string Find, string Replace)
+		{
+			int Place = Source.LastIndexOf(Find);
+			string result = Source;
+			if (Place != -1)
+			{
+				result = Source.Remove(Place, Find.Length).Insert(Place, Replace);
+			}
+			return result;
+		}
 	}
 }

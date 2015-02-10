@@ -321,10 +321,22 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 
 							foreach (System.Reflection.PropertyInfo property in properties)
 							{
+								//Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
+								//if (statValue != 0.0)
+								//{
+								//	sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + statValue;
+								//}
 								Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
-								if (statValue != 0.0)
+								Double uniqueValue = 0.0;
+								foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
 								{
-									sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + statValue;
+									uniqueValue += (Double)uniqueStats.Value.GetType().GetProperty(property.Name).GetValue(uniqueStats.Value);
+								}
+
+								Double newValue = statValue + uniqueValue;
+								if (newValue != 0.0)
+								{
+									sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + newValue;
 								}
 							}
 						}

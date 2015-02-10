@@ -43,7 +43,7 @@ namespace LeagueBuildStats.Classes.Items
 
 					string uniqueDescription = temp.Description.Substring(i, j - i);
 
-					if (!uniqueDescription.Contains("UNIQUE Active") 
+					if (!uniqueDescription.Contains("UNIQUE Active") //Todo: All of these should instead of being ignored should be filtered on the Stats Tab and Activatable Items or On/Off
 						&& !uniqueDescription.Contains("UNIQUE Passive - Point Runner:")
 						&& !uniqueDescription.Contains("UNIQUE Passive - Furor:")
 						&& !uniqueDescription.Contains("UNIQUE Passive - Captain:"))
@@ -379,6 +379,62 @@ namespace LeagueBuildStats.Classes.Items
 					statsStatic.PercentCritDamageMod += (Convert.ToDouble(value) / 100) - 2.00; //ex: 250% - 200% = +50%
 				}
 			}
+			matches = Regex.Matches(descriptionMain, "Movement slowing effects are reduced by [^%]{1,4}%", RegexOptions.IgnoreCase);
+			if (statsStatic.PercentSlowReistance == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					int start = found.LastIndexOf(" ") + 1;
+					int end = found.LastIndexOf("%");
+					string value = found.Substring(start, end - start);
+					statsStatic.PercentSlowReistance += Convert.ToDouble(value) / 100;
+				}
+			}
+			matches = Regex.Matches(descriptionMain, "[^ ]{1,4}% increased Size, Slow Resistance", RegexOptions.IgnoreCase);
+			if (statsStatic.PercentSlowReistance == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					string value = found.Substring(0, found.IndexOf("%"));
+					statsStatic.PercentSlowReistance += Convert.ToDouble(value) / 100;
+				}
+			}
+			matches = Regex.Matches(descriptionMain, "Grants bonus Attack Damage equal to [^%]{1,4}% of maximum Mana", RegexOptions.IgnoreCase);
+			if (statsStatic.PercentManaAsBonusAttack == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					int end = found.IndexOf("%");
+					string value = found.Substring(36, end - 36);
+					statsStatic.PercentManaAsBonusAttack += Convert.ToDouble(value) / 100;
+				}
+			}
+			matches = Regex.Matches(descriptionMain, "Grants Ability Power equal to [^%]{1,4}% of maximum Mana", RegexOptions.IgnoreCase);
+			if (statsStatic.PercentManaAsBonusAbility == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					int end = found.IndexOf("%");
+					string value = found.Substring(30, end - 30);
+					statsStatic.PercentManaAsBonusAbility += Convert.ToDouble(value) / 100;
+				}
+			}
+			matches = Regex.Matches(descriptionMain, "Health restore increases to [^%]{1,4}% of maximum Health if damage hasn't been taken", RegexOptions.IgnoreCase);
+			if (statsStatic.PercentMaxHealthAsHealthRegen == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					int end = found.IndexOf("%");
+					string value = found.Substring(28, end - 28);
+					statsStatic.PercentMaxHealthAsHealthRegen += Convert.ToDouble(value) / 100;
+				}
+			}
+
 
 		}
 	}

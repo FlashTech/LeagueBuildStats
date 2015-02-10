@@ -231,12 +231,24 @@ namespace LeagueBuildStats
 			tempDescription = tempDescription.Replace("<aura>", "<span style='color:#E6E600;'>"); //dull yellow
 			tempDescription = tempDescription.Replace("</aura>", "</span>");
 
-			tempDescription = tempDescription.Replace("<br>", "<br/>");
+			tempDescription = tempDescription.Replace("<mana>", "");
+			tempDescription = tempDescription.Replace("</mana>", "");
 
+			if (Regex.Matches(tempDescription, "<span>").Count != Regex.Matches(tempDescription, "</span>").Count)
+			{
+				tempDescription = SpanFixer(tempDescription);
+			}
+
+			//Fix all of Riot's ill-formaed html
+			tempDescription = tempDescription.Replace("<br>", "<br/>");
 			int iCount = Regex.Matches(tempDescription, "<i>").Count;
 			while (Regex.Matches(tempDescription, "</i>").Count < iCount)
 			{
 				tempDescription += "</i>";
+			}
+			if (Regex.Matches(tempDescription, "</i>").Count > iCount)
+			{
+				tempDescription = SubstringExtensions.ReplaceLastOccurrence(tempDescription, "</i>", "");
 			}
 
 			//This had to be done on one line or else it causes problems
@@ -246,5 +258,35 @@ namespace LeagueBuildStats
 
 			DivText = StringExtensions.BrWrapper(tempDescription);
 		}
+
+		private string SpanFixer(string tempDescription)
+		{
+			MatchCollection spansFound = Regex.Matches(tempDescription, "</span>|<span");
+			int ind = 0;
+			foreach (Match match in spansFound)
+			{
+				if (ind % 2 == 0)
+				{
+					if (match.Value == "</span>")
+					{
+						//problem
+						string begin = tempDescription.Substring(0, match.Index);
+						string end = tempDescription.Substring(match.Index + match.Length, tempDescription.Length - (match.Index + match.Length));
+						tempDescription = begin + end;
+						SpanFixer(tempDescription);
+						return tempDescription;
+					}
+				}
+				else
+				{
+					//Todo: not sure i should check for an unexpected open <span>
+				}
+				ind++;
+			}
+			return tempDescription;
+		}
+
+
+
 	}
 }
