@@ -17,6 +17,20 @@
     <ROW Section="v0.0.1.11 patch" Key="UpdatedApplications" Value="League Build Stats[0.0.1.10-0.0.1.11]"/>
     <ROW Section="v0.0.1.11 patch" Key="Description" Value="This is a small patch, just you you : )"/>
     <ROW Section="v0.0.1.11 patch" Key="BugFix" Value="Made &quot;Check for Updates&quot; and &quot;Info&quot; buttons anchor to the top right.&#13;&#10;Fixed Desktop shortcut name."/>
+    <ROW Section="v0.0.1.12 patch" Key="Name" Value="League Build Stats 0.0.1.12 Patch"/>
+    <ROW Section="v0.0.1.12 patch" Key="ProductVersion" Value="0.0.1.12"/>
+    <ROW Section="v0.0.1.12 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.12/LeagueBuildStatsPatcher-0.0.1.12.msp"/>
+    <ROW Section="v0.0.1.12 patch" Key="Size" Value="patch-0.0.1.12-SetupFiles\LeagueBuildStatsPatcher-0.0.1.12.msp"/>
+    <ROW Section="v0.0.1.12 patch" Key="MD5" Value="patch-0.0.1.12-SetupFiles\LeagueBuildStatsPatcher-0.0.1.12.msp"/>
+    <ROW Section="v0.0.1.12 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.12.msp"/>
+    <ROW Section="v0.0.1.12 patch" Key="Flags" Value="IsPatch"/>
+    <ROW Section="v0.0.1.12 patch" Key="RegistryKey" Value="HKUD\SOFTWARE\League Build Stats\Version"/>
+    <ROW Section="v0.0.1.12 patch" Key="Version" Value="0.0.1.12"/>
+    <ROW Section="v0.0.1.12 patch" Key="UpdatedApplications" Value="League Build Stats[0.0.1.10-0.0.1.12];League Build Stats[0.0.1.11-0.0.1.12]"/>
+    <ROW Section="v0.0.1.12 patch" Key="Description" Value="Important patch that begins to fix many of the issues with items."/>
+    <ROW Section="v0.0.1.12 patch" Key="Enhancement" Value="Fixed a coding error that looped item stat corrections unnecessarily 70,000+ times vs the needed 250+ times. This sould improve application start up time."/>
+    <ROW Section="v0.0.1.12 patch" Key="BugFix" Value="Separated unique stats when doing stat corrections, Fixed #1, Fixed #3, Fixed #5.&#13;&#10;Updated the tooltip tester to also look at these new Unique stats.&#13;&#10;Fixed Mana regen items giving HP regen instead, Fixed #8, Fixed #31.&#13;&#10;Added check for bonus mana regen, health, and tenacity Fixed #10, Fixed #13, Fixed #14, Fixed #15, Fixed #33.&#13;&#10;Filtered out &quot;UNIQUE Passive - Point Runner&quot;, Fixed #18, Fixed #39, Fixed 42.&#13;&#10;Removed Ability Power addition if there was ability power per level, Fixed #20.&#13;&#10;Added detection of Sword of the Occult passive, assumes fully stacked, fixed #23.&#13;&#10;Filtered out &quot;UNIQUE Passive - Furor&quot;, Fixed #24.&#13;&#10;Combined Enchantment item descriptions before stat correction, Fixed #25, Fixed 28, Fixed #29, &#13;&#10;Moved the movement stat from &quot;UNIQUE Passive - Enchantment Movement&quot; to unique stat.&#13;&#10;Filtered out &quot;UNIQUE Passive - Captain&quot;, Fixed #26.&#13;&#10;Added correction for ignoring percent of magic resist, Fixed #34.&#13;&#10;Added correction for ignoring percent of armor, Fixed #35.&#13;&#10;Filtered out actived stats, Fixed #37.&#13;&#10;Added correction for increasing ability power by percent, Fixed #44, Fixed #45.&#13;&#10;Added correction for percent crit damage mod, Fixed #46, Fixed #47."/>
+    <ROW Section="v0.0.1.12 patch" Key="Replaces" Value="v0.0.1.11 patch"/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>
