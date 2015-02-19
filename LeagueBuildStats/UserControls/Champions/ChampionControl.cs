@@ -82,53 +82,7 @@ namespace LeagueBuildStats.UserControls
 			}
 			cTemp.Controls.Add(championPicBox);
 
-			//Todo: this is temp tooltip used to see base stats for the champion
-			string sTooltip = string.Format(@"
-						<div style='max-width:300px;'>
-						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
-							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/><br/>
-							Armor: {1}<br/>
-							ArmorPerLevel: {2}<br/>
-							AttackDamage: {3}<br/>
-							AttackDamagePerLevel: {4}<br/>
-							AttackRange: {5}<br/>
-							AttackSpeed: {6}<br/>
-							AttackSpeedPerLevel: {7}<br/>
-							Crit: {8}<br/>
-							CitPerLevel: {9}<br/>
-							Hp: {10}<br/>
-							HpPerLevel: {11}<br/>
-							HpRegen: {12}<br/>
-							HpRegenPerLevel: {13}<br/>
-							MoveSpeed: {14}<br/>
-							Mp: {15}<br/>
-							MpPerLevel: {16}<br/>
-							MpRegen: {17}<br/>
-							MpRegenPerLevel: {18}<br/>
-							SpellBlock: {19}<br/>
-							SpellBlackPerLevel: {20}
-						</p></div>",
-						championPreped.Value.Name, 
-						championPreped.Value.Stats.Armor,
-						championPreped.Value.Stats.ArmorPerLevel,
-						championPreped.Value.Stats.AttackDamage,
-						championPreped.Value.Stats.AttackDamagePerLevel,
-						championPreped.Value.Stats.AttackRange,
-						Math.Round((0.625 / (1 + championPreped.Value.Stats.AttackSpeedOffset)), 3 , MidpointRounding.AwayFromZero),
-						championPreped.Value.Stats.AttackSpeedPerLevel,
-						championPreped.Value.Stats.Crit,
-						championPreped.Value.Stats.CritPerLevel,
-						championPreped.Value.Stats.Hp,
-						championPreped.Value.Stats.HpPerLevel,
-						championPreped.Value.Stats.HpRegen,
-						championPreped.Value.Stats.HpRegenPerLevel,
-						championPreped.Value.Stats.MoveSpeed,
-						championPreped.Value.Stats.Mp,
-						championPreped.Value.Stats.MpPerLevel,
-						championPreped.Value.Stats.MpRegen,
-						championPreped.Value.Stats.MpRegenPerLevel,
-						championPreped.Value.Stats.SpellBlock,
-						championPreped.Value.Stats.SpellBlockPerLevel);
+			string sTooltip = frm1.mainTopBar.CreateChampPicBoxTooltip(championPreped);
 
 			//tooltip Todo: Comment ou the next two lines to disable this tooltip
 			frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(championPicBox, frm1.mainTopBar.tipInfoChamp);

@@ -117,15 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelControl6.Text" xml:space="preserve">
-    <value>Note: This page is undergoing construction and currently does NOT function!
-
-Well, some stats are captured from: Selected Champion, selected Items, and selected runes.
-
-Masteries Tab currently does not effect the Stats Tab.
-
-Also these stats are often wrong because I threw this page together and I am working out the 
-features on other Tabs before finishing this Tab.
-</value>
-  </data>
 </root>

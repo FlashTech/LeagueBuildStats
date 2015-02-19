@@ -16,6 +16,7 @@ using LeagueBuildStats.Classes;
 using RiotSharp.StaticDataEndpoint;
 using Infragistics.Win.UltraWinToolTip;
 using Infragistics.Win;
+using System.Reflection;
 
 namespace LeagueBuildStats.UserControls.MainTopBar
 {
@@ -33,6 +34,8 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 		public UltraToolTipInfo tipInfoItem6 = new UltraToolTipInfo();
 
 		public List<Panel> itemPanels = new List<Panel>();
+
+		public ContextMenuStrip contextMenuStrip1 = new ContextMenuStrip();
 
 
 		//TODO: maybe instead of looking directly are the tag is may be better to have public variables that are updated when the tag is updated. might not be necessary
@@ -108,10 +111,97 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			//pnlItem4.DragOver += pnlItem_DragOver;
 			//pnlItem5.DragOver += pnlItem_DragOver;
 			//pnlItem6.DragOver += pnlItem_DragOver;
+
+			picBoxInfoButton.Image = Bitmap.FromHicon(SystemIcons.Information.Handle);
+
+			picBoxInfoButton.MouseClick += picBoxInfoButton_MouseClick;
+			picBoxSettings.MouseClick += picBoxSettings_MouseClick;
+			btnCheckUpdates.MouseClick += btnCheckUpdates_MouseClick;
+
+			contextMenuStrip1.Items.Add("Show detected stats in tooltips");
+			((ToolStripMenuItem)contextMenuStrip1.Items[0]).CheckOnClick = true;
+			((ToolStripMenuItem)contextMenuStrip1.Items[0]).CheckedChanged+=Item1_CheckedChanged;
 		}
 
-		
+		private void Item1_CheckedChanged(object sender, EventArgs e)
+		{
+			//The following are already dynamic based on if checked = true
+			if (pnlChampion.Tag != null)
+			{
+				string sTooltip = CreateChampPicBoxTooltip((KeyValuePair<string, ChampionStatic>)pnlChampion.Tag);
+				tipInfoChamp.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem1.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem1.Tag);
+				tipInfoItem1.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem2.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem2.Tag);
+				tipInfoItem2.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem3.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem3.Tag);
+				tipInfoItem3.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem4.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem4.Tag);
+				tipInfoItem4.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem5.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem5.Tag);
+				tipInfoItem5.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlItem6.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem6.Tag);
+				tipInfoItem6.ToolTipTextFormatted = sTooltip;
+			}
+		}
 
+
+		void picBoxSettings_MouseClick(object sender, MouseEventArgs e)
+		{
+			PictureBox btnSender = (PictureBox)sender;
+			Point ptLowerLeft = new Point(0, btnSender.Height);
+			ptLowerLeft = btnSender.PointToScreen(ptLowerLeft);
+			contextMenuStrip1.Show(ptLowerLeft);
+		}
+
+		void btnCheckUpdates_MouseClick(object sender, MouseEventArgs e)
+		{
+			try
+			{
+				string folderPath = Assembly.GetExecutingAssembly().Location.Replace(Assembly.GetExecutingAssembly().GetName().Name + ".exe", "");
+				System.Diagnostics.Process.Start(folderPath + "LeagueBuildStatsUpdater.exe");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
+		void picBoxInfoButton_MouseClick(object sender, MouseEventArgs e)
+		{
+			string message = string.Format(@"LeagueBuildStats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone 
+officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or
+registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.");
+
+			string caption = "League Build Stats - Information";
+			MessageBoxButtons buttons = MessageBoxButtons.OK;
+			DialogResult result;
+
+			result = XtraMessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Information);
+
+			if (result == DialogResult.OK)
+			{
+				//do nothing
+			}
+		}
 		
 
 		void simpleBtnChkUpdates_Click(object sender, EventArgs e)
@@ -279,6 +369,8 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 					{
 						//Generate PicBox
 						CreateItemDiv itemPreped = form1.itemsTab.getItemsFromServer.itemsPrepared.Find(o => o.thisID.ToString() == itemID);
+						
+						
 						PictureBox itemPicBox = new PictureBox();
 						itemPicBox.Size = new Size(48, 48);
 						itemPicBox.Location = new Point(0, 0);
@@ -301,51 +393,9 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 						}
 						thisPnl.Controls.Add(itemPicBox);
 
+						string sTooltip = CreateItemPicBoxTooltip(itemPreped);
 
-
-						//Generate tooltip for item on maintopbar
-						string sTooltip = string.Format(@"
-						<div style='max-width:300px;'>
-						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
-							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/>
-							<span style='color:Yellow;'>Cost: {1}</span> <br/><br/>
-							{2}<br/>
-						",//</p></div>"
-									itemPreped.thisItemDisplayName, itemPreped.aItem.Value.Gold.TotalPrice, itemPreped.DivText);
-
-						//todo: this is a test to show the stats of the items
-						try
-						{
-							Type myType = typeof(StatsStatic);
-							System.Reflection.PropertyInfo[] properties = myType.GetProperties();
-
-							foreach (System.Reflection.PropertyInfo property in properties)
-							{
-								//Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
-								//if (statValue != 0.0)
-								//{
-								//	sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + statValue;
-								//}
-								Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
-								Double uniqueValue = 0.0;
-								foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
-								{
-									uniqueValue += (Double)uniqueStats.Value.GetType().GetProperty(property.Name).GetValue(uniqueStats.Value);
-								}
-
-								Double newValue = statValue + uniqueValue;
-								if (newValue != 0.0)
-								{
-									sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + newValue;
-								}
-							}
-						}
-						catch (Exception ex)
-						{
-							MessageBox.Show(ex.ToString());
-						}
-
-						sTooltip += "</p></div>";
+						
 
 
 						//tooltip
@@ -394,6 +444,53 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			{
 				MessageBox.Show(ex.ToString());
 			}
+		}
+
+		public string CreateItemPicBoxTooltip(CreateItemDiv itemPreped)
+		{
+			//Generate tooltip for item on maintopbar
+			string sTooltip = string.Format(@"
+						<div style='max-width:300px;'>
+						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
+							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/>
+							<span style='color:Yellow;'>Cost: {1}</span> <br/><br/>
+							{2}<br/>
+						",//</p></div>"
+						itemPreped.thisItemDisplayName, itemPreped.aItem.Value.Gold.TotalPrice, itemPreped.DivText);
+
+			//todo: this is a test to show the stats of the items
+			if (((ToolStripMenuItem)contextMenuStrip1.Items[0]).Checked)
+			{
+				try
+				{
+					Type myType = typeof(StatsStatic);
+					System.Reflection.PropertyInfo[] properties = myType.GetProperties();
+
+					foreach (System.Reflection.PropertyInfo property in properties)
+					{
+						Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
+						Double uniqueValue = 0.0;
+						foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
+						{
+							uniqueValue += (Double)uniqueStats.Value.GetType().GetProperty(property.Name).GetValue(uniqueStats.Value);
+						}
+
+						Double newValue = statValue + uniqueValue;
+						if (newValue != 0.0)
+						{
+							sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + newValue;
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.ToString());
+				}
+			}
+
+			sTooltip += "</p></div>";
+
+			return sTooltip;
 		}
 
 		private void pnlItem_DragOver(object sender, DragEventArgs e)
@@ -478,8 +575,29 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 						}
 						thisPnl.Controls.Add(championPicBox);
 
-						//Todo: this is temp tooltip used to see base stats for the champion
-						string sTooltip = string.Format(@"
+						string sTooltip = CreateChampPicBoxTooltip(championPreped);
+
+						
+
+						//tooltip Todo: Comment ou the next two lines to disable this tooltip
+						ultraToolTipManager1.SetUltraToolTip(championPicBox, tipInfoChamp);
+						tipInfoChamp.ToolTipTextFormatted = sTooltip;
+					}
+					
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
+		public string CreateChampPicBoxTooltip(KeyValuePair<string, ChampionStatic> championPreped)
+		{
+			string sTooltip = "";
+			if (((ToolStripMenuItem)contextMenuStrip1.Items[0]).Checked)
+			{
+				sTooltip = string.Format(@"
 						<div style='max-width:300px;'>
 						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
 							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/><br/>
@@ -504,39 +622,41 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 							SpellBlock: {19}<br/>
 							SpellBlackPerLevel: {20}
 						</p></div>",
-									championPreped.Value.Name,
-									championPreped.Value.Stats.Armor,
-									championPreped.Value.Stats.ArmorPerLevel,
-									championPreped.Value.Stats.AttackDamage,
-									championPreped.Value.Stats.AttackDamagePerLevel,
-									championPreped.Value.Stats.AttackRange,
-									Math.Round((0.625 / (1 + championPreped.Value.Stats.AttackSpeedOffset)), 3, MidpointRounding.AwayFromZero),
-									championPreped.Value.Stats.AttackSpeedPerLevel,
-									championPreped.Value.Stats.Crit,
-									championPreped.Value.Stats.CritPerLevel,
-									championPreped.Value.Stats.Hp,
-									championPreped.Value.Stats.HpPerLevel,
-									championPreped.Value.Stats.HpRegen,
-									championPreped.Value.Stats.HpRegenPerLevel,
-									championPreped.Value.Stats.MoveSpeed,
-									championPreped.Value.Stats.Mp,
-									championPreped.Value.Stats.MpPerLevel,
-									championPreped.Value.Stats.MpRegen,
-									championPreped.Value.Stats.MpRegenPerLevel,
-									championPreped.Value.Stats.SpellBlock,
-									championPreped.Value.Stats.SpellBlockPerLevel);
+						championPreped.Value.Name,
+						championPreped.Value.Stats.Armor,
+						championPreped.Value.Stats.ArmorPerLevel,
+						championPreped.Value.Stats.AttackDamage,
+						championPreped.Value.Stats.AttackDamagePerLevel,
+						championPreped.Value.Stats.AttackRange,
+						Math.Round((0.625 / (1 + championPreped.Value.Stats.AttackSpeedOffset)), 3, MidpointRounding.AwayFromZero),
+						championPreped.Value.Stats.AttackSpeedPerLevel,
+						championPreped.Value.Stats.Crit,
+						championPreped.Value.Stats.CritPerLevel,
+						championPreped.Value.Stats.Hp,
+						championPreped.Value.Stats.HpPerLevel,
+						championPreped.Value.Stats.HpRegen,
+						championPreped.Value.Stats.HpRegenPerLevel,
+						championPreped.Value.Stats.MoveSpeed,
+						championPreped.Value.Stats.Mp,
+						championPreped.Value.Stats.MpPerLevel,
+						championPreped.Value.Stats.MpRegen,
+						championPreped.Value.Stats.MpRegenPerLevel,
+						championPreped.Value.Stats.SpellBlock,
+						championPreped.Value.Stats.SpellBlockPerLevel);
+			}
+//			else
+//			{
+//				sTooltip = string.Format(@"
+//						<div style='max-width:300px;'>
+//						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
+//							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/><br/>
+//						</p></div>",
+//						championPreped.Value.Name);
+//			}
 
-						//tooltip Todo: Comment ou the next two lines to disable this tooltip
-						ultraToolTipManager1.SetUltraToolTip(championPicBox, tipInfoChamp);
-						tipInfoChamp.ToolTipTextFormatted = sTooltip;
-					}
-					
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
+
+
+			return sTooltip;
 		}
 
 

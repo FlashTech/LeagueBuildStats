@@ -28,6 +28,12 @@ namespace RiotSharp.StaticDataEndpoint
 		public double PercentIncreasedDamageMod { get; set; }
 
 		//Todo
+		public double PercentIncreasedDamageModMelee { get; set; }
+
+		//Todo
+		public double PercentIncreasedDamageModRanged { get; set; }
+
+		//Todo
 		public double PercentSlowReistance { get; set; }
 
 		//Todo
@@ -38,6 +44,15 @@ namespace RiotSharp.StaticDataEndpoint
 
 		//Todo
 		public double PercentMaxHealthAsHealthRegen { get; set; }
+
+		//Todo
+		public double FlatMagicDamageOnHit { get; set; }
+
+		//Todo
+		public double FlatMagicDamageFromPercentAbility { get; set; }
+
+		//Todo
+		public double OnHitMagicDamageFromPercentAbility { get; set; }
 
         public double FlatArmorMod { get; set; }
 
@@ -200,5 +215,7 @@ namespace RiotSharp.StaticDataEndpoint
 
         [JsonProperty("rPercentTimeDeadModPerLevel")]
         public double RPercentTimeDeadModPerLevel { get; set; }
-    }
+
+		
+	}
 }

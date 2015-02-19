@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTopBar));
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+			this.picBoxSettings = new System.Windows.Forms.PictureBox();
+			this.btnCheckUpdates = new System.Windows.Forms.Button();
+			this.picBoxInfoButton = new System.Windows.Forms.PictureBox();
 			this.pnlItem6 = new System.Windows.Forms.Panel();
 			this.pnlItem5 = new System.Windows.Forms.Panel();
 			this.pnlItem4 = new System.Windows.Forms.Panel();
@@ -50,12 +53,17 @@
 			this.simpleBtnChkUpdates = new DevExpress.XtraEditors.SimpleButton();
 			this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
 			this.xtraScrollableControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// xtraScrollableControl1
 			// 
+			this.xtraScrollableControl1.Controls.Add(this.picBoxSettings);
+			this.xtraScrollableControl1.Controls.Add(this.btnCheckUpdates);
+			this.xtraScrollableControl1.Controls.Add(this.picBoxInfoButton);
 			this.xtraScrollableControl1.Controls.Add(this.pnlItem6);
 			this.xtraScrollableControl1.Controls.Add(this.pnlItem5);
 			this.xtraScrollableControl1.Controls.Add(this.pnlItem4);
@@ -72,6 +80,42 @@
 			this.xtraScrollableControl1.Name = "xtraScrollableControl1";
 			this.xtraScrollableControl1.Size = new System.Drawing.Size(740, 102);
 			this.xtraScrollableControl1.TabIndex = 22;
+			// 
+			// picBoxSettings
+			// 
+			this.picBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.picBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.picBoxSettings.Image = global::LeagueBuildStats.Properties.Resources.gear_png;
+			this.picBoxSettings.Location = new System.Drawing.Point(551, 3);
+			this.picBoxSettings.Name = "picBoxSettings";
+			this.picBoxSettings.Size = new System.Drawing.Size(32, 32);
+			this.picBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxSettings.TabIndex = 23;
+			this.picBoxSettings.TabStop = false;
+			// 
+			// btnCheckUpdates
+			// 
+			this.btnCheckUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnCheckUpdates.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(70)))));
+			this.btnCheckUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnCheckUpdates.Location = new System.Drawing.Point(589, 8);
+			this.btnCheckUpdates.Name = "btnCheckUpdates";
+			this.btnCheckUpdates.Size = new System.Drawing.Size(110, 23);
+			this.btnCheckUpdates.TabIndex = 22;
+			this.btnCheckUpdates.Text = "Check for Updates";
+			this.btnCheckUpdates.UseVisualStyleBackColor = true;
+			// 
+			// picBoxInfoButton
+			// 
+			this.picBoxInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.picBoxInfoButton.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.picBoxInfoButton.Image = global::LeagueBuildStats.Properties.Resources.Info;
+			this.picBoxInfoButton.Location = new System.Drawing.Point(705, 3);
+			this.picBoxInfoButton.Name = "picBoxInfoButton";
+			this.picBoxInfoButton.Size = new System.Drawing.Size(32, 32);
+			this.picBoxInfoButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxInfoButton.TabIndex = 21;
+			this.picBoxInfoButton.TabStop = false;
 			// 
 			// pnlItem6
 			// 
@@ -246,6 +290,8 @@
 			this.Size = new System.Drawing.Size(740, 102);
 			this.xtraScrollableControl1.ResumeLayout(false);
 			this.xtraScrollableControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
 			this.ResumeLayout(false);
@@ -273,6 +319,9 @@
 		private System.Windows.Forms.Panel pnlItem2;
 		private System.Windows.Forms.Panel pnlChampion;
 		public Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+		private System.Windows.Forms.PictureBox picBoxSettings;
+		private System.Windows.Forms.Button btnCheckUpdates;
+		private System.Windows.Forms.PictureBox picBoxInfoButton;
 
 	}
 }

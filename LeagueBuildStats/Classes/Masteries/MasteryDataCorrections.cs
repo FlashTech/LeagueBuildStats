@@ -19,15 +19,21 @@ namespace LeagueBuildStats.Classes.Masteries
 			{
 				MasteryStatic temp = masteries.Masteries[key];
 
-				RunListOfCorrections(temp);
+				temp.StatsList = new List<StatsStatic>();
 
+				if (!temp.Name.Contains("Legendary Guardian")) //Filter out legendary guardian
+				{
+					RunListOfCorrections(temp);
+				}
+				if (temp.StatsList.Count == 0)
+				{
+					temp.StatsList.Add(new StatsStatic());
+				}
 			}
 		}
 
 		private static void RunListOfCorrections(MasteryStatic temp)
 		{
-			temp.StatsList = new List<StatsStatic>();
-			
 			MatchCollection matches;
 
 			foreach (string sDesc in temp.Description)
@@ -39,6 +45,21 @@ namespace LeagueBuildStats.Classes.Masteries
 				temp.StatsList.Add(new StatsStatic());
 
 				//Offencive Tree
+				matches = Regex.Matches(temp.SanitizedDescription[pos], "Melee - Deal an additional [^% ]{1,4}% damage", RegexOptions.IgnoreCase);
+				if (bContinue && matches.Count > 0)
+				{
+					string found = matches[0].ToString();
+					string value = found.Substring(27, found.IndexOf("%") - 27);
+					temp.StatsList[pos].PercentIncreasedDamageModMelee = Convert.ToDouble(value) / 100;
+					matches = Regex.Matches(temp.SanitizedDescription[pos], "Ranged - Deal an additional [^% ]{1,4}% damage", RegexOptions.IgnoreCase);
+					if (bContinue && matches.Count > 0)
+					{
+						found = matches[0].ToString();
+						value = found.Substring(28, found.IndexOf("%") - 28);
+						temp.StatsList[pos].PercentIncreasedDamageModRanged = Convert.ToDouble(value) / 100;
+					}
+					bContinue = false;
+				}
 				matches = Regex.Matches(temp.Description[pos], "\\+[^%]{1,4}% Attack Speed", RegexOptions.IgnoreCase);
 				if (bContinue && temp.Description[pos].StartsWith("+") && matches.Count > 0 && temp.StatsList[pos].PercentAttackSpeedMod == 0.0)
 				{
@@ -114,6 +135,14 @@ namespace LeagueBuildStats.Classes.Masteries
 					string value = found.Substring(1, found.IndexOf("%") - 1);
 					temp.StatsList[pos].RPercentArmorPenetrationMod = Convert.ToDouble(value) / 100; //armor pen
 					temp.StatsList[pos].RPercentMagicPenetrationMod = Convert.ToDouble(value) / 100; //magic pen
+					bContinue = false;
+				}
+				matches = Regex.Matches(temp.SanitizedDescription[pos], "Basic Attacks also deal bonus magic damage equal to [^% ]{1,4}% of Ability Power", RegexOptions.IgnoreCase);
+				if (bContinue && matches.Count > 0)
+				{
+					string found = matches[0].ToString();
+					string value = found.Substring(52, found.IndexOf("%") - 52);
+					temp.StatsList[pos].FlatMagicDamageFromPercentAbility = Convert.ToDouble(value) / 100;
 					bContinue = false;
 				}
 				matches = Regex.Matches(temp.Description[pos], "\\+[^%]{1,4}% increased damage", RegexOptions.IgnoreCase);
@@ -211,11 +240,11 @@ namespace LeagueBuildStats.Classes.Masteries
 					bContinue = false;
 				}
 				matches = Regex.Matches(temp.Description[pos], "\\+[^%]{1,4} Mana Regen per 5 seconds", RegexOptions.IgnoreCase);
-				if (bContinue && temp.Description[pos].StartsWith("+") && matches.Count > 0 && temp.StatsList[pos].FlatHPRegenMod == 0.0)
+				if (bContinue && temp.Description[pos].StartsWith("+") && matches.Count > 0 && temp.StatsList[pos].FlatMPRegenMod== 0.0)
 				{
 					string found = matches[0].ToString();
 					string value = found.Substring(1, found.IndexOf(" ") - 1);
-					temp.StatsList[pos].FlatHPRegenMod = Convert.ToDouble(value) / 5; //is stored as per 1 second
+					temp.StatsList[pos].FlatMPRegenMod = Convert.ToDouble(value) / 5; //is stored as per 1 second
 					bContinue = false;
 				}
 				matches = Regex.Matches(temp.Description[pos], "\\+[^%]{1,4} Gold every 10 seconds", RegexOptions.IgnoreCase);

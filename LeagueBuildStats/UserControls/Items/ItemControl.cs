@@ -78,6 +78,86 @@ namespace LeagueBuildStats
 		{
 			//Generate PicBox
 			CreateItemDiv itemPreped = item;
+			
+
+
+			//Todo: frm1.mainTopBar.Controls.Find("pnlItem1", true)[0]; should be changed to a public object to more easily reference faster
+			Control cTemp = frm1.mainTopBar.Controls.Find("pnlItem1", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem1);
+				frm1.mainTopBar.tipInfoItem1.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+			cTemp = frm1.mainTopBar.Controls.Find("pnlItem2", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem2);
+				frm1.mainTopBar.tipInfoItem2.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+			cTemp = frm1.mainTopBar.Controls.Find("pnlItem3", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem3);
+				frm1.mainTopBar.tipInfoItem3.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+			cTemp = frm1.mainTopBar.Controls.Find("pnlItem4", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem4);
+				frm1.mainTopBar.tipInfoItem4.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+			cTemp = frm1.mainTopBar.Controls.Find("pnlItem5", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem5);
+				frm1.mainTopBar.tipInfoItem5.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+			cTemp = frm1.mainTopBar.Controls.Find("pnlItem6", true)[0];
+			if (cTemp.Tag == null)
+			{
+				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+				cTemp.Tag = itemPreped;
+				cTemp.Controls.Add(itemPicBox);
+				//tooltip
+				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem6);
+				frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
+				return;
+			}
+		}
+
+		private PictureBox GenerateItemPicBox(CreateItemDiv itemPreped)
+		{
 			PictureBox itemPicBox = new PictureBox();
 			itemPicBox.Size = new Size(48, 48);
 			itemPicBox.Location = new Point(0, 0);
@@ -89,124 +169,7 @@ namespace LeagueBuildStats
 			itemPicBox.Cursor = Cursors.Hand;
 			itemPicBox.Tag = itemPreped;
 
-
-
-			//Generate tooltip for item on maintopbar
-			string sTooltip = string.Format(@"
-						<div style='max-width:300px;'>
-						<p style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias; max-width:300px;'> 
-							<span style='font-size:12pt;'>{0} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <br/>
-							<span style='color:Yellow;'>Cost: {1}</span> <br/><br/>
-							{2}<br/>
-						",//</p></div>"
-						itemPreped.thisItemDisplayName, itemPreped.aItem.Value.Gold.TotalPrice, itemPreped.DivText);
-
-
-			//todo: this is a test to show the stats of the items
-			try
-			{
-				Type myType = typeof(StatsStatic);
-				System.Reflection.PropertyInfo[] properties = myType.GetProperties();
-
-				foreach (System.Reflection.PropertyInfo property in properties)
-				{
-					Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
-					Double uniqueValue = 0.0;
-					foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
-					{
-						uniqueValue += (Double)uniqueStats.Value.GetType().GetProperty(property.Name).GetValue(uniqueStats.Value);
-					}
-
-					Double newValue = statValue + uniqueValue;
-					if (newValue != 0.0)
-					{
-						sTooltip += "<br/>" + property.Name.Replace("Mod", "") + ": " + newValue;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
-
-			sTooltip += "</p></div>";
-
-			//Todo: remved commented
-			//RichEditControl richEditTemp = new RichEditControl();
-
-			//using (Stream s = GenerateStreamFromString(item.htmlToolTipOfItem))
-			//{
-			//	richEditTemp.LoadDocument(s, DocumentFormat.Html);
-			//}
-
-			//sTooltip = richEditTemp.HtmlText;
-
-			//ParagraphProperties parProperties = richEditTemp.Document.BeginUpdateParagraphs(richEditTemp.Document.Selection);
-
-
-
-
-			//Todo: frm1.mainTopBar.Controls.Find("pnlItem1", true)[0]; should be changed to a public object to more easily reference faster
-			Control cTemp = frm1.mainTopBar.Controls.Find("pnlItem1", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem1);
-				frm1.mainTopBar.tipInfoItem1.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem2", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem2);
-				frm1.mainTopBar.tipInfoItem2.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem3", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem3);
-				frm1.mainTopBar.tipInfoItem3.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem4", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem4);
-				frm1.mainTopBar.tipInfoItem4.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem5", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem5);
-				frm1.mainTopBar.tipInfoItem5.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem6", true)[0];
-			if (cTemp.Tag == null)
-			{
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem6);
-				frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
-				return;
-			}
+			return itemPicBox;
 		}
 
 

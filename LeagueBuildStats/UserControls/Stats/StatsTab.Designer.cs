@@ -28,11 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatsTab));
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
-			this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+			this.btnChampLevel = new System.Windows.Forms.Button();
 			this.grpCtrlBasicStats = new DevExpress.XtraEditors.GroupControl();
 			this.grpCtrlOffense = new DevExpress.XtraEditors.GroupControl();
+			this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+			this.lblCtrlDmgBonus2 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl44 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl75 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
@@ -50,7 +51,7 @@
 			this.lblCtrlMagicPen2 = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlArmorPen2 = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlDamageIfCrit = new DevExpress.XtraEditors.LabelControl();
-			this.lblCtrlDmgBonus = new DevExpress.XtraEditors.LabelControl();
+			this.lblCtrlDmgBonus1 = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlMagicPen1 = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlAbilityPower = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlCritDmg = new DevExpress.XtraEditors.LabelControl();
@@ -93,8 +94,8 @@
 			this.lblCtrlLifeSteal = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlMovement = new DevExpress.XtraEditors.LabelControl();
 			this.lblCtrlCooldownReduction = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
-			this.labelControl56 = new DevExpress.XtraEditors.LabelControl();
+			this.lblTextManaEnergyRegen = new DevExpress.XtraEditors.LabelControl();
+			this.lblTextManaEnergy = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl57 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl58 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl59 = new DevExpress.XtraEditors.LabelControl();
@@ -150,7 +151,7 @@
 			// 
 			// xtraScrollableControl1
 			// 
-			this.xtraScrollableControl1.Controls.Add(this.labelControl6);
+			this.xtraScrollableControl1.Controls.Add(this.btnChampLevel);
 			this.xtraScrollableControl1.Controls.Add(this.grpCtrlBasicStats);
 			this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
@@ -158,20 +159,25 @@
 			this.xtraScrollableControl1.Size = new System.Drawing.Size(1081, 658);
 			this.xtraScrollableControl1.TabIndex = 0;
 			// 
-			// labelControl6
+			// btnChampLevel
 			// 
-			this.labelControl6.Location = new System.Drawing.Point(164, 368);
-			this.labelControl6.Name = "labelControl6";
-			this.labelControl6.Size = new System.Drawing.Size(454, 104);
-			this.labelControl6.TabIndex = 50;
-			this.labelControl6.Text = resources.GetString("labelControl6.Text");
+			this.btnChampLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+			this.btnChampLevel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(70)))));
+			this.btnChampLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnChampLevel.Location = new System.Drawing.Point(3, 3);
+			this.btnChampLevel.Name = "btnChampLevel";
+			this.btnChampLevel.Size = new System.Drawing.Size(61, 23);
+			this.btnChampLevel.TabIndex = 51;
+			this.btnChampLevel.Tag = "18";
+			this.btnChampLevel.Text = "Level: 18";
+			this.btnChampLevel.UseVisualStyleBackColor = false;
 			// 
 			// grpCtrlBasicStats
 			// 
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlOffense);
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlUtility);
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlDefence);
-			this.grpCtrlBasicStats.Location = new System.Drawing.Point(3, 10);
+			this.grpCtrlBasicStats.Location = new System.Drawing.Point(3, 32);
 			this.grpCtrlBasicStats.Name = "grpCtrlBasicStats";
 			this.grpCtrlBasicStats.Size = new System.Drawing.Size(751, 309);
 			this.grpCtrlBasicStats.TabIndex = 49;
@@ -179,6 +185,8 @@
 			// 
 			// grpCtrlOffense
 			// 
+			this.grpCtrlOffense.Controls.Add(this.labelControl20);
+			this.grpCtrlOffense.Controls.Add(this.lblCtrlDmgBonus2);
 			this.grpCtrlOffense.Controls.Add(this.labelControl44);
 			this.grpCtrlOffense.Controls.Add(this.labelControl75);
 			this.grpCtrlOffense.Controls.Add(this.labelControl24);
@@ -196,7 +204,7 @@
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlMagicPen2);
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlArmorPen2);
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlDamageIfCrit);
-			this.grpCtrlOffense.Controls.Add(this.lblCtrlDmgBonus);
+			this.grpCtrlOffense.Controls.Add(this.lblCtrlDmgBonus1);
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlMagicPen1);
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlAbilityPower);
 			this.grpCtrlOffense.Controls.Add(this.lblCtrlCritDmg);
@@ -220,6 +228,22 @@
 			this.grpCtrlOffense.Size = new System.Drawing.Size(236, 279);
 			this.grpCtrlOffense.TabIndex = 2;
 			this.grpCtrlOffense.Text = "Offence";
+			// 
+			// labelControl20
+			// 
+			this.labelControl20.Location = new System.Drawing.Point(157, 214);
+			this.labelControl20.Name = "labelControl20";
+			this.labelControl20.Size = new System.Drawing.Size(8, 13);
+			this.labelControl20.TabIndex = 68;
+			this.labelControl20.Text = "+";
+			// 
+			// lblCtrlDmgBonus2
+			// 
+			this.lblCtrlDmgBonus2.Location = new System.Drawing.Point(199, 214);
+			this.lblCtrlDmgBonus2.Name = "lblCtrlDmgBonus2";
+			this.lblCtrlDmgBonus2.Size = new System.Drawing.Size(27, 13);
+			this.lblCtrlDmgBonus2.TabIndex = 67;
+			this.lblCtrlDmgBonus2.Text = "0.0%";
 			// 
 			// labelControl44
 			// 
@@ -367,13 +391,13 @@
 			this.lblCtrlDamageIfCrit.TabIndex = 23;
 			this.lblCtrlDamageIfCrit.Text = "75";
 			// 
-			// lblCtrlDmgBonus
+			// lblCtrlDmgBonus1
 			// 
-			this.lblCtrlDmgBonus.Location = new System.Drawing.Point(118, 214);
-			this.lblCtrlDmgBonus.Name = "lblCtrlDmgBonus";
-			this.lblCtrlDmgBonus.Size = new System.Drawing.Size(27, 13);
-			this.lblCtrlDmgBonus.TabIndex = 21;
-			this.lblCtrlDmgBonus.Text = "0.0%";
+			this.lblCtrlDmgBonus1.Location = new System.Drawing.Point(118, 214);
+			this.lblCtrlDmgBonus1.Name = "lblCtrlDmgBonus1";
+			this.lblCtrlDmgBonus1.Size = new System.Drawing.Size(16, 13);
+			this.lblCtrlDmgBonus1.TabIndex = 21;
+			this.lblCtrlDmgBonus1.Text = "0.0";
 			// 
 			// lblCtrlMagicPen1
 			// 
@@ -542,8 +566,8 @@
 			this.grpCtrlUtility.Controls.Add(this.lblCtrlLifeSteal);
 			this.grpCtrlUtility.Controls.Add(this.lblCtrlMovement);
 			this.grpCtrlUtility.Controls.Add(this.lblCtrlCooldownReduction);
-			this.grpCtrlUtility.Controls.Add(this.labelControl55);
-			this.grpCtrlUtility.Controls.Add(this.labelControl56);
+			this.grpCtrlUtility.Controls.Add(this.lblTextManaEnergyRegen);
+			this.grpCtrlUtility.Controls.Add(this.lblTextManaEnergy);
 			this.grpCtrlUtility.Controls.Add(this.labelControl57);
 			this.grpCtrlUtility.Controls.Add(this.labelControl58);
 			this.grpCtrlUtility.Controls.Add(this.labelControl59);
@@ -753,21 +777,21 @@
 			this.lblCtrlCooldownReduction.TabIndex = 36;
 			this.lblCtrlCooldownReduction.Text = "5.0%";
 			// 
-			// labelControl55
+			// lblTextManaEnergyRegen
 			// 
-			this.labelControl55.Location = new System.Drawing.Point(17, 233);
-			this.labelControl55.Name = "labelControl55";
-			this.labelControl55.Size = new System.Drawing.Size(102, 13);
-			this.labelControl55.TabIndex = 34;
-			this.labelControl55.Text = "Mana/Energy Regen:";
+			this.lblTextManaEnergyRegen.Location = new System.Drawing.Point(17, 233);
+			this.lblTextManaEnergyRegen.Name = "lblTextManaEnergyRegen";
+			this.lblTextManaEnergyRegen.Size = new System.Drawing.Size(102, 13);
+			this.lblTextManaEnergyRegen.TabIndex = 34;
+			this.lblTextManaEnergyRegen.Text = "Mana/Energy Regen:";
 			// 
-			// labelControl56
+			// lblTextManaEnergy
 			// 
-			this.labelControl56.Location = new System.Drawing.Point(17, 214);
-			this.labelControl56.Name = "labelControl56";
-			this.labelControl56.Size = new System.Drawing.Size(68, 13);
-			this.labelControl56.TabIndex = 33;
-			this.labelControl56.Text = "Mana/Energy:";
+			this.lblTextManaEnergy.Location = new System.Drawing.Point(17, 214);
+			this.lblTextManaEnergy.Name = "lblTextManaEnergy";
+			this.lblTextManaEnergy.Size = new System.Drawing.Size(68, 13);
+			this.lblTextManaEnergy.TabIndex = 33;
+			this.lblTextManaEnergy.Text = "Mana/Energy:";
 			// 
 			// labelControl57
 			// 
@@ -1125,9 +1149,9 @@
 			// 
 			this.labelControl40.Location = new System.Drawing.Point(17, 43);
 			this.labelControl40.Name = "labelControl40";
-			this.labelControl40.Size = new System.Drawing.Size(69, 13);
+			this.labelControl40.Size = new System.Drawing.Size(97, 13);
 			this.labelControl40.TabIndex = 26;
-			this.labelControl40.Text = "Health Regen:";
+			this.labelControl40.Text = "Health Regen per 5:";
 			// 
 			// labelControl41
 			// 
@@ -1153,7 +1177,6 @@
 			this.Name = "StatsTab";
 			this.Size = new System.Drawing.Size(1081, 658);
 			this.xtraScrollableControl1.ResumeLayout(false);
-			this.xtraScrollableControl1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlBasicStats)).EndInit();
 			this.grpCtrlBasicStats.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlOffense)).EndInit();
@@ -1182,8 +1205,8 @@
 		private DevExpress.XtraEditors.LabelControl lblCtrlLifeSteal;
 		private DevExpress.XtraEditors.LabelControl lblCtrlMovement;
 		private DevExpress.XtraEditors.LabelControl lblCtrlCooldownReduction;
-		private DevExpress.XtraEditors.LabelControl labelControl55;
-		private DevExpress.XtraEditors.LabelControl labelControl56;
+		private DevExpress.XtraEditors.LabelControl lblTextManaEnergyRegen;
+		private DevExpress.XtraEditors.LabelControl lblTextManaEnergy;
 		private DevExpress.XtraEditors.LabelControl labelControl57;
 		private DevExpress.XtraEditors.LabelControl labelControl58;
 		private DevExpress.XtraEditors.LabelControl labelControl59;
@@ -1218,7 +1241,7 @@
 		private DevExpress.XtraEditors.LabelControl lblCtrlMagicPen2;
 		private DevExpress.XtraEditors.LabelControl lblCtrlArmorPen2;
 		private DevExpress.XtraEditors.LabelControl lblCtrlDamageIfCrit;
-		private DevExpress.XtraEditors.LabelControl lblCtrlDmgBonus;
+		private DevExpress.XtraEditors.LabelControl lblCtrlDmgBonus1;
 		private DevExpress.XtraEditors.LabelControl lblCtrlMagicPen1;
 		private DevExpress.XtraEditors.LabelControl lblCtrlAbilityPower;
 		private DevExpress.XtraEditors.LabelControl lblCtrlCritDmg;
@@ -1278,7 +1301,9 @@
 		private DevExpress.XtraEditors.LabelControl labelControl14;
 		private DevExpress.XtraEditors.LabelControl labelControl13;
 		private DevExpress.XtraEditors.GroupControl grpCtrlBasicStats;
-		private DevExpress.XtraEditors.LabelControl labelControl6;
+		private System.Windows.Forms.Button btnChampLevel;
+		private DevExpress.XtraEditors.LabelControl labelControl20;
+		private DevExpress.XtraEditors.LabelControl lblCtrlDmgBonus2;
 
 	}
 }

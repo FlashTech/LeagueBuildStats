@@ -1,5 +1,24 @@
 ;aiu;
 
+[v0.0.1.14 patch]
+Name=League Build Stats 0.0.1.14 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.14/LeagueBuildStatsPatcher-0.0.1.14.msp
+Size=323584
+ReleaseDate=10/02/2015
+MD5=58af91850956fa319c722b1d838acda2
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.14.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.14
+Description=Important fixes the Items Tab, Stats Tab, and more!
+Description1=Includes all previous patches!
+Feature=Created and implemented option to show detected stats in item and champion tooltips.
+Feature1=Make stacking items fully stacked (Mejai's and Sword of the Occult).
+BugFix=Fixed many calculations on Stats Tab.
+BugFix1=Fix Mastery stats and apply them to stats page.
+BugFix2=Made UNIQUE Passives with no name now DO stack if on different items.
+Replaces=All
+
 [v0.0.1.13 patch]
 Name=League Build Stats 0.0.1.13 Patch
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.13/LeagueBuildStatsPatcher-0.0.1.13.msp
@@ -12,6 +31,7 @@ RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
 Version=0.0.1.13
 UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.13];League Build Stats[0.0.1.11-0.0.1.13];League build Stats[0.0.1.12-0.0.1.13]
 Description=Important patch that brings the Items Tab to +95% bug free.
+Description1=Includes all previous patches!
 Feature=Made double clicking + click-dragging show unique stats on tooltip for items from Item Tab.
 BugFix=Fixed ill-formed html having random </i> in Soul Anchor and Bone Tooth Necklace Fixed #6, Fixed #9, Fixed #21.
 BugFix1=Fixed random <mana></mana> on Tear of the Goddess (Crystal Scar), Fixed #11, Fixed #19.
@@ -34,6 +54,7 @@ RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
 Version=0.0.1.12
 UpdatedApplications=League Build Stats[0.0.1.10-0.0.1.12];League Build Stats[0.0.1.11-0.0.1.12]
 Description=Important patch that begins to fix many of the issues with items.
+Description1=Includes all previous patches!
 Enhancement=Fixed a coding error that looped item stat corrections unnecessarily 70,000+ times vs the needed 250+ times. This sould improve application start up time.
 BugFix=Separated unique stats when doing stat corrections, Fixed #1, Fixed #3, Fixed #5.
 BugFix1=Updated the tooltip tester to also look at these new Unique stats.

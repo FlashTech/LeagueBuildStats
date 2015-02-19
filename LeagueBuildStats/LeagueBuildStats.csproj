@@ -337,7 +337,9 @@
   <ItemGroup>
     <Content Include="Resources\blank item icon.png" />
     <Content Include="Resources\blank profile icon.png" />
+    <None Include="Resources\settings_png.png" />
     <None Include="Resources\do not delete this!.png" />
+    <None Include="Resources\gear_png.png" />
     <Content Include="Resources\Info.png" />
     <Content Include="Resources\LoadingAnimated.gif" />
     <Content Include="Resources\Leauge Build Stats League of Legends.ico" />

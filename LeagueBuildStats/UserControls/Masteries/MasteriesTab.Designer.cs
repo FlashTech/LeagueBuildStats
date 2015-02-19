@@ -144,7 +144,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.PictureBox picBoxMasteryMain;
+		public System.Windows.Forms.PictureBox picBoxMasteryMain;
 		private DevExpress.XtraEditors.PanelControl panelControl1;
 		private System.Windows.Forms.Label lblPointsAvail;
 		private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;

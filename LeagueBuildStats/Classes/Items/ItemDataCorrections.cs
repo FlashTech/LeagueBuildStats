@@ -39,14 +39,16 @@ namespace LeagueBuildStats.Classes.Items
 				while ((i = temp.Description.IndexOf("UNIQUE", i)) != -1)
 				{
 					int j = temp.Description.IndexOf("<br>", i);
-					if (j == -1) { j = temp.Description.Length - 1; }
+					if (j == -1) { j = temp.Description.Length; }
 
 					string uniqueDescription = temp.Description.Substring(i, j - i);
 
 					if (!uniqueDescription.Contains("UNIQUE Active") //Todo: All of these should instead of being ignored should be filtered on the Stats Tab and Activatable Items or On/Off
 						&& !uniqueDescription.Contains("UNIQUE Passive - Point Runner:")
 						&& !uniqueDescription.Contains("UNIQUE Passive - Furor:")
-						&& !uniqueDescription.Contains("UNIQUE Passive - Captain:"))
+						&& !uniqueDescription.Contains("UNIQUE Passive - Captain:")
+						&& !uniqueDescription.Contains("UNIQUE Passive - Spellblade:")
+						&& !uniqueDescription.Contains("Falling below 50% Health grants"))
 					{
 						uniqueDescriptions.Add(uniqueDescription);
 					}
@@ -54,7 +56,7 @@ namespace LeagueBuildStats.Classes.Items
 				}
 			}
 			else
-			{
+			{ 
 				descriptionMain = temp.SanitizedDescription;
 			}
 
@@ -66,7 +68,17 @@ namespace LeagueBuildStats.Classes.Items
 			{
 				if (s.Contains("UNIQUE Passive:") || s.Contains("UNIQUE Aura:"))
 				{
-					temp.UniqueStats.Add(new KeyValuePair<string, StatsStatic>(s, new StatsStatic()));
+					if (temp.Name.Contains("Ionia"))
+					{
+						string tempNametest = SubstringExtensions.Before(temp.Name, " - ");
+					}
+					else
+					{
+						string tempNametest = temp.Name;
+					}
+
+					string tempName = (temp.Name.Contains(" - ")) ? SubstringExtensions.Before(temp.Name, " - ") : temp.Name;
+					temp.UniqueStats.Add(new KeyValuePair<string, StatsStatic>(tempName + "~" + s, new StatsStatic()));
 				}
 				else if (s.Contains("UNIQUE Passive - Enhanced Movement"))
 				{
@@ -94,6 +106,11 @@ namespace LeagueBuildStats.Classes.Items
 			for (int i = 0; i < matches.Count; i++)
 			{
 				statsStatic.FlatPhysicalDamageMod += 100;
+			}
+			matches = Regex.Matches(descriptionMain, "8 Ability Power per stack", RegexOptions.IgnoreCase);
+			for (int i = 0; i < matches.Count; i++)
+			{
+				statsStatic.FlatMagicDamageMod += 160;
 			}
 			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4}% Base Health Regen", RegexOptions.IgnoreCase);
 			if (statsStatic.PercentHPRegenMod == 0.0)
@@ -167,16 +184,6 @@ namespace LeagueBuildStats.Classes.Items
 					statsStatic.RFlatMagicDamageModPerLevel += Convert.ToDouble(value);
 				}
 			}
-			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4} Ability Power", RegexOptions.IgnoreCase);
-			if (statsStatic.FlatMagicDamageMod == 0.0 && statsStatic.RFlatMagicDamageModPerLevel == 0.0) //Assume if per level then no flat damage mod
-			{
-				for (int i = 0; i < matches.Count; i++)
-				{
-					string found = matches[i].ToString();
-					string value = found.Substring(1, found.IndexOf(" ") - 1);
-					statsStatic.FlatMagicDamageMod += Convert.ToDouble(value);
-				}
-			}
 			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4} Attack Damage", RegexOptions.IgnoreCase);
 			if (statsStatic.FlatPhysicalDamageMod == 0.0)
 			{
@@ -195,16 +202,6 @@ namespace LeagueBuildStats.Classes.Items
 					string found = matches[i].ToString();
 					string value = found.Substring(1, found.IndexOf(" ") - 1);
 					statsStatic.RFlatArmorPenetrationMod += Convert.ToDouble(value);
-				}
-			}
-			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4}% Attack Speed", RegexOptions.IgnoreCase);
-			if (statsStatic.PercentAttackSpeedMod == 0.0)
-			{
-				for (int i = 0; i < matches.Count; i++)
-				{
-					string found = matches[i].ToString();
-					string value = found.Substring(1, found.IndexOf("%") - 1);
-					statsStatic.PercentAttackSpeedMod += Convert.ToDouble(value) / 100;
 				}
 			}
 			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4}% bonus Attack Speed", RegexOptions.IgnoreCase);
@@ -309,7 +306,7 @@ namespace LeagueBuildStats.Classes.Items
 				{
 					string found = matches[i].ToString();
 					string value = found.Substring(0, found.IndexOf(" "));
-					statsStatic.FlatMPRegenMod += Convert.ToDouble(value) / 5;
+					statsStatic.FlatMPRegenMod += Convert.ToDouble(value);
 				}
 			}
 			matches = Regex.Matches(descriptionMain, "[^ ]{1,4}% increased Size, Slow Resistance, Tenacity", RegexOptions.IgnoreCase);
@@ -369,14 +366,14 @@ namespace LeagueBuildStats.Classes.Items
 				}
 			}
 			matches = Regex.Matches(descriptionMain, "Critical strikes deal [^%]{1,4}% damage instead of 200", RegexOptions.IgnoreCase);
-			if (statsStatic.PercentCritDamageMod == 0.0)
+			if (statsStatic.FlatCritDamageMod == 0.0)
 			{
 				for (int i = 0; i < matches.Count; i++)
 				{
 					string found = matches[i].ToString();
 					int end = found.IndexOf("%");
 					string value = found.Substring(22, end - 22);
-					statsStatic.PercentCritDamageMod += (Convert.ToDouble(value) / 100) - 2.00; //ex: 250% - 200% = +50%
+					statsStatic.FlatCritDamageMod += (Convert.ToDouble(value) / 100) - 2.00; //ex: 250% - 200% = +50%
 				}
 			}
 			matches = Regex.Matches(descriptionMain, "Movement slowing effects are reduced by [^%]{1,4}%", RegexOptions.IgnoreCase);
@@ -432,6 +429,68 @@ namespace LeagueBuildStats.Classes.Items
 					int end = found.IndexOf("%");
 					string value = found.Substring(28, end - 28);
 					statsStatic.PercentMaxHealthAsHealthRegen += Convert.ToDouble(value) / 100;
+				}
+			}
+			matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4} Magic Damage on Hit", RegexOptions.IgnoreCase);
+			if (statsStatic.FlatMagicDamageOnHit == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					string value = found.Substring(1, found.IndexOf(" ") - 1);
+					statsStatic.FlatMagicDamageOnHit += Convert.ToDouble(value);
+				}
+			}
+
+			matches = Regex.Matches(descriptionMain, "[^% ]{1,3} \\(\\+[^% ]{1,3}% of ability power\\) bonus magic damage on hit", RegexOptions.IgnoreCase);
+			if (statsStatic.FlatMagicDamageOnHit == 0.0)
+			{
+				for (int i = 0; i < matches.Count; i++)
+				{
+					string found = matches[i].ToString();
+					string value = found.Substring(0, found.IndexOf(" "));
+					statsStatic.FlatMagicDamageOnHit += Convert.ToDouble(value);
+					value = found.Substring(found.IndexOf("+") + 1, found.IndexOf("%") - (found.IndexOf("+") + 1));
+					statsStatic.FlatMagicDamageFromPercentAbility += Convert.ToDouble(value) / 100;
+				}
+			}
+			if (matches.Count == 0) //Only do this one if the previous was not found
+			{
+				matches = Regex.Matches(descriptionMain, "[^% ]{1,3} Bonus Magic Damage on Hit", RegexOptions.IgnoreCase);
+				if (statsStatic.FlatMagicDamageOnHit == 0.0)
+				{
+					for (int i = 0; i < matches.Count; i++)
+					{
+						string found = matches[i].ToString();
+						string value = found.Substring(0, found.IndexOf(" "));
+						statsStatic.FlatMagicDamageOnHit += Convert.ToDouble(value);
+					}
+				}
+			}
+
+			//This stops Guinsoo's Rageblade from gaining stats for the stacking description.
+			matches = Regex.Matches(descriptionMain, "Basic attacks \\(on attack\\) and spell casts grant", RegexOptions.IgnoreCase);
+			if (matches.Count == 0)
+			{
+				matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4}% Attack Speed", RegexOptions.IgnoreCase);
+				if (statsStatic.PercentAttackSpeedMod == 0.0)
+				{
+					for (int i = 0; i < matches.Count; i++)
+					{
+						string found = matches[i].ToString();
+						string value = found.Substring(1, found.IndexOf("%") - 1);
+						statsStatic.PercentAttackSpeedMod += Convert.ToDouble(value) / 100;
+					}
+				}
+				matches = Regex.Matches(descriptionMain, "\\+[^%]{1,4} Ability Power", RegexOptions.IgnoreCase);
+				if (statsStatic.FlatMagicDamageMod == 0.0 && statsStatic.RFlatMagicDamageModPerLevel == 0.0) //Assume if per level then no flat damage mod
+				{
+					for (int i = 0; i < matches.Count; i++)
+					{
+						string found = matches[i].ToString();
+						string value = found.Substring(1, found.IndexOf(" ") - 1);
+						statsStatic.FlatMagicDamageMod += Convert.ToDouble(value);
+					}
 				}
 			}
 

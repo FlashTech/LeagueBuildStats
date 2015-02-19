@@ -34,13 +34,14 @@ namespace LeagueBuildStats
 		public ItemsTab itemsTab;
 		public ChampionsTab championsTab;
 		public RunesTab runesTab;
-		private MasteriesTab masteriesTab;
+		public MasteriesTab masteriesTab;
 		private StatsTab statsTab;
 		public MainTopBar mainTopBar;
 
 		private PictureBox picboxCursor = new PictureBox();
 
 		private DateTime LogTimeStart = DateTime.Now;
+
 
 		#region GenericMethodsThatEffectOverallFunction
 
@@ -106,7 +107,6 @@ namespace LeagueBuildStats
 			
 			InitializeComponent();
 
-			InitializeEvents();
 
 			string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 			this.Text = "League Build Stats " + assemblyVersion + " - For League of Legends (LoL)";
@@ -166,44 +166,6 @@ namespace LeagueBuildStats
 			_timer1.Start();
 		}
 
-		private void InitializeEvents()
-		{
-			picBoxInfoButton.Image = Bitmap.FromHicon(SystemIcons.Information.Handle);
-
-			picBoxInfoButton.MouseClick += picBoxInfoButton_MouseClick;
-			btnCheckUpdates.MouseClick += btnCheckUpdates_MouseClick;
-		}
-
-		void btnCheckUpdates_MouseClick(object sender, MouseEventArgs e)
-		{
-			try
-			{
-				string folderPath = Assembly.GetExecutingAssembly().Location.Replace(Assembly.GetExecutingAssembly().GetName().Name + ".exe", "");
-				System.Diagnostics.Process.Start(folderPath + "LeagueBuildStatsUpdater.exe");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
-		}
-
-		void picBoxInfoButton_MouseClick(object sender, MouseEventArgs e)
-		{
-			string message = string.Format(@"LeagueBuildStats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone 
-officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or
-registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.");
-
-			string caption = "League Build Stats - Information";
-			MessageBoxButtons buttons = MessageBoxButtons.OK;
-			DialogResult result;
-
-			result = XtraMessageBox.Show(this, message, caption, buttons, MessageBoxIcon.Information);
-
-			if (result == DialogResult.OK)
-			{
-				//do nothing
-			}
-		}
 
 		System.Windows.Forms.Timer _timer1 = new System.Windows.Forms.Timer();
 
