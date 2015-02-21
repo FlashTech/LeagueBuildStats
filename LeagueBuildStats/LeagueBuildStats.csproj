@@ -332,7 +332,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Classes\Champions\ChampionCorrectionList.xml" />
+    <EmbeddedResource Include="Classes\Champions\ChampionCorrectionList.xml" />
     <Content Include="Resources\blank item icon.png" />
     <Content Include="Resources\blank profile icon.png" />
     <None Include="Resources\settings_png.png" />
