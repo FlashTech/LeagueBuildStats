@@ -61,7 +61,6 @@ namespace LeagueBuildStats.Classes.Champions
 								JObject jChampion = (JObject)jChampions[champion];
 								JArray jSpells = (JArray)jChampion["spells"];
 								JObject jSpell = (JObject)jSpells[Convert.ToInt16(buttonNum)]; //spells are numbered as follows: 0 for Q, 1 for W, 2 for E, 3 for R
-								//System.Diagnostics.Debug.WriteLine(subList[0] + " : " + subList[2]);
 								string newVars = string.Format(@"{{
 												""coeff"" : [
 													{0}
