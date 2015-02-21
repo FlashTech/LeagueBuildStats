@@ -11,7 +11,7 @@ namespace LeagueBuildStats.Classes.Champions
 	{
 		private PublicStaticVariables publicStaticVariables = new PublicStaticVariables();
 		private List<string> selectedTags = new List<string>();
-		private Control pnlItemSort;
+		internal Control pnlItemSort;
 		private Control flowLayoutPanelItems2;
 		public int yPos = 0;
 
@@ -55,6 +55,23 @@ namespace LeagueBuildStats.Classes.Champions
 			}
 			this.yPos = posY + 17;
 		}
+
+		internal void ClearSelections()
+		{
+			foreach (Control c in pnlItemSort.Controls)
+			{
+				if (c.GetType() == typeof(CheckBox))
+				{
+					((CheckBox)c).Checked = false;
+				}
+				else if (c.Name == "txtEditSearchBar")
+				{
+					c.Text = "";
+				}
+			}
+		}
+
+
 
 		public void checkboxItemSort_CheckedChanged(object sender, EventArgs e)
 		{

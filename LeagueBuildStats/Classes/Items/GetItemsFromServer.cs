@@ -3,6 +3,7 @@ using RiotSharp;
 using RiotSharp.StaticDataEndpoint;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace LeagueBuildStats.Classes.Items
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance("b649d183-d319-4bda-95fb-1faadfa1966d");
+				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
 				ItemListStatic items;
 				//Get all Items
 				if (inputVersion == null)

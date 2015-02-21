@@ -17,7 +17,7 @@ namespace LeagueBuildStats.Classes.Items
 		private Control flowLayoutPanelItems2;
 
 		private DevExpress.XtraEditors.DropDownButton drpDownBtnSearchButton;
-		private DevExpress.XtraEditors.TextEdit txtEditSearchBar;
+		public DevExpress.XtraEditors.TextEdit txtEditSearchBar;
 		private bool performTagSort = true;
 
 		public CreateItemSortMenu(Control c, Control flowLayoutPanelItems2)

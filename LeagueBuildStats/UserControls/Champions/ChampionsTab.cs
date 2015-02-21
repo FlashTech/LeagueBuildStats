@@ -39,12 +39,14 @@ namespace LeagueBuildStats.Forms
 
 		public Drag dragger = new Drag();
 
+		private CreateChampionSortMenu createChampionSortMenu;
+
 		public ChampionsTab(Form1 form)
 		{
 			this.form = form;
 			InitializeComponent();
 
-			CreateChampionSortMenu createChampionSortMenu = new CreateChampionSortMenu(pnlChampionSort, flowLayoutPanelItems2);
+			createChampionSortMenu = new CreateChampionSortMenu(pnlChampionSort, flowLayoutPanelItems2);
 
 			//Tooltips prep
 			ultraToolTipManager1.AutoPopDelay = 0;
@@ -74,7 +76,29 @@ namespace LeagueBuildStats.Forms
 			lblInfoSecondary.Text = "";
 		}
 
-		
+		internal void ClearChampionInfoSection ()
+		{
+			lblInfoName.Text = "";
+			lblInfoDesc.Text = "";
+			lblInfoPrimary.Text = "";
+			lblInfoSecondary.Text = "";
+			picboxInfoChamp.Image = null;
+			picBoxInfoPassive.Image = null;
+			picBoxInfoAbil0.Image = null;
+			picBoxInfoAbil1.Image = null;
+			picBoxInfoAbil2.Image = null;
+			picBoxInfoAbil3.Image = null;
+			tipInfoPassive.ToolTipTextFormatted = "";
+			tipInfoSpell0.ToolTipTextFormatted = "";
+			tipInfoSpell1.ToolTipTextFormatted = "";
+			tipInfoSpell2.ToolTipTextFormatted = "";
+			tipInfoSpell3.ToolTipTextFormatted = "";
+		}
+
+		internal void ClearSortingSelections()
+		{
+			createChampionSortMenu.ClearSelections();
+		}
 
 		public void championControl_MouseClick(ChampionStatic thischampCtrl)
 		{
@@ -591,6 +615,8 @@ namespace LeagueBuildStats.Forms
 			flowLayoutPanelItems2.ResumeLayout();
 			return success;
 		}
+
+
 
 		
 	}

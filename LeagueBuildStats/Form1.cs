@@ -419,7 +419,7 @@ namespace LeagueBuildStats
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute UpdateMainTopBar()");
-				mainTopBar.UpdateMainTopBar();
+				mainTopBar.UpdateMainTopBarVersions();
 
 				
 				

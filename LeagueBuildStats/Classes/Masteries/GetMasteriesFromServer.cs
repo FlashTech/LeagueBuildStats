@@ -3,6 +3,7 @@ using RiotSharp;
 using RiotSharp.StaticDataEndpoint;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace LeagueBuildStats.Classes.Masteries
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance("b649d183-d319-4bda-95fb-1faadfa1966d");
+				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
 
 				//Get all Items
 				if (inputVersion == null)

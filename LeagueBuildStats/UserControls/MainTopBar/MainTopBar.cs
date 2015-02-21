@@ -17,6 +17,7 @@ using RiotSharp.StaticDataEndpoint;
 using Infragistics.Win.UltraWinToolTip;
 using Infragistics.Win;
 using System.Reflection;
+using LeagueBuildStats.Classes.General_Classes;
 
 namespace LeagueBuildStats.UserControls.MainTopBar
 {
@@ -206,37 +207,53 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 
 		void simpleBtnChkUpdates_Click(object sender, EventArgs e)
 		{
-			//TDOO
-			//Realm tempRealm = getAllVersionAvailable.realm;
-			//List<string> tempVersions = getAllVersionAvailable.versions;
-			//bool getVersionsSuccess = getAllVersionAvailable.CollectVersionData();
-			//if (getVersionsSuccess)
-			//{
-			//	if (tempRealm == getAllVersionAvailable.realm && tempVersions == getAllVersionAvailable.versions)
-			//	{
-			//		XtraMessageBox.Show(string.Format(@"List of League fo Legends versions is currently up to date."), "League Build Stats - Notice");
-			//	}
-			//	else
-			//	{
-			//		XtraMessageBox.Show(string.Format(@"Updates were found but we were unable to load the list. Please restart the application to load the updated list."), "League Build Stats - Notice");
-			//	}
-			//}
-			//else
-			//{
-			//	XtraMessageBox.Show(string.Format(@"Failed to check for latest versions."), "League Build Stats - Notice");
-			//}
-
+			Realm tempRealm = form1.getAllVersionAvailable.realm;
+			List<string> tempVersions = form1.getAllVersionAvailable.versions;
+			bool getVersionsSuccess = form1.getAllVersionAvailable.CollectVersionData();
+			if (getVersionsSuccess)
+			{
+				if (tempRealm.V == form1.getAllVersionAvailable.realm.V && tempVersions.Count == form1.getAllVersionAvailable.versions.Count)
+				{
+					XtraMessageBox.Show(string.Format(@"League of Legends versions are currently up to date."), "League Build Stats - Notice");
+				}
+				else
+				{
+					UpdateMainTopBarVersions();
+					XtraMessageBox.Show(string.Format(@"League of Legends Versions have been updated!"), "League Build Stats - Notice");
+				}
+			}
 		}
 
 
-
-		internal void UpdateMainTopBar()
+		/// <summary>
+		/// Clears and re-creates the dropdown selection of League of Legends versions
+		/// </summary>
+		internal void UpdateMainTopBarVersions()
 		{
 			try
 			{
 				int id = 1;
+
+				//Get current selected verions
+				string currentVersion = "";
+				if (dropDownButtonRiotVersion.Text.Contains(" "))
+				{
+					currentVersion = SubstringExtensions.Before(dropDownButtonRiotVersion.Text, " ");
+				}
+				else
+				{
+					currentVersion = dropDownButtonRiotVersion.Text;
+				}
+
+				//If the selected version is still current then add back in the " Current LoL"
+				if (currentVersion == form1.getAllVersionAvailable.realm.V)
+				{
+					currentVersion += " Current LoL";
+				}
+
+
 				popupMenuVersions.LinksPersistInfo.Clear();
-				barManager1.Items.Clear();
+				//barManager1.Items.Clear();
 				foreach (string s in form1.getAllVersionAvailable.versions)
 				{
 					BarButtonItem barButtonItemNew = new BarButtonItem();
@@ -245,8 +262,14 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 					if (form1.getAllVersionAvailable.realm.V == s)
 					{
 						barButtonItemNew.Caption = s + " Current LoL";
-						//TODO: This may not always be so but, on startup the Current LoL is always selected by default
-						dropDownButtonRiotVersion.Text = barButtonItemNew.Caption;
+						if (currentVersion.Length < 2)
+						{
+							dropDownButtonRiotVersion.Text = barButtonItemNew.Caption;
+						}
+						else
+						{
+							dropDownButtonRiotVersion.Text = currentVersion;
+						}
 					}
 					else
 					{
@@ -256,7 +279,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 					barButtonItemNew.Id = id;
 					barButtonItemNew.Name = s;
 
-					barManager1.Items.Add(barButtonItemNew);
+					//barManager1.Items.Add(barButtonItemNew);
 
 					id++;
 				}
@@ -283,14 +306,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 				BarManager barManager = sender as BarManager;
 				selection = barManager.PressedLink.Item.Caption;
 				selName = barManager.PressedLink.Item.Name;
-				success = true;
-			}
-			catch (Exception ex)
-			{
-				XtraMessageBox.Show(ex.ToString());
-			}
-			if (success)
-			{
+
 				success = form1.LoadRiotDataFromFile(selName);
 				if (!success)
 				{
@@ -300,60 +316,94 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 				}
 				//Todo: fix this
 				//SplashForm.ChangeToLoading();
+
 			}
+			catch (Exception ex)
+			{
+				XtraMessageBox.Show(ex.ToString());
+			}
+
 			if (success)
 			{
+				//Performs the update to all tabes
 				form1.UpdateFormWithData(false); //Won't recreate the version drop down list
-				//Clear item details section
-				form1.itemsTab.clickedItemID = 0;
-				form1.itemsTab.pnlItemDetailsTree.SuspendLayout();
-				form1.itemsTab.pnlItemDetailInto.SuspendLayout();
-				if (form1.itemsTab.pnlItemDetailsTree.Controls.Count > 0)
-				{
-					List<Control> ctrls = form1.itemsTab.pnlItemDetailsTree.Controls.Cast<Control>().ToList();
-					form1.itemsTab.pnlItemDetailsTree.Controls.Clear();
-					foreach (Control c in ctrls)
-						c.Dispose();
-				}
 
-				if (form1.itemsTab.pnlItemDetailInto.Controls.Count > 0)
-				{
-					List<Control> ctrls = form1.itemsTab.pnlItemDetailInto.Controls.Cast<Control>().ToList();
-					form1.itemsTab.pnlItemDetailInto.Controls.Clear();
-					foreach (Control c in ctrls)
-						c.Dispose();
-				}
-				form1.itemsTab.pnlItemDetailsTree.ResumeLayout();
-				form1.itemsTab.pnlItemDetailInto.ResumeLayout();
+				ClearSelectionsFromOldVersion();
 
-				form1.itemsTab.picBoxItemDetail.Image = null;
-				form1.itemsTab.lblDetailName.Text = "";
-				form1.itemsTab.lblDetailPrice.Text = "";
-				using (Stream s = form1.itemsTab.GenerateStreamFromString(""))
-				{
-					form1.itemsTab.richEditCtrDetails.LoadDocument(s, DocumentFormat.Html);
-				}
-				//Clear item filter selections 
-				form1.itemsTab.createItemSortMenu.selectedTags.Clear();
-				foreach (Control c in form1.itemsTab.xtraScrollableControlItemSort.Controls)
-				{
-					try
-					{
-						if (c.Name.Contains("checkItemTag"))
-						{
-							CheckBox cCheck = c as CheckBox;
-							cCheck.Checked = false;
-						}
-					}
-					catch (Exception ex)
-					{
-
-					}
-				}
+				
 				//Update dropdown
 				dropDownButtonRiotVersion.Text = selection;
 			}
 			SplashForm.CloseForm();
+		}
+
+		private void ClearSelectionsFromOldVersion()
+		{
+			//Clear item details section
+			form1.itemsTab.clickedItemID = 0;
+			form1.itemsTab.pnlItemDetailsTree.SuspendLayout();
+			form1.itemsTab.pnlItemDetailInto.SuspendLayout();
+			if (form1.itemsTab.pnlItemDetailsTree.Controls.Count > 0)
+			{
+				List<Control> ctrls = form1.itemsTab.pnlItemDetailsTree.Controls.Cast<Control>().ToList();
+				form1.itemsTab.pnlItemDetailsTree.Controls.Clear();
+				foreach (Control c in ctrls)
+					c.Dispose();
+			}
+
+			if (form1.itemsTab.pnlItemDetailInto.Controls.Count > 0)
+			{
+				List<Control> ctrls = form1.itemsTab.pnlItemDetailInto.Controls.Cast<Control>().ToList();
+				form1.itemsTab.pnlItemDetailInto.Controls.Clear();
+				foreach (Control c in ctrls)
+					c.Dispose();
+			}
+			form1.itemsTab.pnlItemDetailsTree.ResumeLayout();
+			form1.itemsTab.pnlItemDetailInto.ResumeLayout();
+
+			form1.itemsTab.picBoxItemDetail.Image = null;
+			form1.itemsTab.lblDetailName.Text = "";
+			form1.itemsTab.lblDetailPrice.Text = "";
+			using (Stream s = form1.itemsTab.GenerateStreamFromString(""))
+			{
+				form1.itemsTab.richEditCtrDetails.LoadDocument(s, DocumentFormat.Html);
+			}
+
+			//Clear item filter selections 
+			form1.itemsTab.createItemSortMenu.selectedTags.Clear();
+			foreach (Control c in form1.itemsTab.xtraScrollableControlItemSort.Controls)
+			{
+				try
+				{
+					if (c.Name.Contains("checkItemTag"))
+					{
+						CheckBox cCheck = c as CheckBox;
+						cCheck.Checked = false;
+					}
+				}
+				catch
+				{
+					//Do nothing
+				}
+			}
+			form1.itemsTab.createItemSortMenu.txtEditSearchBar.Text = "";
+
+			//Clear Champion and Items selected in mainTopBar
+			List<Control> ctrlsToClear = new List<Control>() { pnlChampion, pnlItem1, pnlItem2, pnlItem3, pnlItem4, pnlItem5, pnlItem6 };
+			foreach (Control cTop in ctrlsToClear)
+			{
+				if (cTop.Controls.Count > 0)
+				{
+					List<Control> ctrls = cTop.Controls.Cast<Control>().ToList();
+					cTop.Controls.Clear();
+					foreach (Control c in ctrls)
+						c.Dispose();
+				}
+			}
+
+			//Clear Champion selection and spells on Champion Tab
+			form1.championsTab.ClearChampionInfoSection();
+			form1.championsTab.ClearSortingSelections();
 		}
 
 		private void pnlItem_DragDrop(object sender, DragEventArgs e)

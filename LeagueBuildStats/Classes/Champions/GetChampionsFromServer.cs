@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using RiotSharp;
 using DevExpress.XtraEditors;
+using System.Configuration;
 
 namespace LeagueBuildStats.Classes.Champions
 {
@@ -46,7 +47,7 @@ namespace LeagueBuildStats.Classes.Champions
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance("b649d183-d319-4bda-95fb-1faadfa1966d");
+				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
 
 				//Get all Items
 				if (inputVersion == null)
@@ -160,7 +161,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 					object parsedData = se.Deserialize(reader);
 
 					//Todo: this action should be timed
-					string jsonData = ChampionDataCorrections.RunCorrections(parsedData.ToString());
+					string jsonData = ChampionDataCorrections.RunCorrections(parsedData.ToString(), version);
 
 					champions = JsonConvert.DeserializeObject<ChampionListStatic>(jsonData);
 

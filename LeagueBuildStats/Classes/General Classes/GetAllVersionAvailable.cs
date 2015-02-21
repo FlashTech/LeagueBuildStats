@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DevExpress.XtraEditors;
+using Newtonsoft.Json;
 using RiotSharp;
 using RiotSharp.StaticDataEndpoint;
 using System;
@@ -38,7 +39,7 @@ namespace LeagueBuildStats.Classes
 			bool success = false;
 			List<string> checkVersions = new List<string>();
 			// Setup RiotApi
-			var staticApi = StaticRiotApi.GetInstance("b649d183-d319-4bda-95fb-1faadfa1966d");
+			var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
 
 			try
 			{
@@ -51,9 +52,9 @@ namespace LeagueBuildStats.Classes
 			{
 				
 				//TODO: correctly handle errors rather than this
-				MessageBox.Show(@"There was a problem downloading Versions from League of Legends.
+				XtraMessageBox.Show(@"There was a problem downloading Versions from League of Legends.
 								" + ex.Message + @"
-								  " + ex.ToString());
+								  " + ex.ToString(), "League Build Stats - Notice");
 				//System.NullReferenceException means no interenet connection or something
 			}
 			if (success)

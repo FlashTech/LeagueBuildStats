@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LeagueBuildStats.Classes.General_Classes;
+using System.Configuration;
 
 namespace LeagueBuildStats.Classes.Runes
 {
@@ -28,7 +29,7 @@ namespace LeagueBuildStats.Classes.Runes
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance("b649d183-d319-4bda-95fb-1faadfa1966d");
+				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
 
 				//Get all Items
 				if (inputVersion == null)
