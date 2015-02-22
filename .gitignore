@@ -18,6 +18,8 @@ LeagueBuildStats/AdvancedInstaller/MsiBuildSetupFiles/
 *.userosscache
 *.sln.docstates
 App.config
+App.resx
+App.Designer.*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
