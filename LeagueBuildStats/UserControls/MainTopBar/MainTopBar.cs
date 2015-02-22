@@ -503,7 +503,6 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 							thisPnl.Controls.Clear();
 							foreach (Control c in ctrls)
 							{
-								c.Parent.Tag = null;
 								c.Dispose();
 							}
 
@@ -643,6 +642,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			else if (e.Button == MouseButtons.Right)
 			{
 				c.Parent.Tag = null;
+				c.Dispose();
 				UpdateTotalGoldCost();
 			}
 		}
