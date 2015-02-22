@@ -131,7 +131,7 @@ namespace LeagueBuildStats.Classes.Champions
 					isGreaterEqual = false;
 					i = count; //eject, the version is not equal or greater
 				}
-				if (i == count - 1 && splitP[count] == null) //we made it to the end and eveything is equal, must check if p have another delimiter making 'version; not greater
+				if (i == count - 1 && splitVerCount > splitPCount) //we made it to the end and eveything is equal, must check if p have another delimiter making 'version; not greater
 				{
 					isGreaterEqual = false;
 				}
