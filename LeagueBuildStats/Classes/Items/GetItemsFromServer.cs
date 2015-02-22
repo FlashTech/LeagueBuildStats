@@ -101,8 +101,8 @@ namespace LeagueBuildStats.Classes.Items
 				//Removes rengar upgraded trinket from cluttering the Item list, the base rengar tricket desciption has all information needed
 				if (!(i.Value.Gold.Purchasable == false && i.Value.RequiredChampion == "Rengar"))
 				{
-					//Removes the explorer ward from the item list, it might have been available in the past but it doesn't matter much
-					if (i.Value.Name != "Explorer's Ward")
+					//Removes the explorer ward from the item list, it might have been available in the past but it doesn't matter much. Same with golden transcendence
+					if (i.Value.Name != "Explorer's Ward" && i.Value.Name != "Golden Transcendence")
 					{
 						//Remove the duplicate free Buiscuit that used to be obtained from mastery, either way this item doesn't matter much
 						if (!(i.Value.Name == "Total Biscuit of Rejuvenation" && i.Value.Gold.TotalPrice == 0))
