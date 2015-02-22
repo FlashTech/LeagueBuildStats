@@ -88,6 +88,39 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 
 		}
 
+		public void InitializeGoldImage()
+		{
+			//Gold Image
+			string file = string.Format(@"{0}\Data\Masteries\Images\{1}\mastersprite.png", PublicStaticVariables.thisAppDataDir, form1.getAllVersionAvailable.realm.V);
+			Image masterSprite = Image.FromFile(file);
+
+			picBoxGold.Image = CommonMethods.cropImage(masterSprite, new Rectangle(301, 0, 23, 17));
+		}
+
+		public void UpdateTotalGoldCost()
+		{
+			int totalCost = 0;
+			totalCost += GetCost(pnlItem1);
+			totalCost += GetCost(pnlItem2);
+			totalCost += GetCost(pnlItem3);
+			totalCost += GetCost(pnlItem4);
+			totalCost += GetCost(pnlItem5);
+			totalCost += GetCost(pnlItem6);
+			totalCost += GetCost(pnlElixir);
+
+			lblPriceOfItems.Text = string.Format("{0:n0}", totalCost);
+		}
+
+		private int GetCost(Panel pnlItem)
+		{
+			int cost = 0;
+			if (pnlItem.Tag != null)
+			{
+				cost = ((CreateItemDiv)pnlItem.Tag).aItem.Value.Gold.TotalPrice;
+			}
+			return cost;
+		}
+
 
 		private void InitializeEvents()
 		{
@@ -415,7 +448,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			form1.itemsTab.createItemSortMenu.txtEditSearchBar.Text = "";
 
 			//Clear Champion and Items selected in mainTopBar
-			List<Control> ctrlsToClear = new List<Control>() { pnlChampion, pnlItem1, pnlItem2, pnlItem3, pnlItem4, pnlItem5, pnlItem6 };
+			List<Control> ctrlsToClear = new List<Control>() { pnlChampion, pnlItem1, pnlItem2, pnlItem3, pnlItem4, pnlItem5, pnlItem6, pnlElixir };
 			foreach (Control cTop in ctrlsToClear)
 			{
 				if (cTop.Controls.Count > 0)
@@ -423,9 +456,13 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 					List<Control> ctrls = cTop.Controls.Cast<Control>().ToList();
 					cTop.Controls.Clear();
 					foreach (Control c in ctrls)
+					{
 						c.Dispose();
+					}
 				}
+				cTop.Tag = null;
 			}
+			UpdateTotalGoldCost();
 
 			//Clear Champion selection and spells on Champion Tab
 			form1.championsTab.ClearChampionInfoSection();
@@ -436,7 +473,6 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 		{
 			try
 			{
-
 				string dataString = e.Data.GetData(DataFormats.Text) as string;
 				if ( (dataString.Contains("ITEM") || dataString.Contains("ELIXIR") ) && form1.itemsTab.getItemsFromServer.itemsPrepared != null)
 				{
@@ -466,7 +502,11 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 							List<Control> ctrls = thisPnl.Controls.Cast<Control>().ToList();
 							thisPnl.Controls.Clear();
 							foreach (Control c in ctrls)
+							{
+								c.Parent.Tag = null;
 								c.Dispose();
+							}
+
 						}
 						thisPnl.Controls.Add(itemPicBox);
 
@@ -526,6 +566,8 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			{
 				MessageBox.Show(ex.ToString());
 			}
+
+			UpdateTotalGoldCost();
 		}
 
 		public string CreateItemPicBoxTooltip(CreateItemDiv itemPreped)
@@ -601,7 +643,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			else if (e.Button == MouseButtons.Right)
 			{
 				c.Parent.Tag = null;
-				c.Dispose();
+				UpdateTotalGoldCost();
 			}
 		}
 

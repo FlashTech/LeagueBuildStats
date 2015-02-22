@@ -31,6 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTopBar));
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+			this.label1 = new System.Windows.Forms.Label();
+			this.picBoxGold = new System.Windows.Forms.PictureBox();
+			this.lblPriceOfItems = new System.Windows.Forms.Label();
 			this.pnlElixir = new System.Windows.Forms.Panel();
 			this.picBoxSettings = new System.Windows.Forms.PictureBox();
 			this.btnCheckUpdates = new System.Windows.Forms.Button();
@@ -54,6 +57,7 @@
 			this.simpleBtnChkUpdates = new DevExpress.XtraEditors.SimpleButton();
 			this.ultraToolTipManagerGearIcon = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
 			this.xtraScrollableControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxGold)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).BeginInit();
@@ -62,6 +66,9 @@
 			// 
 			// xtraScrollableControl1
 			// 
+			this.xtraScrollableControl1.Controls.Add(this.label1);
+			this.xtraScrollableControl1.Controls.Add(this.picBoxGold);
+			this.xtraScrollableControl1.Controls.Add(this.lblPriceOfItems);
 			this.xtraScrollableControl1.Controls.Add(this.pnlElixir);
 			this.xtraScrollableControl1.Controls.Add(this.picBoxSettings);
 			this.xtraScrollableControl1.Controls.Add(this.btnCheckUpdates);
@@ -82,6 +89,36 @@
 			this.xtraScrollableControl1.Name = "xtraScrollableControl1";
 			this.xtraScrollableControl1.Size = new System.Drawing.Size(740, 102);
 			this.xtraScrollableControl1.TabIndex = 22;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.ForeColor = System.Drawing.Color.Gold;
+			this.label1.Location = new System.Drawing.Point(495, 38);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(55, 13);
+			this.label1.TabIndex = 27;
+			this.label1.Text = "Total Cost";
+			// 
+			// picBoxGold
+			// 
+			this.picBoxGold.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.picBoxGold.Location = new System.Drawing.Point(550, 36);
+			this.picBoxGold.Name = "picBoxGold";
+			this.picBoxGold.Size = new System.Drawing.Size(23, 17);
+			this.picBoxGold.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxGold.TabIndex = 26;
+			this.picBoxGold.TabStop = false;
+			// 
+			// lblPriceOfItems
+			// 
+			this.lblPriceOfItems.AutoSize = true;
+			this.lblPriceOfItems.ForeColor = System.Drawing.Color.Gold;
+			this.lblPriceOfItems.Location = new System.Drawing.Point(574, 38);
+			this.lblPriceOfItems.Name = "lblPriceOfItems";
+			this.lblPriceOfItems.Size = new System.Drawing.Size(13, 13);
+			this.lblPriceOfItems.TabIndex = 25;
+			this.lblPriceOfItems.Text = "0";
 			// 
 			// pnlElixir
 			// 
@@ -201,9 +238,9 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(356, 7);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(139, 13);
+			this.label3.Size = new System.Drawing.Size(192, 13);
 			this.label3.TabIndex = 20;
-			this.label3.Text = "Currently designed for 4.21+";
+			this.label3.Text = "Designed for +4.21.1 Updated for 5.3.1";
 			// 
 			// pnlItem1
 			// 
@@ -303,6 +340,7 @@
 			this.Size = new System.Drawing.Size(740, 102);
 			this.xtraScrollableControl1.ResumeLayout(false);
 			this.xtraScrollableControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxGold)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).EndInit();
@@ -336,6 +374,9 @@
 		private System.Windows.Forms.Button btnCheckUpdates;
 		private System.Windows.Forms.PictureBox picBoxInfoButton;
 		private System.Windows.Forms.Panel pnlElixir;
+		private System.Windows.Forms.PictureBox picBoxGold;
+		private System.Windows.Forms.Label lblPriceOfItems;
+		private System.Windows.Forms.Label label1;
 
 	}
 }

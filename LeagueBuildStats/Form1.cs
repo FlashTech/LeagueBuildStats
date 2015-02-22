@@ -131,6 +131,7 @@ namespace LeagueBuildStats
 					writer = LogWriter.Instance;
 					writer.WriteToLog("Execute UpdateFormWithData()");
 					UpdateFormWithData();
+					mainTopBar.InitializeGoldImage();
 				}
 				else
 				{

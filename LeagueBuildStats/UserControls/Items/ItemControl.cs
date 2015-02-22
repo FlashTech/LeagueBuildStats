@@ -79,7 +79,6 @@ namespace LeagueBuildStats
 			//Generate PicBox
 			CreateItemDiv itemPreped = item;
 
-
 			if (item.thisItemDisplayName.Contains("Elixir"))
 			{
 				Control cTemp = frm1.mainTopBar.Controls.Find("pnlElixir", true)[0];
@@ -99,7 +98,7 @@ namespace LeagueBuildStats
 				//tooltip
 				frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItemElixir);
 				frm1.mainTopBar.tipInfoItemElixir.ToolTipTextFormatted = sTooltip;
-					
+				frm1.mainTopBar.UpdateTotalGoldCost();
 			}
 			else
 			{
@@ -114,6 +113,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem1);
 					frm1.mainTopBar.tipInfoItem1.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 				cTemp = frm1.mainTopBar.Controls.Find("pnlItem2", true)[0];
@@ -126,6 +126,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem2);
 					frm1.mainTopBar.tipInfoItem2.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 				cTemp = frm1.mainTopBar.Controls.Find("pnlItem3", true)[0];
@@ -138,6 +139,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem3);
 					frm1.mainTopBar.tipInfoItem3.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 				cTemp = frm1.mainTopBar.Controls.Find("pnlItem4", true)[0];
@@ -150,6 +152,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem4);
 					frm1.mainTopBar.tipInfoItem4.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 				cTemp = frm1.mainTopBar.Controls.Find("pnlItem5", true)[0];
@@ -162,6 +165,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem5);
 					frm1.mainTopBar.tipInfoItem5.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 				cTemp = frm1.mainTopBar.Controls.Find("pnlItem6", true)[0];
@@ -174,6 +178,7 @@ namespace LeagueBuildStats
 					//tooltip
 					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem6);
 					frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
+					frm1.mainTopBar.UpdateTotalGoldCost();
 					return;
 				}
 			}
@@ -245,6 +250,10 @@ namespace LeagueBuildStats
 					if (item.thisItemDisplayName.Contains("Elixir"))
 					{
 						picBoxItem.DoDragDrop("ELIXIR" + item.thisID.ToString(), DragDropEffects.Copy | DragDropEffects.Move);
+					}
+					else if (item.thisItemDisplayName.Contains("Trinket") || item.thisItemDisplayName.Contains("Trinket"))
+					{
+						picBoxItem.DoDragDrop("TRINKET" + item.thisID.ToString(), DragDropEffects.Copy | DragDropEffects.Move);
 					}
 					else
 					{
