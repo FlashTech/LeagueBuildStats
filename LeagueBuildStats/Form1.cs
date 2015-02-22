@@ -35,7 +35,7 @@ namespace LeagueBuildStats
 		public ChampionsTab championsTab;
 		public RunesTab runesTab;
 		public MasteriesTab masteriesTab;
-		private StatsTab statsTab;
+		public StatsTab statsTab;
 		public MainTopBar mainTopBar;
 
 		private PictureBox picboxCursor = new PictureBox();
@@ -413,7 +413,7 @@ namespace LeagueBuildStats
 
 			writer = LogWriter.Instance;
 			writer.WriteToLog("Execute UpdateRuneControl()");
-			masteriesTab.UpdateRuneControl();
+			masteriesTab.UpdateMasteryControl();
 
 			if (updateVersionDropDown)
 			{

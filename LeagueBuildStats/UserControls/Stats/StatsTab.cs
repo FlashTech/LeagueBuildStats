@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using RiotSharp.StaticDataEndpoint;
 using LeagueBuildStats.UserControls.Masteries;
+using LeagueBuildStats.Classes;
 
 namespace LeagueBuildStats.UserControls
 {
@@ -18,6 +19,10 @@ namespace LeagueBuildStats.UserControls
 		private Form1 form1;
 
 		private ContextMenuStrip contextMenuStripLevel = new ContextMenuStrip();
+
+		public string lblMasteryOff { set { lblMasteryOffence.Text = value; } }
+		public string lblMasteryDef { set { lblMasteryDefence.Text = value; } }
+		public string lblMasteryUtil { set { lblMasteryUtility.Text = value; } }
 
 		public StatsTab()
 		{
@@ -65,6 +70,14 @@ namespace LeagueBuildStats.UserControls
 
 			btnChampLevel.UseVisualStyleBackColor = false;
 			btnChampLevel.BackColor = Color.FromArgb(45, 45, 48);
+		}
+
+		public void InitializeMasteryIamge()
+		{
+			string file = string.Format(@"{0}\Data\Masteries\Images\{1}\mastersprite.png", PublicStaticVariables.thisAppDataDir, form1.getAllVersionAvailable.realm.V);
+			Image masterSprite = Image.FromFile(file);
+
+			picBoxMasteryImage.Image = CommonMethods.cropImage(masterSprite, new Rectangle(123, 75, 155, 44));
 		}
 
 		void btnChampLevel_MouseLeave(object sender, EventArgs e)

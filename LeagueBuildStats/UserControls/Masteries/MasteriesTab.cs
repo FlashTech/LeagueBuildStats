@@ -37,10 +37,42 @@ namespace LeagueBuildStats.UserControls
 		public Image GetGreenBox() { return CommonMethods.cropImage(masterSprite, new Rectangle(185, 0, 52, 52)); }
 		public Image GetRedBox() { return CommonMethods.cropImage(masterSprite, new Rectangle(243, 0, 52, 52)); }
 
-		public int mastOffenciveCount = 0;
-		public int mastTotalCount = 0;
-		public int mastDefenciveCount = 0;
-		public int mastUtilityCount = 0;
+
+		private int _OffenciveCount;
+		private int _DefenciveCount;
+		private int _UtilityCount;
+
+		public int mastOffenciveCount
+		{
+			get { return _OffenciveCount; }
+			set
+			{
+				this._OffenciveCount = value;
+				form.statsTab.lblMasteryOff = value.ToString();
+				lblMasteryOffence.Text = value.ToString();
+			}
+		}
+		public int mastTotalCount { get; set; }
+		public int mastDefenciveCount
+		{
+			get { return _DefenciveCount; }
+			set
+			{
+				this._DefenciveCount = value;
+				form.statsTab.lblMasteryDef = value.ToString();
+				lblMasteryDefence.Text = value.ToString();
+			}
+		}
+		public int mastUtilityCount
+		{
+			get { return _UtilityCount; }
+			set
+			{
+				this._UtilityCount = value;
+				form.statsTab.lblMasteryUtil = value.ToString();
+				lblMasteryUtility.Text = value.ToString();
+			}
+		}
 
 		public MasteriesTab(Form1 form)
 		{
@@ -67,6 +99,11 @@ namespace LeagueBuildStats.UserControls
 			rowCountStorage.Add("utilityRow4Count", 0);
 			rowCountStorage.Add("utilityRow5Count", 0);
 			rowCountStorage.Add("utilityRow6Count", 0);
+
+			_OffenciveCount = 0;
+			mastTotalCount = 0;
+			_DefenciveCount = 0;
+			_UtilityCount = 0;
 		}
 
 		void dropDownBtnReturnPoints_MouseClick(object sender, MouseEventArgs e)
@@ -79,7 +116,7 @@ namespace LeagueBuildStats.UserControls
 			lblOffenceCount.Text = "OFFENCE: " + mastOffenciveCount;
 			lblDefenceCount.Text = "DEFENCE: " + mastDefenciveCount;
 			lblUtilityCount.Text = "UTILITY: " + mastUtilityCount;
-			lblPointsAvail.Text = "Points Available: " + mastTotalCount;
+			lblPointsAvail.Text = "Points Available: " + (30 - mastTotalCount);
 		}
 
 		public bool CollectMasteryData(string inputVersion = null)
@@ -101,9 +138,15 @@ namespace LeagueBuildStats.UserControls
 			return success;
 		}
 
-		public bool UpdateRuneControl()
+		public bool UpdateMasteryControl()
 		{
 			bool success = false;
+
+			//Initialize statsTab with Mastery Images as well
+			form.statsTab.InitializeMasteryIamge();
+			picBoxMasteryImage.Image = form.statsTab.picBoxMasteryImage.Image;
+
+
 			picBoxMasteryMain.SuspendLayout();
 			try
 			{

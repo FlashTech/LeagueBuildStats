@@ -36,26 +36,35 @@
 			this.lblDefenceCount = new System.Windows.Forms.Label();
 			this.lblOffenceCount = new System.Windows.Forms.Label();
 			this.picBoxMasteryMain = new System.Windows.Forms.PictureBox();
+			this.lblMasteryUtility = new System.Windows.Forms.Label();
+			this.lblMasteryDefence = new System.Windows.Forms.Label();
+			this.lblMasteryOffence = new System.Windows.Forms.Label();
+			this.picBoxMasteryImage = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
 			this.panelControl1.SuspendLayout();
 			this.xtraScrollableControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryMain)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelControl1
 			// 
+			this.panelControl1.Controls.Add(this.lblMasteryUtility);
+			this.panelControl1.Controls.Add(this.lblMasteryDefence);
+			this.panelControl1.Controls.Add(this.lblMasteryOffence);
+			this.panelControl1.Controls.Add(this.picBoxMasteryImage);
 			this.panelControl1.Controls.Add(this.dropDownBtnReturnPoint);
 			this.panelControl1.Controls.Add(this.lblPointsAvail);
 			this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panelControl1.Location = new System.Drawing.Point(0, 0);
 			this.panelControl1.Name = "panelControl1";
-			this.panelControl1.Size = new System.Drawing.Size(127, 671);
+			this.panelControl1.Size = new System.Drawing.Size(181, 671);
 			this.panelControl1.TabIndex = 0;
 			// 
 			// dropDownBtnReturnPoint
 			// 
 			this.dropDownBtnReturnPoint.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Hide;
-			this.dropDownBtnReturnPoint.Location = new System.Drawing.Point(8, 36);
+			this.dropDownBtnReturnPoint.Location = new System.Drawing.Point(33, 66);
 			this.dropDownBtnReturnPoint.Name = "dropDownBtnReturnPoint";
 			this.dropDownBtnReturnPoint.Size = new System.Drawing.Size(113, 23);
 			this.dropDownBtnReturnPoint.TabIndex = 2;
@@ -65,7 +74,7 @@
 			// 
 			this.lblPointsAvail.AutoSize = true;
 			this.lblPointsAvail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblPointsAvail.Location = new System.Drawing.Point(5, 15);
+			this.lblPointsAvail.Location = new System.Drawing.Point(30, 45);
 			this.lblPointsAvail.Name = "lblPointsAvail";
 			this.lblPointsAvail.Size = new System.Drawing.Size(120, 16);
 			this.lblPointsAvail.TabIndex = 0;
@@ -78,9 +87,9 @@
 			this.xtraScrollableControl1.Controls.Add(this.lblOffenceCount);
 			this.xtraScrollableControl1.Controls.Add(this.picBoxMasteryMain);
 			this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xtraScrollableControl1.Location = new System.Drawing.Point(127, 0);
+			this.xtraScrollableControl1.Location = new System.Drawing.Point(181, 0);
 			this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-			this.xtraScrollableControl1.Size = new System.Drawing.Size(844, 671);
+			this.xtraScrollableControl1.Size = new System.Drawing.Size(790, 671);
 			this.xtraScrollableControl1.TabIndex = 1;
 			// 
 			// lblUtilityCount
@@ -124,6 +133,43 @@
 			this.picBoxMasteryMain.TabIndex = 0;
 			this.picBoxMasteryMain.TabStop = false;
 			// 
+			// lblMasteryUtility
+			// 
+			this.lblMasteryUtility.AutoSize = true;
+			this.lblMasteryUtility.Location = new System.Drawing.Point(159, 16);
+			this.lblMasteryUtility.Name = "lblMasteryUtility";
+			this.lblMasteryUtility.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryUtility.TabIndex = 59;
+			this.lblMasteryUtility.Text = "0";
+			// 
+			// lblMasteryDefence
+			// 
+			this.lblMasteryDefence.AutoSize = true;
+			this.lblMasteryDefence.Location = new System.Drawing.Point(98, 16);
+			this.lblMasteryDefence.Name = "lblMasteryDefence";
+			this.lblMasteryDefence.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryDefence.TabIndex = 58;
+			this.lblMasteryDefence.Text = "0";
+			// 
+			// lblMasteryOffence
+			// 
+			this.lblMasteryOffence.AutoSize = true;
+			this.lblMasteryOffence.Location = new System.Drawing.Point(41, 16);
+			this.lblMasteryOffence.Name = "lblMasteryOffence";
+			this.lblMasteryOffence.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryOffence.TabIndex = 57;
+			this.lblMasteryOffence.Text = "0";
+			// 
+			// picBoxMasteryImage
+			// 
+			this.picBoxMasteryImage.Cursor = System.Windows.Forms.Cursors.Default;
+			this.picBoxMasteryImage.Location = new System.Drawing.Point(0, 0);
+			this.picBoxMasteryImage.Name = "picBoxMasteryImage";
+			this.picBoxMasteryImage.Size = new System.Drawing.Size(155, 44);
+			this.picBoxMasteryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxMasteryImage.TabIndex = 56;
+			this.picBoxMasteryImage.TabStop = false;
+			// 
 			// MasteriesTab
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +184,7 @@
 			this.xtraScrollableControl1.ResumeLayout(false);
 			this.xtraScrollableControl1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryMain)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -152,6 +199,10 @@
 		private System.Windows.Forms.Label lblDefenceCount;
 		private System.Windows.Forms.Label lblOffenceCount;
 		private DevExpress.XtraEditors.DropDownButton dropDownBtnReturnPoint;
+		private System.Windows.Forms.Label lblMasteryUtility;
+		private System.Windows.Forms.Label lblMasteryDefence;
+		private System.Windows.Forms.Label lblMasteryOffence;
+		private System.Windows.Forms.PictureBox picBoxMasteryImage;
 
 	}
 }

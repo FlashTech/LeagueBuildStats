@@ -40,7 +40,6 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 
 		public ContextMenuStrip contextMenuStrip1 = new ContextMenuStrip();
 
-
 		//TODO: maybe instead of looking directly are the tag is may be better to have public variables that are updated when the tag is updated. might not be necessary
 		public KeyValuePair<string, ChampionStatic> champion1 { get { return (pnlChampion.Tag != null ? (KeyValuePair<string, ChampionStatic>)pnlChampion.Tag : new KeyValuePair<string, ChampionStatic>()); } }
 		public CreateItemDiv item1 { get { return (pnlItem1.Tag != null ? (CreateItemDiv)pnlItem1.Tag : new CreateItemDiv()); } }
@@ -757,5 +756,6 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 				c.Dispose();
 			}
 		}
+
 	}
 }

@@ -121,7 +121,7 @@
   <data name="pnlElixir.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAEXSURBVGhD7ZFBDoQgDAD3/9/iYW56IGnIoBRaQMMkc1Fo
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAAEXSURBVGhD7ZFBDoQgDAD3/9/iYW56IGnIoBRaQMMkc1Fo
         nfhLKV1v9gSsdssAgZ6T2wVo6H3p1gECndFuFVCDzmZfESDQeXFpgP6wFvTd7LIADT2roWeISwKIu3cZ
         PSM7PeCO2hl9v3SbP5DRZ/SdmtsFCHSn5tQAC3SfDA8YgeaVhgR4QbNL3QK8oR3kUIAneqbe8WR3gCc0
         v1VzQAS0p9XmgChol8WmgEhon8XHgGhop8XbgBnQXovfDZgF7ba4NID2WsWAWdBuqydgBNpt9QT0Qnt7
@@ -211,9 +211,6 @@
         CJnoCugrsQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="popupMenuVersions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>588, 16</value>
-  </metadata>
   <metadata name="popupMenuVersions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>588, 16</value>
   </metadata>

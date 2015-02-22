@@ -138,6 +138,10 @@
 			this.labelControl40 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl41 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl42 = new DevExpress.XtraEditors.LabelControl();
+			this.lblMasteryUtility = new System.Windows.Forms.Label();
+			this.lblMasteryDefence = new System.Windows.Forms.Label();
+			this.lblMasteryOffence = new System.Windows.Forms.Label();
+			this.picBoxMasteryImage = new System.Windows.Forms.PictureBox();
 			this.xtraScrollableControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlBasicStats)).BeginInit();
 			this.grpCtrlBasicStats.SuspendLayout();
@@ -147,10 +151,15 @@
 			this.grpCtrlUtility.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlDefence)).BeginInit();
 			this.grpCtrlDefence.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// xtraScrollableControl1
 			// 
+			this.xtraScrollableControl1.Controls.Add(this.lblMasteryUtility);
+			this.xtraScrollableControl1.Controls.Add(this.lblMasteryDefence);
+			this.xtraScrollableControl1.Controls.Add(this.lblMasteryOffence);
+			this.xtraScrollableControl1.Controls.Add(this.picBoxMasteryImage);
 			this.xtraScrollableControl1.Controls.Add(this.btnChampLevel);
 			this.xtraScrollableControl1.Controls.Add(this.grpCtrlBasicStats);
 			this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -164,7 +173,7 @@
 			this.btnChampLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
 			this.btnChampLevel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(70)))));
 			this.btnChampLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnChampLevel.Location = new System.Drawing.Point(3, 3);
+			this.btnChampLevel.Location = new System.Drawing.Point(5, 9);
 			this.btnChampLevel.Name = "btnChampLevel";
 			this.btnChampLevel.Size = new System.Drawing.Size(61, 23);
 			this.btnChampLevel.TabIndex = 51;
@@ -177,7 +186,7 @@
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlOffense);
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlUtility);
 			this.grpCtrlBasicStats.Controls.Add(this.grpCtrlDefence);
-			this.grpCtrlBasicStats.Location = new System.Drawing.Point(3, 32);
+			this.grpCtrlBasicStats.Location = new System.Drawing.Point(3, 36);
 			this.grpCtrlBasicStats.Name = "grpCtrlBasicStats";
 			this.grpCtrlBasicStats.Size = new System.Drawing.Size(751, 309);
 			this.grpCtrlBasicStats.TabIndex = 49;
@@ -1169,6 +1178,43 @@
 			this.labelControl42.TabIndex = 24;
 			this.labelControl42.Text = "Health:";
 			// 
+			// lblMasteryUtility
+			// 
+			this.lblMasteryUtility.AutoSize = true;
+			this.lblMasteryUtility.Location = new System.Drawing.Point(229, 16);
+			this.lblMasteryUtility.Name = "lblMasteryUtility";
+			this.lblMasteryUtility.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryUtility.TabIndex = 55;
+			this.lblMasteryUtility.Text = "0";
+			// 
+			// lblMasteryDefence
+			// 
+			this.lblMasteryDefence.AutoSize = true;
+			this.lblMasteryDefence.Location = new System.Drawing.Point(168, 16);
+			this.lblMasteryDefence.Name = "lblMasteryDefence";
+			this.lblMasteryDefence.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryDefence.TabIndex = 54;
+			this.lblMasteryDefence.Text = "0";
+			// 
+			// lblMasteryOffence
+			// 
+			this.lblMasteryOffence.AutoSize = true;
+			this.lblMasteryOffence.Location = new System.Drawing.Point(111, 16);
+			this.lblMasteryOffence.Name = "lblMasteryOffence";
+			this.lblMasteryOffence.Size = new System.Drawing.Size(13, 13);
+			this.lblMasteryOffence.TabIndex = 53;
+			this.lblMasteryOffence.Text = "0";
+			// 
+			// picBoxMasteryImage
+			// 
+			this.picBoxMasteryImage.Cursor = System.Windows.Forms.Cursors.Default;
+			this.picBoxMasteryImage.Location = new System.Drawing.Point(70, 0);
+			this.picBoxMasteryImage.Name = "picBoxMasteryImage";
+			this.picBoxMasteryImage.Size = new System.Drawing.Size(155, 44);
+			this.picBoxMasteryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.picBoxMasteryImage.TabIndex = 52;
+			this.picBoxMasteryImage.TabStop = false;
+			// 
 			// StatsTab
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1177,6 +1223,7 @@
 			this.Name = "StatsTab";
 			this.Size = new System.Drawing.Size(1081, 658);
 			this.xtraScrollableControl1.ResumeLayout(false);
+			this.xtraScrollableControl1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlBasicStats)).EndInit();
 			this.grpCtrlBasicStats.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlOffense)).EndInit();
@@ -1188,6 +1235,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlDefence)).EndInit();
 			this.grpCtrlDefence.ResumeLayout(false);
 			this.grpCtrlDefence.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.picBoxMasteryImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1304,6 +1352,10 @@
 		private System.Windows.Forms.Button btnChampLevel;
 		private DevExpress.XtraEditors.LabelControl labelControl20;
 		private DevExpress.XtraEditors.LabelControl lblCtrlDmgBonus2;
+		private System.Windows.Forms.Label lblMasteryUtility;
+		private System.Windows.Forms.Label lblMasteryDefence;
+		private System.Windows.Forms.Label lblMasteryOffence;
+		public System.Windows.Forms.PictureBox picBoxMasteryImage;
 
 	}
 }
