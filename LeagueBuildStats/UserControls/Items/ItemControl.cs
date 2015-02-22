@@ -78,81 +78,104 @@ namespace LeagueBuildStats
 		{
 			//Generate PicBox
 			CreateItemDiv itemPreped = item;
-			
 
 
-			//Todo: frm1.mainTopBar.Controls.Find("pnlItem1", true)[0]; should be changed to a public object to more easily reference faster
-			Control cTemp = frm1.mainTopBar.Controls.Find("pnlItem1", true)[0];
-			if (cTemp.Tag == null)
+			if (item.thisItemDisplayName.Contains("Elixir"))
 			{
+				Control cTemp = frm1.mainTopBar.Controls.Find("pnlElixir", true)[0];
+
+				if (cTemp.Controls.Count > 0)
+				{
+					List<Control> ctrls = cTemp.Controls.Cast<Control>().ToList();
+					cTemp.Controls.Clear();
+					foreach (Control c in ctrls)
+						c.Dispose();
+				}
+
 				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
 				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
 				cTemp.Tag = itemPreped;
 				cTemp.Controls.Add(itemPicBox);
 				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem1);
-				frm1.mainTopBar.tipInfoItem1.ToolTipTextFormatted = sTooltip;
-				return;
+				frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItemElixir);
+				frm1.mainTopBar.tipInfoItemElixir.ToolTipTextFormatted = sTooltip;
+					
 			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem2", true)[0];
-			if (cTemp.Tag == null)
+			else
 			{
-				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
-				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem2);
-				frm1.mainTopBar.tipInfoItem2.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem3", true)[0];
-			if (cTemp.Tag == null)
-			{
-				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
-				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem3);
-				frm1.mainTopBar.tipInfoItem3.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem4", true)[0];
-			if (cTemp.Tag == null)
-			{
-				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
-				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem4);
-				frm1.mainTopBar.tipInfoItem4.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem5", true)[0];
-			if (cTemp.Tag == null)
-			{
-				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
-				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem5);
-				frm1.mainTopBar.tipInfoItem5.ToolTipTextFormatted = sTooltip;
-				return;
-			}
-			cTemp = frm1.mainTopBar.Controls.Find("pnlItem6", true)[0];
-			if (cTemp.Tag == null)
-			{
-				PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
-				string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
-				cTemp.Tag = itemPreped;
-				cTemp.Controls.Add(itemPicBox);
-				//tooltip
-				frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem6);
-				frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
-				return;
+				//Todo: frm1.mainTopBar.Controls.Find("pnlItem1", true)[0]; should be changed to a public object to more easily reference faster
+				Control cTemp = frm1.mainTopBar.Controls.Find("pnlItem1", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem1);
+					frm1.mainTopBar.tipInfoItem1.ToolTipTextFormatted = sTooltip;
+					return;
+				}
+				cTemp = frm1.mainTopBar.Controls.Find("pnlItem2", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem2);
+					frm1.mainTopBar.tipInfoItem2.ToolTipTextFormatted = sTooltip;
+					return;
+				}
+				cTemp = frm1.mainTopBar.Controls.Find("pnlItem3", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem3);
+					frm1.mainTopBar.tipInfoItem3.ToolTipTextFormatted = sTooltip;
+					return;
+				}
+				cTemp = frm1.mainTopBar.Controls.Find("pnlItem4", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem4);
+					frm1.mainTopBar.tipInfoItem4.ToolTipTextFormatted = sTooltip;
+					return;
+				}
+				cTemp = frm1.mainTopBar.Controls.Find("pnlItem5", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem5);
+					frm1.mainTopBar.tipInfoItem5.ToolTipTextFormatted = sTooltip;
+					return;
+				}
+				cTemp = frm1.mainTopBar.Controls.Find("pnlItem6", true)[0];
+				if (cTemp.Tag == null)
+				{
+					PictureBox itemPicBox = GenerateItemPicBox(itemPreped);
+					string sTooltip = frm1.mainTopBar.CreateItemPicBoxTooltip(itemPreped);
+					cTemp.Tag = itemPreped;
+					cTemp.Controls.Add(itemPicBox);
+					//tooltip
+					frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, frm1.mainTopBar.tipInfoItem6);
+					frm1.mainTopBar.tipInfoItem6.ToolTipTextFormatted = sTooltip;
+					return;
+				}
 			}
 		}
 
@@ -219,7 +242,14 @@ namespace LeagueBuildStats
 
 
 					itemsTab.dragger.StartDragging(picBoxItem);
-					picBoxItem.DoDragDrop("ITEM" + item.thisID.ToString(), DragDropEffects.Copy | DragDropEffects.Move);
+					if (item.thisItemDisplayName.Contains("Elixir"))
+					{
+						picBoxItem.DoDragDrop("ELIXIR" + item.thisID.ToString(), DragDropEffects.Copy | DragDropEffects.Move);
+					}
+					else
+					{
+						picBoxItem.DoDragDrop("ITEM" + item.thisID.ToString(), DragDropEffects.Copy | DragDropEffects.Move);
+					}
 					itemsTab.dragger.StopDragging();
 				}
 			}

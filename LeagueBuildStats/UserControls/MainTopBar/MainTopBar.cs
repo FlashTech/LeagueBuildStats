@@ -34,6 +34,8 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 		public UltraToolTipInfo tipInfoItem5 = new UltraToolTipInfo();
 		public UltraToolTipInfo tipInfoItem6 = new UltraToolTipInfo();
 
+		public UltraToolTipInfo tipInfoItemElixir = new UltraToolTipInfo();
+
 		public List<Panel> itemPanels = new List<Panel>();
 
 		public ContextMenuStrip contextMenuStrip1 = new ContextMenuStrip();
@@ -47,6 +49,7 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 		public CreateItemDiv item4 { get { return (pnlItem4.Tag != null ? (CreateItemDiv)pnlItem4.Tag : new CreateItemDiv()); } }
 		public CreateItemDiv item5 { get { return (pnlItem5.Tag != null ? (CreateItemDiv)pnlItem5.Tag : new CreateItemDiv()); } }
 		public CreateItemDiv item6 { get { return (pnlItem6.Tag != null ? (CreateItemDiv)pnlItem6.Tag : new CreateItemDiv()); } }
+		public CreateItemDiv itemElixir { get { return (pnlElixir.Tag != null ? (CreateItemDiv)pnlElixir.Tag : new CreateItemDiv()); } }
 
 		public MainTopBar(Form1 form)
 		{
@@ -61,16 +64,17 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			itemPanels.Add(pnlItem4);
 			itemPanels.Add(pnlItem5);
 			itemPanels.Add(pnlItem6);
+			itemPanels.Add(pnlElixir);
 			
 
 
 			//Tooltips prep
-			ultraToolTipManager1.AutoPopDelay = 0;
-			ultraToolTipManager1.InitialDelay = 50;
-			ultraToolTipManager1.DisplayStyle = ToolTipDisplayStyle.Office2007;
-			ultraToolTipManager1.Appearance.BackColor = Color.Black;
-			ultraToolTipManager1.Appearance.BackColor2 = Color.Black;
-			ultraToolTipManager1.Appearance.BackColorAlpha = Alpha.Transparent;
+			ultraToolTipManagerGearIcon.AutoPopDelay = 0;
+			ultraToolTipManagerGearIcon.InitialDelay = 50;
+			ultraToolTipManagerGearIcon.DisplayStyle = ToolTipDisplayStyle.Office2007;
+			ultraToolTipManagerGearIcon.Appearance.BackColor = Color.Black;
+			ultraToolTipManagerGearIcon.Appearance.BackColor2 = Color.Black;
+			ultraToolTipManagerGearIcon.Appearance.BackColorAlpha = Alpha.Transparent;
 
 			tipInfoChamp.ToolTipTextStyle = ToolTipTextStyle.Formatted;
 
@@ -81,12 +85,16 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			tipInfoItem5.ToolTipTextStyle = ToolTipTextStyle.Formatted;
 			tipInfoItem6.ToolTipTextStyle = ToolTipTextStyle.Formatted;
 
+			tipInfoItemElixir.ToolTipTextStyle = ToolTipTextStyle.Formatted;
+
 		}
 
 
 		private void InitializeEvents()
 		{
 			simpleBtnChkUpdates.Click += simpleBtnChkUpdates_Click;
+
+			pnlChampion.DragEnter += pnlChampion_DragEnter;
 
 			pnlItem1.DragEnter += pnlItem_DragEnter;
 			pnlItem2.DragEnter += pnlItem_DragEnter;
@@ -95,7 +103,10 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			pnlItem5.DragEnter += pnlItem_DragEnter;
 			pnlItem6.DragEnter += pnlItem_DragEnter;
 
-			pnlChampion.DragEnter += pnlChampion_DragEnter;
+			pnlElixir.DragEnter += pnlElixir_DragEnter;
+
+
+			pnlChampion.DragDrop += pnlChampion_DragDrop;
 
 			pnlItem1.DragDrop += pnlItem_DragDrop;
 			pnlItem2.DragDrop += pnlItem_DragDrop;
@@ -104,14 +115,7 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			pnlItem5.DragDrop += pnlItem_DragDrop;
 			pnlItem6.DragDrop += pnlItem_DragDrop;
 
-			pnlChampion.DragDrop += pnlChampion_DragDrop;
-
-			//pnlItem1.DragOver += pnlItem_DragOver;
-			//pnlItem2.DragOver += pnlItem_DragOver;
-			//pnlItem3.DragOver += pnlItem_DragOver;
-			//pnlItem4.DragOver += pnlItem_DragOver;
-			//pnlItem5.DragOver += pnlItem_DragOver;
-			//pnlItem6.DragOver += pnlItem_DragOver;
+			pnlElixir.DragDrop += pnlItem_DragDrop;
 
 			picBoxInfoButton.Image = Bitmap.FromHicon(SystemIcons.Information.Handle);
 
@@ -121,8 +125,26 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 
 			contextMenuStrip1.Items.Add("Show detected stats in tooltips");
 			((ToolStripMenuItem)contextMenuStrip1.Items[0]).CheckOnClick = true;
-			((ToolStripMenuItem)contextMenuStrip1.Items[0]).CheckedChanged+=Item1_CheckedChanged;
+			((ToolStripMenuItem)contextMenuStrip1.Items[0]).CheckedChanged+=Item1_CheckedChanged; //Todo: rename this
 		}
+
+		
+		void pnlElixir_DragEnter(object sender, DragEventArgs e)
+		{
+			try
+			{
+				string dataString = e.Data.GetData(DataFormats.Text) as string;
+				if (dataString.Contains("ELIXIR") && form1.itemsTab.getItemsFromServer.itemsPrepared != null)
+				{
+					e.Effect = DragDropEffects.Copy;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
 
 		private void Item1_CheckedChanged(object sender, EventArgs e)
 		{
@@ -161,6 +183,11 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			{
 				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlItem6.Tag);
 				tipInfoItem6.ToolTipTextFormatted = sTooltip;
+			}
+			if (pnlElixir.Tag != null)
+			{
+				string sTooltip = CreateItemPicBoxTooltip((CreateItemDiv)pnlElixir.Tag);
+				tipInfoItemElixir.ToolTipTextFormatted = sTooltip;
 			}
 		}
 
@@ -412,9 +439,10 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			{
 
 				string dataString = e.Data.GetData(DataFormats.Text) as string;
-				if (dataString.Contains("ITEM") && form1.itemsTab.getItemsFromServer.itemsPrepared != null)
+				if ( (dataString.Contains("ITEM") || dataString.Contains("ELIXIR") ) && form1.itemsTab.getItemsFromServer.itemsPrepared != null)
 				{
 					string itemID = dataString.Replace("ITEM", "");
+					itemID = itemID.Replace("ELIXIR", "");
 					if (form1.itemsTab.getItemsFromServer.itemsPrepared.Count > 0)
 					{
 						//Generate PicBox
@@ -482,9 +510,14 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 									temp = tipInfoItem6;
 									break;
 								}
+							case "pnlElixir":
+								{
+									temp = tipInfoItemElixir;
+									break;
+								}
 
 						}
-						ultraToolTipManager1.SetUltraToolTip(itemPicBox, temp);
+						ultraToolTipManagerGearIcon.SetUltraToolTip(itemPicBox, temp);
 						temp.ToolTipTextFormatted = sTooltip;
 
 					}
@@ -541,22 +574,6 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			sTooltip += "</p></div>";
 
 			return sTooltip;
-		}
-
-		private void pnlItem_DragOver(object sender, DragEventArgs e)
-		{
-			try
-			{
-				string dataString = e.Data.GetData(DataFormats.Text) as string;
-				if (dataString.Contains("ITEM") && form1.itemsTab.getItemsFromServer.itemsPrepared != null)
-				{
-					e.Effect = DragDropEffects.Copy;
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
 		}
 
 		private void pnlItem_DragEnter(object sender, DragEventArgs e)
@@ -630,7 +647,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 						
 
 						//tooltip Todo: Comment ou the next two lines to disable this tooltip
-						ultraToolTipManager1.SetUltraToolTip(championPicBox, tipInfoChamp);
+						ultraToolTipManagerGearIcon.SetUltraToolTip(championPicBox, tipInfoChamp);
 						tipInfoChamp.ToolTipTextFormatted = sTooltip;
 					}
 					

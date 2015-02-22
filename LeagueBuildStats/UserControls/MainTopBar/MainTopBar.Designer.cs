@@ -31,6 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTopBar));
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+			this.pnlElixir = new System.Windows.Forms.Panel();
 			this.picBoxSettings = new System.Windows.Forms.PictureBox();
 			this.btnCheckUpdates = new System.Windows.Forms.Button();
 			this.picBoxInfoButton = new System.Windows.Forms.PictureBox();
@@ -44,23 +45,24 @@
 			this.pnlItem1 = new System.Windows.Forms.Panel();
 			this.dropDownButtonRiotVersion = new DevExpress.XtraEditors.DropDownButton();
 			this.popupMenuVersions = new DevExpress.XtraBars.PopupMenu(this.components);
-			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+			this.barManagerVersion = new DevExpress.XtraBars.BarManager(this.components);
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
 			this.lblControlLeagueVersionText = new DevExpress.XtraEditors.LabelControl();
 			this.simpleBtnChkUpdates = new DevExpress.XtraEditors.SimpleButton();
-			this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+			this.ultraToolTipManagerGearIcon = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
 			this.xtraScrollableControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManagerVersion)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// xtraScrollableControl1
 			// 
+			this.xtraScrollableControl1.Controls.Add(this.pnlElixir);
 			this.xtraScrollableControl1.Controls.Add(this.picBoxSettings);
 			this.xtraScrollableControl1.Controls.Add(this.btnCheckUpdates);
 			this.xtraScrollableControl1.Controls.Add(this.picBoxInfoButton);
@@ -80,6 +82,17 @@
 			this.xtraScrollableControl1.Name = "xtraScrollableControl1";
 			this.xtraScrollableControl1.Size = new System.Drawing.Size(740, 102);
 			this.xtraScrollableControl1.TabIndex = 22;
+			// 
+			// pnlElixir
+			// 
+			this.pnlElixir.AllowDrop = true;
+			this.pnlElixir.BackColor = System.Drawing.Color.DarkGray;
+			this.pnlElixir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlElixir.BackgroundImage")));
+			this.pnlElixir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlElixir.Location = new System.Drawing.Point(422, 29);
+			this.pnlElixir.Name = "pnlElixir";
+			this.pnlElixir.Size = new System.Drawing.Size(50, 50);
+			this.pnlElixir.TabIndex = 24;
 			// 
 			// picBoxSettings
 			// 
@@ -215,17 +228,17 @@
 			// 
 			// popupMenuVersions
 			// 
-			this.popupMenuVersions.Manager = this.barManager1;
+			this.popupMenuVersions.Manager = this.barManagerVersion;
 			this.popupMenuVersions.Name = "popupMenuVersions";
 			// 
-			// barManager1
+			// barManagerVersion
 			// 
-			this.barManager1.DockControls.Add(this.barDockControlTop);
-			this.barManager1.DockControls.Add(this.barDockControlBottom);
-			this.barManager1.DockControls.Add(this.barDockControlLeft);
-			this.barManager1.DockControls.Add(this.barDockControlRight);
-			this.barManager1.Form = this;
-			this.barManager1.MaxItemId = 3;
+			this.barManagerVersion.DockControls.Add(this.barDockControlTop);
+			this.barManagerVersion.DockControls.Add(this.barDockControlBottom);
+			this.barManagerVersion.DockControls.Add(this.barDockControlLeft);
+			this.barManagerVersion.DockControls.Add(this.barDockControlRight);
+			this.barManagerVersion.Form = this;
+			this.barManagerVersion.MaxItemId = 3;
 			// 
 			// barDockControlTop
 			// 
@@ -271,11 +284,11 @@
 			this.simpleBtnChkUpdates.TabIndex = 15;
 			this.simpleBtnChkUpdates.Text = "Refresh List";
 			// 
-			// ultraToolTipManager1
+			// ultraToolTipManagerGearIcon
 			// 
-			this.ultraToolTipManager1.AutoPopDelay = 0;
-			this.ultraToolTipManager1.ContainingControl = this;
-			this.ultraToolTipManager1.InitialDelay = 50;
+			this.ultraToolTipManagerGearIcon.AutoPopDelay = 0;
+			this.ultraToolTipManagerGearIcon.ContainingControl = this;
+			this.ultraToolTipManagerGearIcon.InitialDelay = 50;
 			// 
 			// MainTopBar
 			// 
@@ -293,7 +306,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoButton)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenuVersions)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManagerVersion)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -306,7 +319,7 @@
 		private DevExpress.XtraEditors.DropDownButton dropDownButtonRiotVersion;
 		private DevExpress.XtraEditors.LabelControl lblControlLeagueVersionText;
 		private DevExpress.XtraEditors.SimpleButton simpleBtnChkUpdates;
-		private DevExpress.XtraBars.BarManager barManager1;
+		private DevExpress.XtraBars.BarManager barManagerVersion;
 		private DevExpress.XtraBars.BarDockControl barDockControlTop;
 		private DevExpress.XtraBars.BarDockControl barDockControlBottom;
 		private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -318,10 +331,11 @@
 		private System.Windows.Forms.Panel pnlItem3;
 		private System.Windows.Forms.Panel pnlItem2;
 		private System.Windows.Forms.Panel pnlChampion;
-		public Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+		public Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManagerGearIcon;
 		private System.Windows.Forms.PictureBox picBoxSettings;
 		private System.Windows.Forms.Button btnCheckUpdates;
 		private System.Windows.Forms.PictureBox picBoxInfoButton;
+		private System.Windows.Forms.Panel pnlElixir;
 
 	}
 }

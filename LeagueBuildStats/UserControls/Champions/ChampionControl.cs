@@ -85,7 +85,7 @@ namespace LeagueBuildStats.UserControls
 			string sTooltip = frm1.mainTopBar.CreateChampPicBoxTooltip(championPreped);
 
 			//tooltip Todo: Comment ou the next two lines to disable this tooltip
-			frm1.mainTopBar.ultraToolTipManager1.SetUltraToolTip(championPicBox, frm1.mainTopBar.tipInfoChamp);
+			frm1.mainTopBar.ultraToolTipManagerGearIcon.SetUltraToolTip(championPicBox, frm1.mainTopBar.tipInfoChamp);
 			frm1.mainTopBar.tipInfoChamp.ToolTipTextFormatted = sTooltip;
 		}
 
