@@ -1,5 +1,24 @@
 ;aiu;
 
+[v0.0.1.15 patch]
+Name=League Build Stats 0.0.1.15 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.14/LeagueBuildStatsPatcher-0.0.1.14.msp
+Size=389120
+ReleaseDate=10/02/2015
+MD5=69433427c9892d8d9308acec7812937a
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.15.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.15
+Description=Includes all previous patches!
+Feature=Implemented total item gold value.
+Feature1=Implemented Mastery Tree counters.
+Feature2=Implemented Elixir slot.
+Feature3= 
+BugFix=Fixed error when switching to a version out of range.
+BugFix1=Cleared Champion, Items, and Spells and search text boxes when selecting a new League version.
+Replaces=All
+
 [v0.0.1.14 patch]
 Name=League Build Stats 0.0.1.14 Patch
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.14/LeagueBuildStatsPatcher-0.0.1.14.msp
