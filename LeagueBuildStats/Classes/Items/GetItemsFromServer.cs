@@ -33,7 +33,7 @@ namespace LeagueBuildStats.Classes.Items
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
+				var staticApi = StaticRiotApi.GetInstance(Resources.App.ApiKey);
 				ItemListStatic items;
 				//Get all Items
 				if (inputVersion == null)

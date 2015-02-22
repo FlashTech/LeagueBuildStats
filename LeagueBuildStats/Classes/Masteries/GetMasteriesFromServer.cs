@@ -28,7 +28,7 @@ namespace LeagueBuildStats.Classes.Masteries
 			try
 			{
 				// Setup RiotApi
-				var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
+				var staticApi = StaticRiotApi.GetInstance(Resources.App.ApiKey);
 
 				//Get all Items
 				if (inputVersion == null)

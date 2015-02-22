@@ -39,7 +39,7 @@ namespace LeagueBuildStats.Classes
 			bool success = false;
 			List<string> checkVersions = new List<string>();
 			// Setup RiotApi
-			var staticApi = StaticRiotApi.GetInstance(ConfigurationManager.AppSettings["ApiKey"]);
+			var staticApi = StaticRiotApi.GetInstance(Resources.App.ApiKey);
 
 			try
 			{

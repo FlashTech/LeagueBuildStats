@@ -186,6 +186,11 @@
     <Compile Include="Forms\ToolTipRuneForm.Designer.cs">
       <DependentUpon>ToolTipRuneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\App.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>App.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Champions\ChampionsTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -269,6 +274,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolTipRuneForm.resx">
       <DependentUpon>ToolTipRuneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\App.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>App.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Champions\ChampionsTab.resx">
       <DependentUpon>ChampionsTab.cs</DependentUpon>
