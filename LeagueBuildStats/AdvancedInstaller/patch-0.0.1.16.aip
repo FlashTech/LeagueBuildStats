@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.2.1" version="11.2.1" Modules="patch" RootPath="." Language="en" Id="{76E1B5BE-9160-4B20-A2F4-5942715C07B1}">
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="MspValidation.aip" Path="&lt;AI_FRAGS&gt;MspValidation.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspImageFamiliesComponent">
+    <ROW Family="Family" MediaDiskId="2" FileSequenceStart="23"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspPropertiesComponent">
+    <ROW Name="AllowProductCodeMismatches" Value="1"/>
+    <ROW Name="AllowProductVersionMajorMismatches" Value="1"/>
+    <ROW Name="ListOfTargetProductCodes" Value="*"/>
+    <ROW Name="PatchOutputFileName" Value="LeagueBuildStatsPatcher-0.0.1.16"/>
+    <ROW Name="PatchSourceList" Value="PatchSourceList"/>
+    <ATTRIBUTE name="Author" value="Steven Lyon"/>
+    <ATTRIBUTE name="Comments" value="This patch contains the logic and data required to modify &lt;product name&gt;."/>
+    <ATTRIBUTE name="KeepPCPFile" value="false"/>
+    <ATTRIBUTE name="Subject" value="League Build Stats"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspTargetImagesComponent">
+    <ROW Target="v0_0_1_10" MsiPath="MsiBuildSetupFiles\0.0.1.10\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+    <ROW Target="v0_0_1_11" MsiPath="MsiBuildSetupFiles\0.0.1.11\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+    <ROW Target="v0_0_1_12" MsiPath="MsiBuildSetupFiles\0.0.1.12\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+    <ROW Target="v0_0_1_13" MsiPath="MsiBuildSetupFiles\0.0.1.13\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+    <ROW Target="v0_0_1_14" MsiPath="MsiBuildSetupFiles\0.0.1.14\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+    <ROW Target="v0_0_1_15" MsiPath="MsiBuildSetupFiles\0.0.1.15\LeagueBuildStatsInstall.msi" Upgraded="v0_0_1_16" Order="5" ProductValidateFlags="0x00000922" IgnoreMissingSrcFiles="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MspUpgradedImagesComponent">
+    <ROW Upgraded="v0_0_1_16" MsiPath="MsiBuildSetupFiles\0.0.1.16\LeagueBuildStatsInstall.msi" Family="Family"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PatchMetadataComponent">
+    <ROW Property="AllowRemoval" Value="0"/>
+    <ROW Property="DisplayName" Value="LeagueBuildStatsPatch-0.0.1.6"/>
+    <ROW Property="Classification" Value="Update"/>
+    <ROW Property="Description" Value="League Build Stats 0.0.1.16"/>
+    <ROW Property="TargetProductName" Value="League Build Stats"/>
+    <ROW Property="MoreInfoURL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/version_notes.txt"/>
+  </COMPONENT>
+</DOCUMENT>

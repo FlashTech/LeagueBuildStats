@@ -73,6 +73,18 @@
     <ROW Section="v0.0.1.15 patch" Key="Feature" Value="Implemented total item gold value.&#13;&#10;Implemented Mastery Tree counters.&#13;&#10;Implemented Elixir slot.&#13;&#10; "/>
     <ROW Section="v0.0.1.15 patch" Key="BugFix" Value="Fixed error when switching to a version out of range.&#13;&#10;Cleared Champion, Items, and Spells and search text boxes when selecting a new League version.&#13;&#10;"/>
     <ROW Section="v0.0.1.15 patch" Key="Replaces" Value="v0.0.1.11 patch;v0.0.1.12 patch;v0.0.1.13 patch;v0.0.1.14 patch"/>
+    <ROW Section="v0.0.1.16 patch" Key="Name" Value="League Build Stats 0.0.1.16 Patch"/>
+    <ROW Section="v0.0.1.16 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.16/LeagueBuildStatsPatcher-0.0.1.16.msp"/>
+    <ROW Section="v0.0.1.16 patch" Key="Size" Value="patch-0.0.1.16-SetupFiles\LeagueBuildStatsPatcher-0.0.1.16.msp"/>
+    <ROW Section="v0.0.1.16 patch" Key="ReleaseDate" Value="17994"/>
+    <ROW Section="v0.0.1.16 patch" Key="MD5" Value="patch-0.0.1.16-SetupFiles\LeagueBuildStatsPatcher-0.0.1.16.msp"/>
+    <ROW Section="v0.0.1.16 patch" Key="ServerFileName" Value="LeagueBuildStatsPatcher-0.0.1.16.msp"/>
+    <ROW Section="v0.0.1.16 patch" Key="Flags" Value="IsPatch"/>
+    <ROW Section="v0.0.1.16 patch" Key="RegistryKey" Value="HKUD\SOFTWARE\League Build Stats\Version"/>
+    <ROW Section="v0.0.1.16 patch" Key="Version" Value="0.0.1.16"/>
+    <ROW Section="v0.0.1.16 patch" Key="Description" Value="Includes all previous patches!&#13;&#10;"/>
+    <ROW Section="v0.0.1.16 patch" Key="BugFix" Value="Fixes equiping item bug."/>
+    <ROW Section="v0.0.1.16 patch" Key="Replaces" Value="v0.0.1.11 patch;v0.0.1.12 patch;v0.0.1.13 patch;v0.0.1.14 patch;v0.0.1.15 patch"/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>
