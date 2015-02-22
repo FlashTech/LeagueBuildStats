@@ -61,7 +61,7 @@
     <ROW Section="v0.0.1.14 patch" Key="BugFix" Value="Fixed many calculations on Stats Tab.&#13;&#10;Fix Mastery stats and apply them to stats page.&#13;&#10;Made UNIQUE Passives with no name now DO stack if on different items."/>
     <ROW Section="v0.0.1.14 patch" Key="Replaces" Value="v0.0.1.11 patch;v0.0.1.12 patch;v0.0.1.13 patch"/>
     <ROW Section="v0.0.1.15 patch" Key="Name" Value="League Build Stats 0.0.1.15 Patch"/>
-    <ROW Section="v0.0.1.15 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.14/LeagueBuildStatsPatcher-0.0.1.14.msp"/>
+    <ROW Section="v0.0.1.15 patch" Key="URL" Value="http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.15/LeagueBuildStatsPatcher-0.0.1.15.msp"/>
     <ROW Section="v0.0.1.15 patch" Key="Size" Value="patch-0.0.1.15-SetupFiles\LeagueBuildStatsPatcher-0.0.1.15.msp"/>
     <ROW Section="v0.0.1.15 patch" Key="ReleaseDate" Value="17994"/>
     <ROW Section="v0.0.1.15 patch" Key="MD5" Value="patch-0.0.1.15-SetupFiles\LeagueBuildStatsPatcher-0.0.1.15.msp"/>
