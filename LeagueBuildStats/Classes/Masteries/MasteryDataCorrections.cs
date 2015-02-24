@@ -21,10 +21,18 @@ namespace LeagueBuildStats.Classes.Masteries
 
 				temp.StatsList = new List<StatsStatic>();
 
-				if (!temp.Name.Contains("Legendary Guardian")) //Filter out legendary guardian
+				if (temp.Name.Contains("Legendary Guardian")) //Filter out legendary guardian
+				{
+					foreach (string sDesc in temp.Description)
+					{
+						temp.StatsList.Add(new StatsStatic()); //Generate blank stats for the filtered out masteries
+					}
+				}
+				else
 				{
 					RunListOfCorrections(temp);
 				}
+
 				if (temp.StatsList.Count == 0)
 				{
 					temp.StatsList.Add(new StatsStatic());
