@@ -132,8 +132,11 @@ namespace LeagueBuildStats.UserControls
 
 				//Offence Variables//////////////////////////////////////////////////
 				double dAttackDamage = champ1.Stats.AttackDamage + ((level - 1) * champ1.Stats.AttackDamagePerLevel) + statsStatic.FlatPhysicalDamageMod;
-				double dAttackSpeedBase = 0.625 / (1 + champ1.Stats.AttackSpeedOffset) + ((level - 1) * champ1.Stats.AttackSpeedPerLevel / 100);
-				double dAttackSpeed = dAttackSpeedBase * (1 + (statsStatic.PercentAttackSpeedMod));
+				double dAttackSpeedBase = 0.625 / (1 + champ1.Stats.AttackSpeedOffset);
+				double dAttackPerLevelBonuses = (level - 1) * champ1.Stats.AttackSpeedPerLevel / 100;
+				double dAttackBonuses = 1 + statsStatic.PercentAttackSpeedMod + dAttackPerLevelBonuses;
+
+				double dAttackSpeed = dAttackSpeedBase * dAttackBonuses;
 				if (dAttackSpeed >= 2.5) { dAttackSpeed = 2.5; }
 				double dArmorPen1 = statsStatic.RFlatArmorPenetrationMod + (level - 1) * statsStatic.RFlatArmorPenetrationModPerLevel;
 				double dArmorPen2 = statsStatic.RPercentArmorPenetrationMod + (level - 1) * statsStatic.RPercentArmorPenetrationModPerLevel;
@@ -242,7 +245,7 @@ namespace LeagueBuildStats.UserControls
 				//Offence Text Boxes//
 				lblCtrlAttackDamage.Text = Math.Round(dAttackDamage, MidpointRounding.AwayFromZero).ToString();
 				//if (dAttackDamage != champ1.Stats.AttackDamage + ((level - 1) * champ1.Stats.AttackDamagePerLevel)) { lblCtrlAttackDamage.ForeColor = HighlightColor; } else { lblCtrlAttackDamage.ForeColor = Color.White; }
-				lblCtrlAttackSpeed.Text = Math.Round(dAttackSpeed, 2, MidpointRounding.AwayFromZero).ToString();
+				lblCtrlAttackSpeed.Text = Math.Round(dAttackSpeed, 3, MidpointRounding.AwayFromZero).ToString();
 				lblCtrlArmorPen1.Text = Math.Round(dArmorPen1, MidpointRounding.AwayFromZero).ToString();
 				lblCtrlArmorPen2.Text = Math.Round(dArmorPen2 * 100, MidpointRounding.AwayFromZero).ToString() + "%";
 				lblCtrlCritChance.Text = Math.Round(dCritChance * 100, 1, MidpointRounding.AwayFromZero).ToString() + "%";
