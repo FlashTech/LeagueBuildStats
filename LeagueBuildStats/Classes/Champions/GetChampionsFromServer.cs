@@ -169,6 +169,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 
 					//TODO: temp test
 					//FindMissingParamsInSpells(champions);
+					//FindMissingBaseAttackSpeeds(champions);
 
 					success = true;
 				}
@@ -188,6 +189,25 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 				success = false;
 			}
 			return success;
+		}
+
+		private void FindMissingBaseAttackSpeeds(ChampionListStatic champions)
+		{
+			List<string> tempChampsMissingBaseAS = new List<string>();
+			foreach (ChampionStatic thisChamp in champions.Champions.Values)
+			{
+				if (thisChamp.Stats.AttackSpeedOffset == 0.0)
+				{
+					tempChampsMissingBaseAS.Add(thisChamp.Name);
+				}
+			}
+			tempChampsMissingBaseAS.Add("done");
+			string all = "";
+			foreach (string s in tempChampsMissingBaseAS)
+			{
+				all += s + ",";
+			}
+			all += "done";
 		}
 
 
