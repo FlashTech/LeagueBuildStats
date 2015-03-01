@@ -38,9 +38,21 @@ namespace LeagueBuildStats.Forms
 			this.form1 = form;
 			InitializeComponent();
 			richEditCtrDetails.ActiveView.BackColor = xtraScrollableControlItems.BackColor;
+			richEditCtrDetails.PopupMenuShowing += richEditCtrDetails_PopupMenuShowing;
+			richEditCtrDetails.Enabled = false; //Hides cursor and highlighting ability
 			lblDetailName.Text = "";
 			lblDetailPrice.Text = "";
 			createItemSortMenu = new CreateItemSortMenu(xtraScrollableControlItemSort, flowLayoutPanelItems2);
+		}
+
+		/// <summary>
+		/// Hides the right-click context menu for the richEditCtrDetails (RichEditControl)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		void richEditCtrDetails_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+		{
+			e.Menu.Items.Clear();
 		}
 
 		public bool CollectItemData(string inputVersion = null)
