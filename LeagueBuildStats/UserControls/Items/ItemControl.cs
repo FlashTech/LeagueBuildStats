@@ -189,9 +189,9 @@ namespace LeagueBuildStats
 			PictureBox itemPicBox = new PictureBox();
 			itemPicBox.Size = new Size(48, 48);
 			itemPicBox.Location = new Point(0, 0);
-			string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, itemPreped.thisVersion, itemPreped.aItem.Value.Image.Sprite);
+			string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, itemPreped.thisVersion, itemPreped.aItem.Image.Sprite);
 			Image imageItem = Image.FromFile(file);
-			Image image = CommonMethods.cropImage(imageItem, new Rectangle(itemPreped.aItem.Value.Image.X, itemPreped.aItem.Value.Image.Y, itemPreped.aItem.Value.Image.Width, itemPreped.aItem.Value.Image.Height));
+			Image image = CommonMethods.cropImage(imageItem, new Rectangle(itemPreped.aItem.Image.X, itemPreped.aItem.Image.Y, itemPreped.aItem.Image.Width, itemPreped.aItem.Image.Height));
 			itemPicBox.Image = image;
 			itemPicBox.MouseClick += frm1.mainTopBar.itemPicBox_MouseClick;
 			itemPicBox.Cursor = Cursors.Hand;

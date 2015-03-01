@@ -116,7 +116,7 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 			int cost = 0;
 			if (pnlItem.Tag != null)
 			{
-				cost = ((CreateItemDiv)pnlItem.Tag).aItem.Value.Gold.TotalPrice;
+				cost = ((CreateItemDiv)pnlItem.Tag).aItem.Gold.TotalPrice;
 			}
 			return cost;
 		}
@@ -487,9 +487,9 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 						PictureBox itemPicBox = new PictureBox();
 						itemPicBox.Size = new Size(48, 48);
 						itemPicBox.Location = new Point(0, 0);
-						string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, itemPreped.thisVersion, itemPreped.aItem.Value.Image.Sprite);
+						string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, itemPreped.thisVersion, itemPreped.aItem.Image.Sprite);
 						Image imageItem = Image.FromFile(file);
-						Image image = CommonMethods.cropImage(imageItem, new Rectangle(itemPreped.aItem.Value.Image.X, itemPreped.aItem.Value.Image.Y, itemPreped.aItem.Value.Image.Width, itemPreped.aItem.Value.Image.Height));
+						Image image = CommonMethods.cropImage(imageItem, new Rectangle(itemPreped.aItem.Image.X, itemPreped.aItem.Image.Y, itemPreped.aItem.Image.Width, itemPreped.aItem.Image.Height));
 						itemPicBox.Image = image;
 						itemPicBox.MouseClick += itemPicBox_MouseClick;
 						itemPicBox.Cursor = Cursors.Hand;
@@ -579,7 +579,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 							<span style='color:Yellow;'>Cost: {1}</span> <br/><br/>
 							{2}<br/>
 						",//</p></div>"
-						itemPreped.thisItemDisplayName, itemPreped.aItem.Value.Gold.TotalPrice, itemPreped.DivText);
+						itemPreped.thisItemDisplayName, itemPreped.aItem.Gold.TotalPrice, itemPreped.DivText);
 
 			//todo: this is a test to show the stats of the items
 			if (((ToolStripMenuItem)contextMenuStrip1.Items[0]).Checked)
@@ -591,9 +591,9 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 
 					foreach (System.Reflection.PropertyInfo property in properties)
 					{
-						Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
+						Double statValue = (Double)itemPreped.aItem.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Stats);
 						Double uniqueValue = 0.0;
-						foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
+						foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.UniqueStats)
 						{
 							uniqueValue += (Double)uniqueStats.Value.GetType().GetProperty(property.Name).GetValue(uniqueStats.Value);
 						}

@@ -383,9 +383,9 @@ namespace LeagueBuildStats.UserControls
 
 						foreach (System.Reflection.PropertyInfo property in properties)
 						{
-							Double statValue = (Double)itemPreped.aItem.Value.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Value.Stats);
+							Double statValue = (Double)itemPreped.aItem.Stats.GetType().GetProperty(property.Name).GetValue(itemPreped.aItem.Stats);
 							Double uniqueValue = 0.0;
-							foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.Value.UniqueStats)
+							foreach (KeyValuePair<string, StatsStatic> uniqueStats in itemPreped.aItem.UniqueStats)
 							{
 								if (!uniqueStatsList.Contains(uniqueStats.Key))
 								{

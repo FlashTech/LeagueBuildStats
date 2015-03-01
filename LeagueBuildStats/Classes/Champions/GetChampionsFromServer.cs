@@ -289,7 +289,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 					}
 
 
-					//TODO: Check for missing params
+					//TODO: Check for missing params Uncomment lines below to reactivate
 					List<string> tempMissingParams = new List<string>();
 					if (sDescPrep.Contains("{{"))
 					{

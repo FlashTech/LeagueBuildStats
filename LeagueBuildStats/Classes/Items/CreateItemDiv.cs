@@ -13,17 +13,10 @@ namespace LeagueBuildStats
 	[Serializable]
 	public class CreateItemDiv
 	{
-		private System.Collections.Generic.KeyValuePair<int, RiotSharp.StaticDataEndpoint.ItemStatic> thisItem;
-		public System.Collections.Generic.KeyValuePair<int, RiotSharp.StaticDataEndpoint.ItemStatic> aItem
+		public ItemStatic aItem
 		{
-			get
-			{
-				return this.thisItem;
-			}
-			set
-			{
-				this.thisItem = value;
-			}
+			get;
+			set;
 		}
 		public string NewDesc;
 		public string DivText;
@@ -35,46 +28,41 @@ namespace LeagueBuildStats
 		public string htmlToolTipOfItem;
 		public string thisItemDisplayName;
 
-		public void SetupItemInformation(System.Collections.Generic.KeyValuePair<int, RiotSharp.StaticDataEndpoint.ItemStatic> inputItem, string version, ItemStatic enchantBaseItem = null)
-		{
-			thisItem = inputItem;
-			thisVersion = version;
-			thisID = thisItem.Value.Id;
 
-			//TODO: Note: this is a tester used to break the look and observe an items information
-			if (thisItem.Value.Name.Contains("Alacrity"))
-			{
-				string temp = thisItem.Value.Description.ToString();
-			}
+		public void SetupItemInformation(ItemStatic inputItem, string version, ItemStatic enchantBaseItem = null)
+		{
+			thisVersion = version;
+			thisID = inputItem.Id;
+
 
 			//Filter Out Items
-			if (thisItem.Value.Name.Contains("Enchantment:"))
+			if (inputItem.Name.Contains("Enchantment:"))
 			{
 				filteredOut = true;
 			}
-			if (thisItem.Value.Gold.Purchasable == false)
+			if (inputItem.Gold.Purchasable == false)
 			{
 				filteredOut = true;
 			}
 
-			if (thisItem.Value.Name.Contains("Bonetooth Necklace"))
+			if (inputItem.Name.Contains("Bonetooth Necklace"))
 			{
 				filteredOut = true;
 			}
-			
+
 
 			// store tags for this item
-			if (thisItem.Value.Tags != null)
+			if (inputItem.Tags != null)
 			{
-				foreach (string tag in thisItem.Value.Tags)
+				foreach (string tag in inputItem.Tags)
 				{
 					thisTags += " " + tag;
 				}
-				if (!thisItem.Value.Tags.Contains("stealth") && (thisItem.Value.Name.Contains("Greater Vision Totem") || thisItem.Value.Name.Contains("Oracle's Lens")))
+				if (!inputItem.Tags.Contains("stealth") && (inputItem.Name.Contains("Greater Vision Totem") || inputItem.Name.Contains("Oracle's Lens")))
 				{
 					thisTags += " " + "Stealth";
 				}
-				if (!thisItem.Value.Tags.Contains("stealth") && (thisItem.Value.Description.Contains("stealth-detecting")))
+				if (!inputItem.Tags.Contains("stealth") && (inputItem.Description.Contains("stealth-detecting")))
 				{
 					thisTags += " " + "Stealth";
 				}
@@ -88,7 +76,7 @@ namespace LeagueBuildStats
 
 			//Select the appropriate image for the item
 			string imageUrl = string.Format(@"http://ddragon.leagueoflegends.com/cdn/{0}/img/sprite/item0.png", thisVersion); ;
-			switch (thisItem.Value.Image.Sprite)
+			switch (inputItem.Image.Sprite)
 			{
 				case "item0.png":
 					imageUrl = string.Format(@"http://ddragon.leagueoflegends.com/cdn/{0}/img/sprite/item0.png", thisVersion);
@@ -102,8 +90,8 @@ namespace LeagueBuildStats
 			}
 
 			//Fix enchantment description and name
-			thisItemDisplayName = thisItem.Value.Name;
-			string ItemDesc = thisItem.Value.Description.ToString();
+			thisItemDisplayName = inputItem.Name;
+			string ItemDesc = inputItem.Description.ToString();
 			if (enchantBaseItem != null)
 			{
 				if (enchantBaseItem.Tags.Contains("Boots"))
@@ -115,22 +103,22 @@ namespace LeagueBuildStats
 					ItemDesc += "<br/><br/>" + enchantBaseItem.Description;
 				}
 				//Todo, 
-				thisItem.Value.Description = ItemDesc;
-				thisItem.Value.Name = enchantBaseItem.Name + " - " + thisItemDisplayName.After("Enchantment: ");
+				inputItem.Description = ItemDesc;
+				inputItem.Name = enchantBaseItem.Name + " - " + thisItemDisplayName.After("Enchantment: ");
 				thisItemDisplayName = enchantBaseItem.Name + " - " + thisItemDisplayName.After("Enchantment: ");
 			}
-			
+
 
 
 			//Update description to include if requires a champion or if requires a map
-			if (thisItem.Value.RequiredChampion != null)
+			if (inputItem.RequiredChampion != null)
 			{
-				ItemDesc += string.Format(@"<br/><br/> <font color=""#780000""> This item is only available on {0} </font>", thisItem.Value.RequiredChampion);
+				ItemDesc += string.Format(@"<br/><br/> <font color=""#780000""> This item is only available on {0} </font>", inputItem.RequiredChampion);
 			}
-			if (thisItem.Value.Maps != null)
+			if (inputItem.Maps != null)
 			{
 				string tempDescMaps = "";
-				foreach (KeyValuePair<string, bool> map in thisItem.Value.Maps)
+				foreach (KeyValuePair<string, bool> map in inputItem.Maps)
 				{
 					if (map.Value == false)
 					{
@@ -153,19 +141,19 @@ namespace LeagueBuildStats
 			//Stores the new Item Description
 			while (ItemDesc.EndsWith("<br/>") || ItemDesc.EndsWith("<br>"))
 			{
-				if (ItemDesc.EndsWith("<br/>")) 
-				{ 
-					ItemDesc = ItemDesc.Substring(0, ItemDesc.Length - 5); 
+				if (ItemDesc.EndsWith("<br/>"))
+				{
+					ItemDesc = ItemDesc.Substring(0, ItemDesc.Length - 5);
 				}
-				else 
-				{ 
-					ItemDesc = ItemDesc.Substring(0, ItemDesc.Length - 4); 
+				else
+				{
+					ItemDesc = ItemDesc.Substring(0, ItemDesc.Length - 4);
 				}
 			}
 			NewDesc = ItemDesc + "<br/>";
 
 			//Only actually render the item if it has not been filtered out
-			string ItemID = "Item" + thisItem.Value.Id;
+			string ItemID = "Item" + inputItem.Id;
 
 
 
@@ -176,11 +164,11 @@ namespace LeagueBuildStats
 						<div ID=""{2}"" onmouseover=""OnHoverDiv('{1}')"" class=""itemImage"" style=""background-image: url('{3}'); background-position: -{4}px -{5}px;"">
 						</div>"
 				, thisTags					//0
-				, thisItem.Value.Id			//1
+				, inputItem.Id			//1
 				, ItemID					//2
 				, imageUrl					//3
-				, thisItem.Value.Image.X 	//4
-				, thisItem.Value.Image.Y	//5
+				, inputItem.Image.X 	//4
+				, inputItem.Image.Y	//5
 			);
 
 			//This section is the tooltip image and information.
@@ -197,10 +185,10 @@ namespace LeagueBuildStats
 						</span>"
 				//Note: The </i></i></i> above is a percaution because I found unclosed <i> in Descriptions that broke everything if not closed.
 				, imageUrl									//0
-				, thisItem.Value.Image.X					//1
-				, thisItem.Value.Image.Y					//2
+				, inputItem.Image.X					//1
+				, inputItem.Image.Y					//2
 				, thisItemDisplayName								//3
-				, thisItem.Value.Gold.TotalPrice.ToString()	//4
+				, inputItem.Gold.TotalPrice.ToString()	//4
 				, ItemDesc									//5
 			);
 
@@ -257,7 +245,10 @@ namespace LeagueBuildStats
 
 
 			DivText = StringExtensions.BrWrapper(tempDescription);
+
+			aItem = inputItem;
 		}
+
 
 		private string SpanFixer(string tempDescription)
 		{

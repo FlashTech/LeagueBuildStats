@@ -16,11 +16,11 @@ namespace LeagueBuildStats.Classes.Items
 	{
 		
 
-		public List<KeyValuePair<string, int>> itemGold_Names = new List<KeyValuePair<string, int>>();
+		public List<KeyValuePair<int, int>> itemGold_Names = new List<KeyValuePair<int, int>>();
 		public List<CreateItemDiv> itemsPrepared = new List<CreateItemDiv>();
-		public string Version = "";
+		public string version = "";
 
-		static int Compare2(KeyValuePair<string, int> a, KeyValuePair<string, int> b)
+		static int Compare2(KeyValuePair<int, int> a, KeyValuePair<int, int> b)
 		{
 			return a.Value.CompareTo(b.Value);
 		}
@@ -119,7 +119,7 @@ namespace LeagueBuildStats.Classes.Items
 									i.Value.Tags.Add("Stealth");
 								}
 							}
-							itemGold_Names.Add(new KeyValuePair<string, int>(i.Value.Id.ToString(), i.Value.Gold.TotalPrice));
+							itemGold_Names.Add(new KeyValuePair<int, int>(i.Value.Id, i.Value.Gold.TotalPrice));
 						}
 					}
 				}
@@ -133,33 +133,31 @@ namespace LeagueBuildStats.Classes.Items
 			//Loop through all sorted item names and store item data
 			foreach (var item in itemGold_Names)
 			{
-				foreach (System.Collections.Generic.KeyValuePair<int, RiotSharp.StaticDataEndpoint.ItemStatic> i in items.Items)
+				ItemStatic i = items.Items[item.Key];
+
+				int enchantBaseId = 0;
+				ItemStatic enchantBaseItem;
+				CreateItemDiv newItem = new CreateItemDiv();
+				if (i.Name.Contains("Enchantment:"))
 				{
-
-					if (i.Value.Id.ToString() == item.Key)
-					{
-						int enchantBaseId = 0;
-						ItemStatic enchantBaseItem;
-						CreateItemDiv newItem = new CreateItemDiv();
-						if (i.Value.Name.Contains("Enchantment:"))
-						{
-							enchantBaseId = Convert.ToInt16(i.Value.From[0]);
-							items.Items.TryGetValue(enchantBaseId, out enchantBaseItem);
-							newItem.SetupItemInformation(i, items.Version, enchantBaseItem);
-						}
-						else
-						{
-							newItem.SetupItemInformation(i, items.Version);
-
-						}
-						itemsPrepared.Add(newItem);
-					}
+					enchantBaseId = Convert.ToInt16(i.From[0]);
+					items.Items.TryGetValue(enchantBaseId, out enchantBaseItem);
+					newItem.SetupItemInformation(i, items.Version, enchantBaseItem);
 				}
+				else
+				{
+					newItem.SetupItemInformation(i, items.Version);
+
+				}
+				itemsPrepared.Add(newItem);
+
+
 			}
 
 			ItemDataCorrections.RunCorrections(items);
 
-			Version = items.Version;
+			
+			version = items.Version;
 		}
 
 		public bool LoadRiotItemData(string version)
@@ -234,9 +232,9 @@ namespace LeagueBuildStats.Classes.Items
 				List<string> spriteList = new List<string>();
 				foreach (CreateItemDiv citem in itemsPrepared)
 				{
-					if (!spriteList.Contains(citem.aItem.Value.Image.Sprite))
+					if (!spriteList.Contains(citem.aItem.Image.Sprite))
 					{
-						spriteList.Add(citem.aItem.Value.Image.Sprite);
+						spriteList.Add(citem.aItem.Image.Sprite);
 					}
 
 				}

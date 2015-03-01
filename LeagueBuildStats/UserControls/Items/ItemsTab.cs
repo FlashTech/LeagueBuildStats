@@ -69,7 +69,7 @@ namespace LeagueBuildStats.Forms
 			bool success = false;
 			try
 			{
-				string file = string.Format(@"{0}\Data\Items\getItemsFromServer.{1}.bin", PublicStaticVariables.thisAppDataDir, getItemsFromServer.Version);
+				string file = string.Format(@"{0}\Data\Items\getItemsFromServer.{1}.bin", PublicStaticVariables.thisAppDataDir, getItemsFromServer.version);
 				string dir = string.Format(@"{0}\Data\Items", PublicStaticVariables.thisAppDataDir);
 
 				if (!Directory.Exists(dir))
@@ -164,7 +164,7 @@ namespace LeagueBuildStats.Forms
 				foreach (CreateItemDiv item in getItemsFromServer.itemsPrepared)
 				{
 					string version = getItemsFromServer.itemsPrepared[0].thisVersion;
-					string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, version, item.aItem.Value.Image.Sprite);
+					string file = string.Format(@"{0}\Data\Items\Images\{1}\{2}", PublicStaticVariables.thisAppDataDir, version, item.aItem.Image.Sprite);
 					string dir = string.Format(@"{0}\Data\Items\Images\{1}", PublicStaticVariables.thisAppDataDir, version);
 
 					if (!Directory.Exists(dir)) 
@@ -177,27 +177,27 @@ namespace LeagueBuildStats.Forms
 					//Creating this control is the slowest part of this code
 					ItemControl itemControl = new ItemControl(form1, this);
 
-					itemControl.ItemCostLabel = item.aItem.Value.Gold.TotalPrice.ToString();
-					Image image = CommonMethods.cropImage(imageItem, new Rectangle(item.aItem.Value.Image.X, item.aItem.Value.Image.Y, item.aItem.Value.Image.Width, item.aItem.Value.Image.Height));
+					itemControl.ItemCostLabel = item.aItem.Gold.TotalPrice.ToString();
+					Image image = CommonMethods.cropImage(imageItem, new Rectangle(item.aItem.Image.X, item.aItem.Image.Y, item.aItem.Image.Width, item.aItem.Image.Height));
 					itemControl.ItemImage = image;
 
-					itemControl.Name = "ItemControl " + item.aItem.Value.Name;
+					itemControl.Name = "ItemControl " + item.aItem.Name;
 					itemControl.item = item;
 
 					List<string> temp = new List<string>();
 
-					if (item.aItem.Value.Tags == null)
+					if (item.aItem.Tags == null)
 					{
 						temp.Add("noTag");
 						itemControl.Tag = temp;
 					}
 					else
 					{
-						temp = item.aItem.Value.Tags;
+						temp = item.aItem.Tags;
 					}
 
 					ItemTags itemTags = new ItemTags();
-					itemTags.ItemName = item.aItem.Value.Name;
+					itemTags.ItemName = item.aItem.Name;
 					itemTags.Tags = temp;
 
 					itemControl.Tag = itemTags;
@@ -256,9 +256,9 @@ namespace LeagueBuildStats.Forms
 				}
 
 				//Prepare Item "Into" details
-				if (item.aItem.Value.Into != null)
+				if (item.aItem.Into != null)
 				{
-					List<int> itemsInto = item.aItem.Value.Into;
+					List<int> itemsInto = item.aItem.Into;
 					int total = itemsInto.Count();
 					decimal rows = Math.Floor(((decimal)total / 8)) + 1;
 					int ind = 0;
@@ -277,7 +277,7 @@ namespace LeagueBuildStats.Forms
 						}
 						for (ind = indStart; ind < indEnd; ind++)
 						{
-							itemRowList.Add(item.aItem.Value.Into[ind]);
+							itemRowList.Add(item.aItem.Into[ind]);
 						}
 						CreateRowOfItemDetailsInto(itemRowList, i + 1);
 						indStart = ind;
@@ -312,16 +312,16 @@ namespace LeagueBuildStats.Forms
 				Directory.CreateDirectory(dir);
 			}
 
-			Image tempImageSprite = Image.FromFile(file + @"\" + item.aItem.Value.Image.Sprite);
+			Image tempImageSprite = Image.FromFile(file + @"\" + item.aItem.Image.Sprite);
 
-			Image image = CommonMethods.cropImage(tempImageSprite, new Rectangle(item.aItem.Value.Image.X, item.aItem.Value.Image.Y, item.aItem.Value.Image.Width, item.aItem.Value.Image.Height));
+			Image image = CommonMethods.cropImage(tempImageSprite, new Rectangle(item.aItem.Image.X, item.aItem.Image.Y, item.aItem.Image.Width, item.aItem.Image.Height));
 
 			//Update the Item image
 			picBoxItemDetail.Image = image;
 
 			//Update the Title and price
 			lblDetailName.Text = item.thisItemDisplayName;
-			lblDetailPrice.Text = "Cost: " + item.aItem.Value.Gold.TotalPrice;
+			lblDetailPrice.Text = "Cost: " + item.aItem.Gold.TotalPrice;
 
 			using (Stream s = GenerateStreamFromString(item.htmlToolTipOfItem))
 			{
@@ -357,21 +357,12 @@ namespace LeagueBuildStats.Forms
 				{
 					CreateItemDiv item = new CreateItemDiv();
 
-
-					//TODO: this would work faster with a dictionary
-					//item = getItemsFromServer.itemsPrepared.FirstOrDefault(o => o.thisID == itemRowList[i]);
-					foreach (CreateItemDiv cItem in getItemsFromServer.itemsPrepared)
-					{
-						if (cItem.thisID == itemRowList[i])
-						{
-							item = cItem;
-						}
-					}
+					item = getItemsFromServer.itemsPrepared.FirstOrDefault(o => o.thisID == itemRowList[i]);
 
 					if (item.thisID != 0)
 					{
 						ItemControl itemControl = new ItemControl(form1, this);
-						itemControl.ItemCostLabel = item.aItem.Value.Gold.TotalPrice.ToString();
+						itemControl.ItemCostLabel = item.aItem.Gold.TotalPrice.ToString();
 						string file = string.Format(@"{0}\Data\Items\Images\{1}", PublicStaticVariables.thisAppDataDir, item.thisVersion);
 						string dir = string.Format(@"{0}\Data\Items\Images\{1}", PublicStaticVariables.thisAppDataDir, item.thisVersion);
 
@@ -380,10 +371,10 @@ namespace LeagueBuildStats.Forms
 							Directory.CreateDirectory(dir);
 						}
 
-						Image temp = Image.FromFile(string.Format(@"{0}\{1}", file, item.aItem.Value.Image.Sprite));
-						itemControl.ItemImage = CommonMethods.cropImage(temp, new Rectangle(item.aItem.Value.Image.X, item.aItem.Value.Image.Y, item.aItem.Value.Image.Width, item.aItem.Value.Image.Height));
+						Image temp = Image.FromFile(string.Format(@"{0}\{1}", file, item.aItem.Image.Sprite));
+						itemControl.ItemImage = CommonMethods.cropImage(temp, new Rectangle(item.aItem.Image.X, item.aItem.Image.Y, item.aItem.Image.Width, item.aItem.Image.Height));
 
-						itemControl.Name = "ItemControlInto " + item.aItem.Value.Name;
+						itemControl.Name = "ItemControlInto " + item.aItem.Name;
 
 						itemControl.item = item;
 
@@ -423,7 +414,7 @@ Please continue : )"), "League Build Stats - Notice");
 			pnlNew.Height = 20;
 			pnlNew.AutoSize = true;
 			pnlNew.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			pnlNew.Name = "TreeItem" + item.aItem.Value.Name;
+			pnlNew.Name = "TreeItem" + item.aItem.Name;
 			if (LayerPosition > 1)
 			{
 				pnlNew.Location = new Point((pnl.Width / LayerCount) * (LayerPosition-1), 74);
@@ -441,7 +432,7 @@ Please continue : )"), "League Build Stats - Notice");
 			int yPosition = 0;
 
 			ItemControl itemControl = new ItemControl(form1, this);
-			itemControl.ItemCostLabel = item.aItem.Value.Gold.TotalPrice.ToString();
+			itemControl.ItemCostLabel = item.aItem.Gold.TotalPrice.ToString();
 			itemControl.Margin = new System.Windows.Forms.Padding(0);
 
 			string file = string.Format(@"{0}\Data\Items\Images\{1}", PublicStaticVariables.thisAppDataDir, item.thisVersion);
@@ -451,10 +442,10 @@ Please continue : )"), "League Build Stats - Notice");
 			{
 				Directory.CreateDirectory(dir);
 			}
-			Image temp = Image.FromFile(string.Format(@"{0}\{1}", file, item.aItem.Value.Image.Sprite));
-			itemControl.ItemImage = CommonMethods.cropImage(temp, new Rectangle(item.aItem.Value.Image.X, item.aItem.Value.Image.Y, item.aItem.Value.Image.Width, item.aItem.Value.Image.Height));
+			Image temp = Image.FromFile(string.Format(@"{0}\{1}", file, item.aItem.Image.Sprite));
+			itemControl.ItemImage = CommonMethods.cropImage(temp, new Rectangle(item.aItem.Image.X, item.aItem.Image.Y, item.aItem.Image.Width, item.aItem.Image.Height));
 
-			itemControl.Name = "ItemControlTree " + item.aItem.Value.Name;
+			itemControl.Name = "ItemControlTree " + item.aItem.Name;
 
 			itemControl.item = item;
 
@@ -466,7 +457,7 @@ Please continue : )"), "League Build Stats - Notice");
 
 
 			int position = 0;
-			if (item.aItem.Value.From != null)
+			if (item.aItem.From != null)
 			{
 				//Create Connecting Lines to children
 				Color color = Color.DimGray;
@@ -485,7 +476,7 @@ Please continue : )"), "League Build Stats - Notice");
 				Panel pnlLine2 = new Panel();
 				pnlLine2.BackColor = color;
 				pnlLine2.Margin = new Padding(0, 0, 0, 0);
-				int icount = item.aItem.Value.From.Count();
+				int icount = item.aItem.From.Count();
 				int line2x1 = pnlNew.Width / (icount * 2);
 				int line2y1 = line1y1 + line1y2;
 				pnlLine2.Location = new Point(line2x1, line2y1);
@@ -515,18 +506,14 @@ Please continue : )"), "League Build Stats - Notice");
 					
 				
 				//Create children tree
-				foreach (string sItem in item.aItem.Value.From)
+				foreach (string sItem in item.aItem.From)
 				{
 					position += 1;
-					foreach (CreateItemDiv cItem in getItemsFromServer.itemsPrepared)
-					{
-						if (cItem.aItem.Value.Id.ToString() == sItem)
-						{
-							RecursiveItemChildren(cItem, pnlNew, item.aItem.Value.From.Count, position, false);
-							pnl.AutoSize = true;
-							pnlNew.AutoSize = true;
-						}
-					}
+
+					CreateItemDiv cItem = getItemsFromServer.itemsPrepared.FirstOrDefault(o => o.thisID.ToString() == sItem);
+					RecursiveItemChildren(cItem, pnlNew, item.aItem.From.Count, position, false);
+					pnl.AutoSize = true;
+					pnlNew.AutoSize = true;
 				}
 			}
 			pnl.AutoSize = true;

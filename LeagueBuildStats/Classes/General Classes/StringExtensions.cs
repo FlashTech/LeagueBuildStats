@@ -56,7 +56,6 @@ namespace LeagueBuildStats.Classes.General_Classes
 				int lineLength = 50;
 				int lineLengthTemp = 0;
 				bool waitForClose = false;
-				//foreach (string s in words)
 				for (int i = 0; i < words.Count(); i++ )
 				{
 					string s = words[i];
