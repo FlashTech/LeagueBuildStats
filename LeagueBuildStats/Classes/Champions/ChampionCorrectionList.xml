@@ -4,7 +4,7 @@
   This section will potentiall be updated for every patch. 
   Spells are numbered as follows: 0 for q, 1 for w, 2 for e, 3 for r. -->
   <CorrectionList Version="4.21.1">
-    <Ability champion="RekSai" label="stats" button="null" buttonNum="AttackSpeedOffset" key="AttackSpeedOffset" coeff="−0.063" link=""/>
+    <Ability champion="RekSai" label="stats" button="null" buttonNum="AttackSpeedOffset" key="AttackSpeedOffset" coeff="-0.063" link=""/>
     <Ability champion="Azir" label="stats" button="null" buttonNum="AttackSpeedOffset" key="AttackSpeedOffset" coeff="0.0417" link=""/>
     <Ability champion="Thresh" label="spells" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
     <Ability champion="Thresh" label="spells" button="e" buttonNum="2" key="f2" coeff="&quot;(num of souls + ({{ e3 }})% of AD)&quot;" link=""/>
