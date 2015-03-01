@@ -4,77 +4,79 @@
   This section will potentiall be updated for every patch. 
   Spells are numbered as follows: 0 for q, 1 for w, 2 for e, 3 for r. -->
   <CorrectionList Version="4.21.1">
-    <Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
-    <Ability champion="Thresh" button="e" buttonNum="2" key="f2" coeff="&quot;(num of souls + ({{ e3 }})% of AD)&quot;" link=""/>
-    <Ability champion="Aatrox" button="w" buttonNum="1" key="f4" coeff="&quot;15 / 23.75 / 32.5 / 41.25 / 50 (+25% bonus AD)&quot;" link=""/>
-    <Ability champion="Aatrox" button="w" buttonNum="1" key="f5" coeff="0.75" link="bonusattackdamage"/>
-    <Ability champion="Gragas" button="e" buttonNum="2" key="f1" coeff="3" link=""/>
-    <Ability champion="Cassiopeia" button="e" buttonNum="2" key="f2" coeff="0.55" link="spelldamage"/>
-    <Ability champion="Sion" button="w" buttonNum="1" key="f2" coeff="0.10" link="maxhealth"/>
-    <Ability champion="Ahri" button="w" buttonNum="1" key="f1" coeff="&quot;{{ e3 }} (+64% of ability power)&quot;" link=""/>
-    <Ability champion="Viktor" button="q" buttonNum="0" key="f3" coeff="0.20" link="spelldamage"/>
-    <Ability champion="Viktor" button="q" buttonNum="0" key="f2" coeff="&quot;20 - 210 (Based on Viktor's level)&quot;" link=""/>
-    <Ability champion="Garen" button="e" buttonNum="2" key="f1" coeff="&quot;Calculated on Stats Tab&quot;" link=""/>
-    <Ability champion="Evelynn" button="q" buttonNum="0" key="f2" coeff="0.35, 0.40, 0.45, 0.50, 0.55" link="@custom.percentOfAP"/>
-    <Ability champion="Zed" button="w" buttonNum="1" key="f3" coeff="&quot;Calculated on Stats Tab&quot;" link=""/>
-    <Ability champion="Sona" button="q" buttonNum="0" key="f1" coeff="&quot;40 / 50 / 60 / 70 / 80 (+10 for each rank in Cresendo)&quot;" link=""/>
-    <Ability champion="Sona" button="w" buttonNum="1" key="f2" coeff="&quot;40 / 60 / 80 / 100 / 120 (+10 for each rank in Cresendo)&quot;" link=""/>
-    <Ability champion="Sona" button="w" buttonNum="1" key="f1" coeff="&quot;(2% of AP)&quot;" link=""/>
-    <Ability champion="Sona" button="e" buttonNum="2" key="f3" coeff="&quot;13 / 14 / 15 / 16 / 17% (+2% for each rank in Cresendo)&quot;" link=""/>
-    <Ability champion="Sona" button="e" buttonNum="2" key="f2" coeff="&quot; +0.075&quot;" link="spelldamage"/>
-    <Ability champion="Sona" button="e" buttonNum="2" key="f4" coeff="&quot;11 / 12 / 13 / 14 / 15% (+2% for each rank in Cresendo)&quot;" link=""/>
-    <Ability champion="Sona" button="e" buttonNum="2" key="f5" coeff="0.035" link="spelldamage"/>
-    <Ability champion="Jayce" button="r" buttonNum="3" key="f1" coeff="20.0, 60.0, 100.0, 140.0" link="@custom.percent"/>
-    <Ability champion="Khazix" button="q" buttonNum="0" key="f3" coeff="91, 123.5, 156, 188.5, 221" link=""/>
-    <Ability champion="Khazix" button="q" buttonNum="0" key="f2" coeff="1.56" link="bonusattackdamage"/>
-    <Ability champion="Corki" button="q" buttonNum="0" key="f1" coeff="0.50" link="spelldamage"/>
-    <Ability champion="Azir" button="w" buttonNum="1" key="f2" coeff="50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170" link=""/>
-    <Ability champion="Azir" button="w" buttonNum="1" key="maxammo" coeff="2" link=""/>
-    <Ability champion="Azir" button="w" buttonNum="1" key="f1" coeff="12, 11, 10, 9, 8" link=""/>
-    <Ability champion="Azir" button="w" buttonNum="1" key="f4" coeff="&quot;(80 + 25 x level)&quot;" link=""/>
-    <Ability champion="Azir" button="e" buttonNum="2" key="f1" coeff="0.15" link="bonushealth"/>
-    <Ability champion="Nidalee" button="q" buttonNum="0" key="f2" coeff="4, 20, 50, 90" link=""/>
-    <Ability champion="Nidalee" button="q" buttonNum="0" key="f3" coeff="0.40" link="spelldamage"/>
-    <Ability champion="Nidalee" button="q" buttonNum="0" key="f4" coeff="10, 50, 125, 225" link=""/>
-    <Ability champion="Nidalee" button="q" buttonNum="0" key="f1" coeff="1.875" link="attackdamage"/>
-    <Ability champion="Nidalee" button="w" buttonNum="1" key="f1" coeff="50, 100, 150, 200" link=""/>
-    <Ability champion="Nidalee" button="w" buttonNum="1" key="f2" coeff="1.5" link=""/>
-    <Ability champion="Nidalee" button="e" buttonNum="2" key="f1" coeff="70, 130, 190, 250" link=""/>
-    <Ability champion="Gnar" button="w" buttonNum="1" key="f1" coeff="&quot;TODO&quot;" link=""/>
-    <Ability champion="Gnar" button="e" buttonNum="2" key="f1" coeff="0.06" link="maxhealth"/>
-    <Ability champion="Nunu" button="q" buttonNum="0" key="f3" coeff="0.10" link=""/>
-    <Ability champion="Nunu" button="q" buttonNum="0" key="f4" coeff="0.15" link=""/>
-    <Ability champion="Nunu" button="q" buttonNum="0" key="f5" coeff="0.01" link=""/>
-    <Ability champion="Nunu" button="r" buttonNum="3" key="f2" coeff="&quot;TODO&quot;" link=""/>
-    <Ability champion="Kalista" button="e" buttonNum="2" key="f1" coeff="0.15, 0.18, 0.21, 0.24, 0.27" link="@custom.percentOfAttack"/>
-    <Ability champion="RekSai" button="w" buttonNum="1" key="f1" coeff="15, 20, 25" link=""/>
-    <Ability champion="RekSai" button="w" buttonNum="1" key="f1" coeff="80, 90, 100, 110, 120" link="@custom.percentOfAttack"/>
-    <Ability champion="RekSai" button="e" buttonNum="2" key="f2" coeff="&quot;TODO&quot;" link=""/>
-    <Ability champion="Rengar" button="q" buttonNum="0" key="f3" coeff="30, 60, 90, 120, 150" link=""/>
-    <Ability champion="Rengar" button="q" buttonNum="0" key="f2" coeff="&quot;TODO&quot;" link=""/>
-    <Ability champion="Rengar" button="q" buttonNum="0" key="f4" coeff="&quot;+50-101&quot;" link=""/>
-    <Ability champion="Rengar" button="w" buttonNum="1" key="f2" coeff="&quot;40-240&quot;" link=""/>
-    <Ability champion="Rengar" button="w" buttonNum="1" key="f1" coeff="&quot;12 + (4 x level)&quot;" link=""/>
-    <Ability champion="Rengar" button="w" buttonNum="1" key="f3" coeff="&quot;(6.25% per 1% of Rengar's missing health)&quot;" link=""/>
-    <Ability champion="Rengar" button="e" buttonNum="2" key="f1" coeff="50, 100, 150, 200, 150" link=""/>
-    <Ability champion="Xerath" button="w" buttonNum="1" key="f1" coeff="60, 90, 120, 150, 180" link=""/>
-    <Ability champion="Xerath" button="w" buttonNum="1" key="f2" coeff="0.60" link="spelldamage"/>
-    <Ability champion="Soraka" button="w" buttonNum="1" key="f1" coeff="0.40" link="spelldamage"/>
-    <Ability champion="MissFortune" button="q" buttonNum="0" key="f1" coeff="0.85" link="attackdamage"/>
-    <Ability champion="MissFortune" button="q" buttonNum="0" key="f2" coeff="1.00" link="attackdamage"/>
-    <Ability champion="MissFortune" button="w" buttonNum="1" key="f1" coeff="0.06" link="attackdamage"/>
-    <Ability champion="MissFortune" button="w" buttonNum="1" key="f3" coeff="5" link=""/>
-    <Ability champion="MissFortune" button="w" buttonNum="1" key="f2" coeff="0.30" link="attackdamage"/>
-    <Ability champion="Braum" button="q" buttonNum="0" key="f1" coeff="0.025" link="maxhealth"/>
-    <Ability champion="Twitch" button="e" buttonNum="2" key="f1" coeff="0.25" link="bonusattackdamage"/>
-    <Ability champion="MasterYi" button="e" buttonNum="2" key="f1" coeff="0.10" link="attackdamage"/>
-    <Ability champion="Taric" button="q" buttonNum="0" key="f1" coeff="0.05" link="bonushealth"/>
-    <Ability champion="Gangplank" button="q" buttonNum="0" key="f2" coeff="0" link=""/>
-    <Ability champion="Kassadin" button="r" buttonNum="3" key="f2" coeff="0.02" link="@custom.percentOfMana"/>
-    <Ability champion="Kassadin" button="r" buttonNum="3" key="f1" coeff="0.01" link="@custom.percentOfMana"/>
-    <Ability champion="Zyra" button="q" buttonNum="0" key="f3" coeff="70, 105, 140, 175, 210" link=""/>
-    <Ability champion="Zyra" button="e" buttonNum="2" key="f3" coeff="&quot;23 + (6.5 x level)&quot;" link=""/>
-    <Ability champion="Nami" button="w" buttonNum="1" key="f1" coeff="&quot;15% - (7.5% of AP)&quot;" link=""/>
-    <Ability champion="Ezreal" button="q" buttonNum="0" key="f1" coeff="1.10" link="attackdamage"/>
+    <Ability champion="RekSai" label="stats" button="null" buttonNum="AttackSpeedOffset" key="AttackSpeedOffset" coeff="−0.063" link=""/>
+    <Ability champion="Azir" label="stats" button="null" buttonNum="AttackSpeedOffset" key="AttackSpeedOffset" coeff="0.0417" link=""/>
+    <Ability champion="Thresh" label="spells" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
+    <Ability champion="Thresh" label="spells" button="e" buttonNum="2" key="f2" coeff="&quot;(num of souls + ({{ e3 }})% of AD)&quot;" link=""/>
+    <Ability champion="Aatrox" label="spells" button="w" buttonNum="1" key="f4" coeff="&quot;15 / 23.75 / 32.5 / 41.25 / 50 (+25% bonus AD)&quot;" link=""/>
+    <Ability champion="Aatrox" label="spells" button="w" buttonNum="1" key="f5" coeff="0.75" link="bonusattackdamage"/>
+    <Ability champion="Gragas" label="spells" button="e" buttonNum="2" key="f1" coeff="3" link=""/>
+    <Ability champion="Cassiopeia" label="spells" button="e" buttonNum="2" key="f2" coeff="0.55" link="spelldamage"/>
+    <Ability champion="Sion" label="spells" button="w" buttonNum="1" key="f2" coeff="0.10" link="maxhealth"/>
+    <Ability champion="Ahri" label="spells" button="w" buttonNum="1" key="f1" coeff="&quot;{{ e3 }} (+64% of ability power)&quot;" link=""/>
+    <Ability champion="Viktor" label="spells" button="q" buttonNum="0" key="f3" coeff="0.20" link="spelldamage"/>
+    <Ability champion="Viktor" label="spells" button="q" buttonNum="0" key="f2" coeff="&quot;20 - 210 (Based on Viktor's level)&quot;" link=""/>
+    <Ability champion="Garen" label="spells" button="e" buttonNum="2" key="f1" coeff="&quot;Calculated on Stats Tab&quot;" link=""/>
+    <Ability champion="Evelynn" label="spells" button="q" buttonNum="0" key="f2" coeff="0.35, 0.40, 0.45, 0.50, 0.55" link="@custom.percentOfAP"/>
+    <Ability champion="Zed" label="spells" button="w" buttonNum="1" key="f3" coeff="&quot;Calculated on Stats Tab&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="q" buttonNum="0" key="f1" coeff="&quot;40 / 50 / 60 / 70 / 80 (+10 for each rank in Cresendo)&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="w" buttonNum="1" key="f2" coeff="&quot;40 / 60 / 80 / 100 / 120 (+10 for each rank in Cresendo)&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="w" buttonNum="1" key="f1" coeff="&quot;(2% of AP)&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="e" buttonNum="2" key="f3" coeff="&quot;13 / 14 / 15 / 16 / 17% (+2% for each rank in Cresendo)&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="e" buttonNum="2" key="f2" coeff="&quot; +0.075&quot;" link="spelldamage"/>
+    <Ability champion="Sona" label="spells" button="e" buttonNum="2" key="f4" coeff="&quot;11 / 12 / 13 / 14 / 15% (+2% for each rank in Cresendo)&quot;" link=""/>
+    <Ability champion="Sona" label="spells" button="e" buttonNum="2" key="f5" coeff="0.035" link="spelldamage"/>
+    <Ability champion="Jayce" label="spells" button="r" buttonNum="3" key="f1" coeff="20.0, 60.0, 100.0, 140.0" link="@custom.percent"/>
+    <Ability champion="Khazix" label="spells" button="q" buttonNum="0" key="f3" coeff="91, 123.5, 156, 188.5, 221" link=""/>
+    <Ability champion="Khazix" label="spells" button="q" buttonNum="0" key="f2" coeff="1.56" link="bonusattackdamage"/>
+    <Ability champion="Corki" label="spells" button="q" buttonNum="0" key="f1" coeff="0.50" link="spelldamage"/>
+    <Ability champion="Azir" label="spells" button="w" buttonNum="1" key="f2" coeff="50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170" link=""/>
+    <Ability champion="Azir" label="spells" button="w" buttonNum="1" key="maxammo" coeff="2" link=""/>
+    <Ability champion="Azir" label="spells" button="w" buttonNum="1" key="f1" coeff="12, 11, 10, 9, 8" link=""/>
+    <Ability champion="Azir" label="spells" button="w" buttonNum="1" key="f4" coeff="&quot;(80 + 25 x level)&quot;" link=""/>
+    <Ability champion="Azir" label="spells" button="e" buttonNum="2" key="f1" coeff="0.15" link="bonushealth"/>
+    <Ability champion="Nidalee" label="spells" button="q" buttonNum="0" key="f2" coeff="4, 20, 50, 90" link=""/>
+    <Ability champion="Nidalee" label="spells" button="q" buttonNum="0" key="f3" coeff="0.40" link="spelldamage"/>
+    <Ability champion="Nidalee" label="spells" button="q" buttonNum="0" key="f4" coeff="10, 50, 125, 225" link=""/>
+    <Ability champion="Nidalee" label="spells" button="q" buttonNum="0" key="f1" coeff="1.875" link="attackdamage"/>
+    <Ability champion="Nidalee" label="spells" button="w" buttonNum="1" key="f1" coeff="50, 100, 150, 200" link=""/>
+    <Ability champion="Nidalee" label="spells" button="w" buttonNum="1" key="f2" coeff="1.5" link=""/>
+    <Ability champion="Nidalee" label="spells" button="e" buttonNum="2" key="f1" coeff="70, 130, 190, 250" link=""/>
+    <Ability champion="Gnar" label="spells" button="w" buttonNum="1" key="f1" coeff="&quot;TODO&quot;" link=""/>
+    <Ability champion="Gnar" label="spells" button="e" buttonNum="2" key="f1" coeff="0.06" link="maxhealth"/>
+    <Ability champion="Nunu" label="spells" button="q" buttonNum="0" key="f3" coeff="0.10" link=""/>
+    <Ability champion="Nunu" label="spells" button="q" buttonNum="0" key="f4" coeff="0.15" link=""/>
+    <Ability champion="Nunu" label="spells" button="q" buttonNum="0" key="f5" coeff="0.01" link=""/>
+    <Ability champion="Nunu" label="spells" button="r" buttonNum="3" key="f2" coeff="&quot;TODO&quot;" link=""/>
+    <Ability champion="Kalista" label="spells" button="e" buttonNum="2" key="f1" coeff="0.15, 0.18, 0.21, 0.24, 0.27" link="@custom.percentOfAttack"/>
+    <Ability champion="RekSai" label="spells" button="w" buttonNum="1" key="f1" coeff="15, 20, 25" link=""/>
+    <Ability champion="RekSai" label="spells" button="w" buttonNum="1" key="f1" coeff="80, 90, 100, 110, 120" link="@custom.percentOfAttack"/>
+    <Ability champion="RekSai" label="spells" button="e" buttonNum="2" key="f2" coeff="&quot;TODO&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="q" buttonNum="0" key="f3" coeff="30, 60, 90, 120, 150" link=""/>
+    <Ability champion="Rengar" label="spells" button="q" buttonNum="0" key="f2" coeff="&quot;TODO&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="q" buttonNum="0" key="f4" coeff="&quot;+50-101&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="w" buttonNum="1" key="f2" coeff="&quot;40-240&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="w" buttonNum="1" key="f1" coeff="&quot;12 + (4 x level)&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="w" buttonNum="1" key="f3" coeff="&quot;(6.25% per 1% of Rengar's missing health)&quot;" link=""/>
+    <Ability champion="Rengar" label="spells" button="e" buttonNum="2" key="f1" coeff="50, 100, 150, 200, 150" link=""/>
+    <Ability champion="Xerath" label="spells" button="w" buttonNum="1" key="f1" coeff="60, 90, 120, 150, 180" link=""/>
+    <Ability champion="Xerath" label="spells" button="w" buttonNum="1" key="f2" coeff="0.60" link="spelldamage"/>
+    <Ability champion="Soraka" label="spells" button="w" buttonNum="1" key="f1" coeff="0.40" link="spelldamage"/>
+    <Ability champion="MissFortune" label="spells" button="q" buttonNum="0" key="f1" coeff="0.85" link="attackdamage"/>
+    <Ability champion="MissFortune" label="spells" button="q" buttonNum="0" key="f2" coeff="1.00" link="attackdamage"/>
+    <Ability champion="MissFortune" label="spells" button="w" buttonNum="1" key="f1" coeff="0.06" link="attackdamage"/>
+    <Ability champion="MissFortune" label="spells" button="w" buttonNum="1" key="f3" coeff="5" link=""/>
+    <Ability champion="MissFortune" label="spells" button="w" buttonNum="1" key="f2" coeff="0.30" link="attackdamage"/>
+    <Ability champion="Braum" label="spells" button="q" buttonNum="0" key="f1" coeff="0.025" link="maxhealth"/>
+    <Ability champion="Twitch" label="spells" button="e" buttonNum="2" key="f1" coeff="0.25" link="bonusattackdamage"/>
+    <Ability champion="MasterYi" label="spells" button="e" buttonNum="2" key="f1" coeff="0.10" link="attackdamage"/>
+    <Ability champion="Taric" label="spells" button="q" buttonNum="0" key="f1" coeff="0.05" link="bonushealth"/>
+    <Ability champion="Gangplank" label="spells" button="q" buttonNum="0" key="f2" coeff="0" link=""/>
+    <Ability champion="Kassadin" label="spells" button="r" buttonNum="3" key="f2" coeff="0.02" link="@custom.percentOfMana"/>
+    <Ability champion="Kassadin" label="spells" button="r" buttonNum="3" key="f1" coeff="0.01" link="@custom.percentOfMana"/>
+    <Ability champion="Zyra" label="spells" button="q" buttonNum="0" key="f3" coeff="70, 105, 140, 175, 210" link=""/>
+    <Ability champion="Zyra" label="spells" button="e" buttonNum="2" key="f3" coeff="&quot;23 + (6.5 x level)&quot;" link=""/>
+    <Ability champion="Nami" label="spells" button="w" buttonNum="1" key="f1" coeff="&quot;15% - (7.5% of AP)&quot;" link=""/>
+    <Ability champion="Ezreal" label="spells" button="q" buttonNum="0" key="f1" coeff="1.10" link="attackdamage"/>
   </CorrectionList>
 </XML>

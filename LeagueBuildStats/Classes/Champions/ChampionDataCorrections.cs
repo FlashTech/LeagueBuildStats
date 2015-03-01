@@ -49,6 +49,7 @@ namespace LeagueBuildStats.Classes.Champions
 						try
 						{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
 							string champion = champNode.Attributes["champion"].Value;
+							string label = champNode.Attributes["label"].Value;
 							string button = champNode.Attributes["button"].Value;
 							string buttonNum = champNode.Attributes["buttonNum"].Value;
 							string key = champNode.Attributes["key"].Value;
@@ -57,11 +58,18 @@ namespace LeagueBuildStats.Classes.Champions
 
 							JObject jChampions = (JObject)jsonObject["data"];
 							if ((JObject)jChampions[champion] != null) //If the champion exists in the data set
-							{
+							{								
 								JObject jChampion = (JObject)jChampions[champion];
-								JArray jSpells = (JArray)jChampion["spells"];
-								JObject jSpell = (JObject)jSpells[Convert.ToInt16(buttonNum)]; //spells are numbered as follows: 0 for Q, 1 for W, 2 for E, 3 for R
-								string newVars = string.Format(@"{{
+
+								JObject jName = new JObject();
+								string newVars = "";
+								JObject jsonNewVars = new JObject();
+
+								if (label == "spells")
+								{
+									JArray jLabel = (JArray)jChampion[label]; //spells
+									jName = (JObject)jLabel[Convert.ToInt16(buttonNum)]; //spells are numbered as follows: 0 for Q, 1 for W, 2 for E, 3 for R 
+									newVars = string.Format(@"{{
 												""coeff"" : [
 													{0}
 												],
@@ -70,23 +78,36 @@ namespace LeagueBuildStats.Classes.Champions
 												""link"" : ""{2}"",
 												""ranksWith"" : null
 											}}", coeff, key, link);
+									jsonNewVars = JObject.Parse(newVars);
 
-								var jsonNewVars = JObject.Parse(newVars);
+									//try first method of adding vars
+									try
+									{
+										JArray jVars = (JArray)jName["vars"]; //This fails if vars = null
+										jVars.Add(jsonNewVars);
+									}
+									//otherwise vars = null and must be replaced with JArray
+									catch
+									{
+										jName.Remove("vars");
+										jName.Add(new JProperty("vars", new JArray()));
+										JArray jVars = (JArray)jName["vars"];
+										jVars.Add(jsonNewVars);
+									}
+								}
+								else //stats Failed attempt at updating stats in the json : Update currently takes place at RunStatCorrections()
+								{
+									//JObject jLabel = (JObject)jChampion[label]; //stats
+									////jName = (JObject)jLabel[key]; //AttackSpeedOffset
+									//newVars = string.Format("\"attackspeedoffset\": {0}", coeff);
+									//var property = jLabel.Property(key);
+									//var value = (string)property.Value;
+									//jLabel.Property(key).Value = newVars;
+								}
 
-								//try first method of adding vars
-								try
-								{
-									JArray jVars = (JArray)jSpell["vars"]; //This fails if vars = null
-									jVars.Add(jsonNewVars);
-								}
-								//otherwise vars = null and must be replaced with JArray
-								catch
-								{
-									jSpell.Remove("vars");
-									jSpell.Add(new JProperty("vars", new JArray()));
-									JArray jVars = (JArray)jSpell["vars"];
-									jVars.Add(jsonNewVars);
-								}
+								
+
+								
 							}
 						}
 						catch (Exception ex)
@@ -141,5 +162,59 @@ namespace LeagueBuildStats.Classes.Champions
 		}
 
 
+
+		internal static ChampionListStatic RunStatCorrections(ChampionListStatic champions, string version)
+		{
+			//Load xml file with all Champion corrections
+			XmlDocument xdcDocument = new XmlDocument();
+			string result = string.Empty;
+			using (Stream stream = typeof(ChampionDataCorrections).Assembly.GetManifestResourceStream("LeagueBuildStats.Classes.Champions" + ".ChampionCorrectionList.xml"))
+			{
+				using (StreamReader sr = new StreamReader(stream))
+				{
+					result = sr.ReadToEnd();
+				}
+			}
+			xdcDocument.LoadXml(result);
+
+			XmlElement xelRoot = xdcDocument.DocumentElement;
+			XmlNodeList xnlNodes = xelRoot.SelectNodes("/XML/CorrectionList[@Version]");
+
+			//Loop through each Champion Correction List Node
+			foreach (XmlNode xndNode in xnlNodes)
+			{
+				string xmlVersion = xndNode.Attributes["Version"].Value;
+				//If the Version Attribute is Greater or Equal than use this Correction List Node
+				if (CheckIfVersionIsGreaterEqual(version, xmlVersion))
+				{
+					//Loop through each Ability Correction Node
+					foreach (XmlNode champNode in xndNode)
+					{
+						//Execute the updates
+						try
+						{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
+							string champion = champNode.Attributes["champion"].Value;
+							string label = champNode.Attributes["label"].Value;
+							string button = champNode.Attributes["button"].Value;
+							string buttonNum = champNode.Attributes["buttonNum"].Value;
+							string key = champNode.Attributes["key"].Value;
+							string coeff = champNode.Attributes["coeff"].Value;
+							string link = champNode.Attributes["link"].Value;
+
+							if (label == "stats")
+							{
+								ChampionStatic championStatic = (champions.Champions[champion]);
+								championStatic.Stats.AttackSpeedOffset = Convert.ToDouble(coeff); //TODO: currently this only works with AttackSpeedOffset
+							}
+						}
+						catch (Exception ex)
+						{
+							MessageBox.Show(ex.ToString());
+						}
+					}
+				}
+			}
+			return champions;
+		}
 	}
 }

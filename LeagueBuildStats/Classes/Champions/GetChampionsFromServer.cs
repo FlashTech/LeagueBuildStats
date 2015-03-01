@@ -165,6 +165,9 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 
 					champions = JsonConvert.DeserializeObject<ChampionListStatic>(jsonData);
 
+					champions = ChampionDataCorrections.RunStatCorrections(champions, version);
+
+
 					SortRiotChampionData(champions);
 
 					//TODO: temp test
