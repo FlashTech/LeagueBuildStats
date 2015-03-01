@@ -164,9 +164,6 @@
     </Compile>
     <Compile Include="Classes\Masteries\MasteryDataCorrections.cs" />
     <Compile Include="Classes\Runes\GetRunesFromServer.cs" />
-    <Compile Include="Classes\General Classes\WebBrowserToolTip2.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,12 +176,6 @@
     </Compile>
     <Compile Include="Forms\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ToolTipRuneForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ToolTipRuneForm.Designer.cs">
-      <DependentUpon>ToolTipRuneForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\App.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -202,12 +193,6 @@
     </Compile>
     <Compile Include="UserControls\Items\ItemsTab.Designer.cs">
       <DependentUpon>ItemsTab.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ToolTipItemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ToolTipItemForm.Designer.cs">
-      <DependentUpon>ToolTipItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Champions\ChampionControl.cs">
       <SubType>UserControl</SubType>
@@ -272,9 +257,6 @@
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ToolTipRuneForm.resx">
-      <DependentUpon>ToolTipRuneForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\App.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>App.Designer.cs</LastGenOutput>
@@ -284,9 +266,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Items\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ToolTipItemForm.resx">
-      <DependentUpon>ToolTipItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Champions\ChampionControl.resx">
       <DependentUpon>ChampionControl.cs</DependentUpon>

@@ -200,19 +200,7 @@ namespace LeagueBuildStats
 			return itemPicBox;
 		}
 
-
-
-		public Stream GenerateStreamFromString(string s)
-		{
-			MemoryStream stream = new MemoryStream();
-			StreamWriter writer = new StreamWriter(stream);
-			writer.Write(s);
-			writer.Flush();
-			stream.Position = 0;
-			return stream;
-		}
-
-		
+	
 
 		private bool pressed = false;
 		private Point newMouseDelta = Point.Empty;

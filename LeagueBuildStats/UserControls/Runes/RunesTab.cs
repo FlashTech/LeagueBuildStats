@@ -59,7 +59,6 @@ namespace LeagueBuildStats.UserControls
 					p.MouseEnter +=p_MouseEnter;
 
 					//All Runes have the same tooltip that is updated dynamically
-					//UpdateToolTip();
 					ultraToolTipManager1.SetUltraToolTip(p, tipInfo);
 				}
 			}
