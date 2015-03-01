@@ -1,5 +1,20 @@
 ;aiu;
 
+[v0.0.1.17 patch]
+Name=League Build Stats 0.0.1.17 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.17/LeagueBuildStatsPatcher-0.0.1.17.msp
+Size=401408
+ReleaseDate=10/02/2015
+MD5=4f33bd3d4ef782acfb3f163468bcc6af
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.17.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.17
+Description=Includes all previous patches!
+BugFix=Fixed (Masteries) Legendary Guardian Bug #59
+BugFix1=Fixed (Stats) Champions with incorrect attack speed #60.
+Replaces=All
+
 [v0.0.1.16 patch]
 Name=League Build Stats 0.0.1.16 Patch
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.16/LeagueBuildStatsPatcher-0.0.1.16.msp
