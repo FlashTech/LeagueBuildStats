@@ -15,17 +15,12 @@ namespace LeagueBuildStats
 		[STAThread]
 		static void Main()
 		{
-			//TestSQLiteForm sqlForm = new TestSQLiteForm();
-			//Application.Run(sqlForm);
-
 			try
 			{
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);
 
-				
 				Form1 form1 = new Form1(); //this takes ages
-				//TestSQLiteForm TestSQLiteForm = new TestSQLiteForm(); //this takes ages
 
 				Application.Run(form1);
 			}
