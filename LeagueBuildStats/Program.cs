@@ -20,9 +20,9 @@ namespace LeagueBuildStats
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);
 
-				Form1 form1 = new Form1(); //this takes ages
+				CheckForUpdatesForm checkForUpdatesForm = new CheckForUpdatesForm();
 
-				Application.Run(form1);
+				Application.Run(checkForUpdatesForm);
 			}
 			catch (Exception ex)
 			{
