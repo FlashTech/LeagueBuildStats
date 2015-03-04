@@ -29,29 +29,17 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.txtBoxCount = new System.Windows.Forms.TextBox();
 			this.picBoxImage = new System.Windows.Forms.PictureBox();
 			this.picBoxBorder = new System.Windows.Forms.PictureBox();
 			this.picBoxArrow = new System.Windows.Forms.PictureBox();
 			this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+			this.pnlNumBorder = new System.Windows.Forms.Panel();
+			this.lblBoxCount = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxImage)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxBorder)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxArrow)).BeginInit();
+			this.pnlNumBorder.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// txtBoxCount
-			// 
-			this.txtBoxCount.BackColor = System.Drawing.Color.Black;
-			this.txtBoxCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.txtBoxCount.ForeColor = System.Drawing.Color.Gold;
-			this.txtBoxCount.Location = new System.Drawing.Point(17, 57);
-			this.txtBoxCount.Multiline = true;
-			this.txtBoxCount.Name = "txtBoxCount";
-			this.txtBoxCount.Size = new System.Drawing.Size(28, 18);
-			this.txtBoxCount.TabIndex = 1;
-			this.txtBoxCount.Text = "1/3";
-			this.txtBoxCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.txtBoxCount.WordWrap = false;
 			// 
 			// picBoxImage
 			// 
@@ -87,12 +75,33 @@
 			this.ultraToolTipManager1.InitialDelay = 50;
 			this.ultraToolTipManager1.ToolTipTextStyle = Infragistics.Win.ToolTipTextStyle.Formatted;
 			// 
+			// pnlNumBorder
+			// 
+			this.pnlNumBorder.BackColor = System.Drawing.Color.Black;
+			this.pnlNumBorder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pnlNumBorder.Controls.Add(this.lblBoxCount);
+			this.pnlNumBorder.Location = new System.Drawing.Point(17, 57);
+			this.pnlNumBorder.Name = "pnlNumBorder";
+			this.pnlNumBorder.Size = new System.Drawing.Size(28, 18);
+			this.pnlNumBorder.TabIndex = 4;
+			// 
+			// lblBoxCount
+			// 
+			this.lblBoxCount.AutoSize = true;
+			this.lblBoxCount.BackColor = System.Drawing.Color.Black;
+			this.lblBoxCount.ForeColor = System.Drawing.Color.Gold;
+			this.lblBoxCount.Location = new System.Drawing.Point(1, 1);
+			this.lblBoxCount.Name = "lblBoxCount";
+			this.lblBoxCount.Size = new System.Drawing.Size(24, 13);
+			this.lblBoxCount.TabIndex = 0;
+			this.lblBoxCount.Text = "1/3";
+			// 
 			// MasteryControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Transparent;
-			this.Controls.Add(this.txtBoxCount);
+			this.Controls.Add(this.pnlNumBorder);
 			this.Controls.Add(this.picBoxImage);
 			this.Controls.Add(this.picBoxBorder);
 			this.Controls.Add(this.picBoxArrow);
@@ -101,17 +110,19 @@
 			((System.ComponentModel.ISupportInitialize)(this.picBoxImage)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxBorder)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxArrow)).EndInit();
+			this.pnlNumBorder.ResumeLayout(false);
+			this.pnlNumBorder.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
 		private System.Windows.Forms.PictureBox picBoxImage;
-		private System.Windows.Forms.TextBox txtBoxCount;
 		private System.Windows.Forms.PictureBox picBoxBorder;
 		private System.Windows.Forms.PictureBox picBoxArrow;
 		private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+		private System.Windows.Forms.Panel pnlNumBorder;
+		private System.Windows.Forms.Label lblBoxCount;
 	}
 }

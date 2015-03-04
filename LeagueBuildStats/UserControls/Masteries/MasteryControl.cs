@@ -41,7 +41,7 @@ namespace LeagueBuildStats.UserControls.Masteries
 
 			picBoxImage.Image = imageGray;
 			picBoxBorder.Image = masteriesTab.GetGrayBox();
-			txtBoxCount.Text = currentRank + "/" + ranks;
+			lblBoxCount.Text = currentRank + "/" + ranks;
 
 			if (row == 1)
 			{
@@ -179,7 +179,7 @@ namespace LeagueBuildStats.UserControls.Masteries
 					masteriesTab.mastTotalCount < 30)
 				{
 					currentRank++;
-					txtBoxCount.Text = currentRank + "/" + ranks;
+					lblBoxCount.Text = currentRank + "/" + ranks;
 					switch (treeType)
 					{
 						case "offence":
@@ -225,7 +225,7 @@ namespace LeagueBuildStats.UserControls.Masteries
 					if (masteriesTab.CheckAllMasteries(masteryData.Id, "sub", treeType, row))
 					{
 						currentRank--;
-						txtBoxCount.Text = currentRank + "/" + ranks;
+						lblBoxCount.Text = currentRank + "/" + ranks;
 						masteriesTab.mastTotalCount--;
 						SetToEnabled();
 
@@ -440,7 +440,7 @@ namespace LeagueBuildStats.UserControls.Masteries
 		internal void ResetMastery()
 		{
 			currentRank = 0;
-			txtBoxCount.Text = currentRank + "/" + ranks;
+			lblBoxCount.Text = currentRank + "/" + ranks;
 			if (row == 1)
 			{
 				SetToEnabled();
