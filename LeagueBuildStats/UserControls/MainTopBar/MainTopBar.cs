@@ -369,13 +369,8 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 				success = form1.LoadRiotDataFromFile(selName);
 				if (!success)
 				{
-					//TODO: fix this
-					//SplashForm.ChangeToDownloading();
 					success = form1.DataCollection(selName);
 				}
-				//Todo: fix this
-				//SplashForm.ChangeToLoading();
-
 			}
 			catch (Exception ex)
 			{

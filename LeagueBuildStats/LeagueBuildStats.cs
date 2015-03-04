@@ -122,10 +122,8 @@ namespace LeagueBuildStats
 				bool success = LoadRiotDataFromFile();
 
 				if (!success) {
-					SplashForm.ChangeToDownloading();
 					success = InitializeDataCollection();
 				}
-				SplashForm.ChangeToLoading();
 				if (success)
 				{
 					writer = LogWriter.Instance;
@@ -277,24 +275,28 @@ namespace LeagueBuildStats
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotItemData()");
+				SplashForm.ChangeText("Preping Items, please wait...");
 				success = itemsTab.getItemsFromServer.LoadRiotItemData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotChampionData()");
+				SplashForm.ChangeText("Preping Champions, please wait...");
 				success = championsTab.getChampionsFromServer.LoadRiotChampionData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotRuneData()");
+				SplashForm.ChangeText("Preping Runes, please wait...");
 				success = runesTab.getRunesFromServer.LoadRiotRuneData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotMasteryData()");
+				SplashForm.ChangeText("Preping Runes, please wait...");
 				success = masteriesTab.getMasteriesFromServer.LoadRiotMasteryData(getAllVersionAvailable.realm.V);
 			}
 			return success;
@@ -310,24 +312,28 @@ namespace LeagueBuildStats
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotItemData()");
+				SplashForm.ChangeText("Preping Items, please wait...");
 				success = itemsTab.getItemsFromServer.LoadRiotItemData(version);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotChampionData()");
+				SplashForm.ChangeText("Preping Champions, please wait...");
 				success = championsTab.getChampionsFromServer.LoadRiotChampionData(version);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotRuneData()");
+				SplashForm.ChangeText("Preping Runes, please wait...");
 				success = runesTab.getRunesFromServer.LoadRiotRuneData(version);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute LoadRiotMasteryData()");
+				SplashForm.ChangeText("Preping Masteries, please wait...");
 				success = masteriesTab.getMasteriesFromServer.LoadRiotMasteryData(version);
 			}
 			return success;
@@ -338,30 +344,36 @@ namespace LeagueBuildStats
 		private bool InitializeDataCollection()
 		{
 			LogWriter writer = LogWriter.Instance;
+			
 			writer.WriteToLog("Execute CollectVersionData()");
+			SplashForm.ChangeText("Downloading Versions, please wait...");
 			bool success = getAllVersionAvailable.CollectVersionData();
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectItemData()");
+				SplashForm.ChangeText("Downloading Items, please wait...");
 				success = itemsTab.CollectItemData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectChampionData()");
+				SplashForm.ChangeText("Downloading Champions, please wait...");
 				success = championsTab.CollectChampionData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectRuneData()");
+				SplashForm.ChangeText("Downloading Runes, please wait...");
 				success = runesTab.CollectRuneData(getAllVersionAvailable.realm.V);
 			}
 			if (success)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectMasteryData()");
+				SplashForm.ChangeText("Downloading Masteries, please wait...");
 				success = masteriesTab.CollectMasteryData(getAllVersionAvailable.realm.V);
 			}
 			return success;
@@ -375,24 +387,28 @@ namespace LeagueBuildStats
 			{
 				LogWriter writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectItemData(version)");
+				SplashForm.ChangeText("Downloading Items, please wait...");
 				success = itemsTab.CollectItemData(version);
 			}
 			if (success)
 			{
 				LogWriter writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectChampionData(version)");
+				SplashForm.ChangeText("Downloading Champions, please wait...");
 				success = championsTab.CollectChampionData(version);
 			}
 			if (success)
 			{
 				LogWriter writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectRuneData(version)");
+				SplashForm.ChangeText("Downloading Runes, please wait...");
 				success = runesTab.CollectRuneData(version);
 			}
 			if (success)
 			{
 				LogWriter writer = LogWriter.Instance;
 				writer.WriteToLog("Execute CollectMasteryData(version)");
+				SplashForm.ChangeText("Downloading Masteries, please wait...");
 				success = masteriesTab.CollectMasteryData(version);
 			}
 			return success;
@@ -402,28 +418,30 @@ namespace LeagueBuildStats
 		{
 			LogWriter writer = LogWriter.Instance;
 			writer.WriteToLog("Execute UpdateItemControl()");
+			SplashForm.ChangeText("Loading Items, please wait...");
 			itemsTab.UpdateItemControl();
 
 			writer = LogWriter.Instance;
 			writer.WriteToLog("Execute UpdateChampionControl()");
+			SplashForm.ChangeText("Loading Champions, please wait...");
 			championsTab.UpdateChampionControl();
 
 			writer = LogWriter.Instance;
 			writer.WriteToLog("Execute UpdateRuneControl()");
+			SplashForm.ChangeText("Loading Runes, please wait...");
 			runesTab.UpdateRuneControl();
 
 			writer = LogWriter.Instance;
 			writer.WriteToLog("Execute UpdateRuneControl()");
+			SplashForm.ChangeText("Loading Masteries, please wait...");
 			masteriesTab.UpdateMasteryControl();
 
 			if (updateVersionDropDown)
 			{
 				writer = LogWriter.Instance;
 				writer.WriteToLog("Execute UpdateMainTopBar()");
+				SplashForm.ChangeText("Loading, please wait...");
 				mainTopBar.UpdateMainTopBarVersions();
-
-				
-				
 			}
 		}
 
