@@ -94,5 +94,21 @@ namespace LeagueBuildStats.Forms
 			splashForm.lblText.Text = "Loading, please wait...";
 		}
 
+		private delegate void delegateMethod(string text);
+
+		static public void ChangeText(string text)
+		{
+			if (splashForm != null)
+			{
+				delegateMethod addNumbers = new delegateMethod(SplashForm.ExecutechangeText);
+				splashForm.Invoke(addNumbers, text);
+			}
+		}
+
+		static private void ExecutechangeText(string text)
+		{
+			splashForm.lblText.Text = text;
+		}
+
 	}
 }
