@@ -141,6 +141,7 @@ namespace LeagueBuildStats.UserControls
 				double dArmorPen1 = statsStatic.RFlatArmorPenetrationMod + (level - 1) * statsStatic.RFlatArmorPenetrationModPerLevel;
 				double dArmorPen2 = statsStatic.RPercentArmorPenetrationMod + (level - 1) * statsStatic.RPercentArmorPenetrationModPerLevel;
 				double dCritChance = champ1.Stats.Crit + (level - 1) * champ1.Stats.CritPerLevel + statsStatic.FlatCritChanceMod + (level - 1) * statsStatic.RFlatCritChanceModPerLevel;
+				if (dCritChance >= 1) { dCritChance = 1; }
 				double dCritDamage = 2 + statsStatic.FlatCritDamageMod + (level - 1) * statsStatic.RFlatCritDamageModPerLevel;
 				double dDamageIfCrit = dAttackDamage * (dCritDamage);
 
@@ -159,7 +160,7 @@ namespace LeagueBuildStats.UserControls
 					dDamageBonus2 += statsStatic.PercentIncreasedDamageModRanged;
 				}
 
-				double dAverageAttackDamageWithCrit = (dAttackDamage * ((100 - dCritChance) / 100)) + ((dDamageIfCrit) * (dCritChance / 100));
+				double dAverageAttackDamageWithCrit = (dAttackDamage * ((100 - dCritChance*100) / 100)) + ((dDamageIfCrit) * (dCritChance));
 				double dDPS = (dAverageAttackDamageWithCrit + dDamageBonus1) * dAttackSpeed;
 
 
