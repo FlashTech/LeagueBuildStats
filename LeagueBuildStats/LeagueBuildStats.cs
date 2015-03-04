@@ -106,6 +106,7 @@ namespace LeagueBuildStats
 
 			
 			InitializeComponent();
+			this.WindowState = FormWindowState.Minimized;
 
 
 			string assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -157,6 +158,7 @@ namespace LeagueBuildStats
 			//this.TopMost = false;
 			this.Activate();
 			//this.ShowDialog();
+			this.WindowState = FormWindowState.Normal;
 
 			//This timer is used to show a dragging image
 			//0.002 second
