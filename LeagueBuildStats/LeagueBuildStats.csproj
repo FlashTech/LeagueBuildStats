@@ -164,13 +164,19 @@
     </Compile>
     <Compile Include="Classes\Masteries\MasteryDataCorrections.cs" />
     <Compile Include="Classes\Runes\GetRunesFromServer.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="LeagueBuildStats.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LeagueBuildStats.Designer.cs">
+      <DependentUpon>LeagueBuildStats.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Items\GetItemsFromServer.cs" />
+    <Compile Include="Forms\CheckForUpdatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CheckForUpdatesForm.Designer.cs">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,8 +257,11 @@
     <Compile Include="UserControls\TransparentPanel.Designer.cs">
       <DependentUpon>TransparentPanel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LeagueBuildStats.resx">
+      <DependentUpon>LeagueBuildStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CheckForUpdatesForm.resx">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
