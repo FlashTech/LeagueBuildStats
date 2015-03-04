@@ -1,6 +1,6 @@
 ﻿namespace LeagueBuildStats
 {
-	partial class Form1
+	partial class LeagueBuildStatsForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeagueBuildStatsForm));
 			this.xtraTabControl = new DevExpress.XtraTab.XtraTabControl();
 			this.Items = new DevExpress.XtraTab.XtraTabPage();
 			this.Champions = new DevExpress.XtraTab.XtraTabPage();

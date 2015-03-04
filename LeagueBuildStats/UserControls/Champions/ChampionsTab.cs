@@ -29,7 +29,7 @@ namespace LeagueBuildStats.Forms
 	{
 		public GetChampionsFromServer getChampionsFromServer = new GetChampionsFromServer();
 
-		private Form1 form;
+		private LeagueBuildStatsForm form;
 
 		private UltraToolTipInfo tipInfoPassive = new UltraToolTipInfo();
 		private UltraToolTipInfo tipInfoSpell0 = new UltraToolTipInfo();
@@ -41,7 +41,7 @@ namespace LeagueBuildStats.Forms
 
 		private CreateChampionSortMenu createChampionSortMenu;
 
-		public ChampionsTab(Form1 form)
+		public ChampionsTab(LeagueBuildStatsForm form)
 		{
 			this.form = form;
 			InitializeComponent();

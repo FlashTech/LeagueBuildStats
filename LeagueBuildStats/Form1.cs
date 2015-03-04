@@ -27,7 +27,7 @@ using System.Reflection;
 
 namespace LeagueBuildStats
 {
-	public partial class Form1 : Form , IMessageFilter
+	public partial class LeagueBuildStatsForm : Form , IMessageFilter
 	{
 		public GetAllVersionAvailable getAllVersionAvailable = new GetAllVersionAvailable();
 
@@ -100,7 +100,7 @@ namespace LeagueBuildStats
 
 
 
-		public Form1()
+		public LeagueBuildStatsForm()
 		{
 			SplashForm.ShowSplashScreen();
 

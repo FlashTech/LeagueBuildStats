@@ -29,11 +29,11 @@ namespace LeagueBuildStats.Forms
 		public CreateItemSortMenu createItemSortMenu;
 		public int clickedItemID = 0;
 
-		private Form1 form1;
+		private LeagueBuildStatsForm form1;
 
 		public Drag dragger = new Drag();
 
-		public ItemsTab(Form1 form)
+		public ItemsTab(LeagueBuildStatsForm form)
 		{
 			this.form1 = form;
 			InitializeComponent();

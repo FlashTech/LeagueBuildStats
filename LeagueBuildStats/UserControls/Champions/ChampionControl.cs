@@ -16,7 +16,7 @@ namespace LeagueBuildStats.UserControls
 	public partial class ChampionControl : UserControl
 	{
 		public KeyValuePair<string, ChampionStatic> champ;
-		Form1 frm1;
+		LeagueBuildStatsForm frm1;
 
 		public Image ChampImage
 		{
@@ -29,7 +29,7 @@ namespace LeagueBuildStats.UserControls
 			set { lblChamp.Text = value; }
 		}
 
-		public ChampionControl(Form1 frm1, KeyValuePair<string, ChampionStatic> champ)
+		public ChampionControl(LeagueBuildStatsForm frm1, KeyValuePair<string, ChampionStatic> champ)
 			: this()
 		{
 			this.frm1 = frm1;

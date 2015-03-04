@@ -16,7 +16,7 @@ namespace LeagueBuildStats.UserControls
 {
 	public partial class StatsTab : UserControl
 	{
-		private Form1 form1;
+		private LeagueBuildStatsForm form1;
 
 		private ContextMenuStrip contextMenuStripLevel = new ContextMenuStrip();
 
@@ -29,7 +29,7 @@ namespace LeagueBuildStats.UserControls
 			InitializeComponent();
 		}
 
-		public StatsTab(Form1 form)
+		public StatsTab(LeagueBuildStatsForm form)
 		{
 			this.form1 = form;
 			InitializeComponent();

@@ -12,7 +12,7 @@ namespace LeagueBuildStats.Classes.Items
 	public class CreateItemVersionSelection
 	{
 
-		public CreateItemVersionSelection(Form1 form, List<string> versions)
+		public CreateItemVersionSelection(LeagueBuildStatsForm form, List<string> versions)
 		{
 			var matches = form.Controls.Find("cmbBoxEditItemVersion", true);
 			foreach (Control c in matches)

@@ -24,7 +24,7 @@ namespace LeagueBuildStats.UserControls
 	{
 		public GetMasteriesFromServer getMasteriesFromServer = new GetMasteriesFromServer();
 
-		private Form1 form;
+		private LeagueBuildStatsForm form;
 		private Image masterSprite;
 
 		public Dictionary<string, MasteryControl> listOfMasteryControls = new Dictionary<string, MasteryControl>();
@@ -74,7 +74,7 @@ namespace LeagueBuildStats.UserControls
 			}
 		}
 
-		public MasteriesTab(Form1 form)
+		public MasteriesTab(LeagueBuildStatsForm form)
 		{
 			this.form = form;
 			InitializeComponent();

@@ -24,7 +24,7 @@ namespace LeagueBuildStats.UserControls
 	{
 		public GetRunesFromServer getRunesFromServer = new GetRunesFromServer();
 
-		private Form1 form;
+		private LeagueBuildStatsForm form;
 
 		public PictureBox RuneBackgroundContainer
 		{
@@ -35,7 +35,7 @@ namespace LeagueBuildStats.UserControls
 
 		RuneStatistics runeStatistics;
 
-		public RunesTab(Form1 form)
+		public RunesTab(LeagueBuildStatsForm form)
 		{
 			this.form = form;
 			InitializeComponent();

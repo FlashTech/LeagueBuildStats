@@ -21,7 +21,7 @@ namespace LeagueBuildStats
 	public partial class ItemControl : UserControl
 	{
 		public CreateItemDiv item;
-		Form1 frm1;
+		LeagueBuildStatsForm frm1;
 		public ItemsTab itemsTab;
 
 		public string ItemCostLabel
@@ -36,7 +36,7 @@ namespace LeagueBuildStats
 		}
 
 
-		public ItemControl(Form1 frm1, ItemsTab itemsTab)
+		public ItemControl(LeagueBuildStatsForm frm1, ItemsTab itemsTab)
 			   : this()
 		{
 			this.frm1 = frm1;

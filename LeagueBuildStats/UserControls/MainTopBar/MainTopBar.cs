@@ -23,7 +23,7 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 {
 	public partial class MainTopBar : UserControl
 	{
-		private Form1 form1;
+		private LeagueBuildStatsForm form1;
 
 		public UltraToolTipInfo tipInfoChamp = new UltraToolTipInfo();
 
@@ -50,7 +50,7 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 		public CreateItemDiv item6 { get { return (pnlItem6.Tag != null ? (CreateItemDiv)pnlItem6.Tag : new CreateItemDiv()); } }
 		public CreateItemDiv itemElixir { get { return (pnlElixir.Tag != null ? (CreateItemDiv)pnlElixir.Tag : new CreateItemDiv()); } }
 
-		public MainTopBar(Form1 form)
+		public MainTopBar(LeagueBuildStatsForm form)
 		{
 			this.form1 = form;
 			InitializeComponent();
