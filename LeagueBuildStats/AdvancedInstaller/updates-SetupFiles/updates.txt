@@ -1,5 +1,22 @@
 ;aiu;
 
+[v0.0.1.18 patch]
+Name=League Build Stats 0.0.1.18 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.18/LeagueBuildStatsPatcher-0.0.1.18.msp
+Size=405504
+ReleaseDate=10/02/2015
+MD5=8c590c1f87c1309bc7107d08c3d2daae
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.18.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.18
+Description=Each patch includes all previous patches!! (Please select the latest patch)
+Enhancement=League Build Stats checks for updates at application start.
+Enhancement1=Loading screen gives more status information about what is being loaded.
+BugFix=(Mastery) Text boxes can no longer be modified to break the Mastery Page.
+BugFix1=(Stats) Fixed Average Attack DPS calculation.
+Replaces=All
+
 [v0.0.1.17 patch]
 Name=League Build Stats 0.0.1.17 Patch
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.17/LeagueBuildStatsPatcher-0.0.1.17.msp
