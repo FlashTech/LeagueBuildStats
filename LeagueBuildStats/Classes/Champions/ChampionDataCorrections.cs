@@ -46,30 +46,32 @@ namespace LeagueBuildStats.Classes.Champions
 					foreach (XmlNode champNode in xndNode)
 					{
 						//Execute the updates
-						try
-						{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
-							string champion = champNode.Attributes["champion"].Value;
-							string label = champNode.Attributes["label"].Value;
-							string button = champNode.Attributes["button"].Value;
-							string buttonNum = champNode.Attributes["buttonNum"].Value;
-							string key = champNode.Attributes["key"].Value;
-							string coeff = champNode.Attributes["coeff"].Value;
-							string link = champNode.Attributes["link"].Value;
+						if (champNode.Name != "#comment")
+						{
+							try
+							{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
+								string champion = champNode.Attributes["champion"].Value;
+								string label = champNode.Attributes["label"].Value;
+								string button = champNode.Attributes["button"].Value;
+								string buttonNum = champNode.Attributes["buttonNum"].Value;
+								string key = champNode.Attributes["key"].Value;
+								string coeff = champNode.Attributes["coeff"].Value;
+								string link = champNode.Attributes["link"].Value;
 
-							JObject jChampions = (JObject)jsonObject["data"];
-							if ((JObject)jChampions[champion] != null) //If the champion exists in the data set
-							{								
-								JObject jChampion = (JObject)jChampions[champion];
-
-								JObject jName = new JObject();
-								string newVars = "";
-								JObject jsonNewVars = new JObject();
-
-								if (label == "spells")
+								JObject jChampions = (JObject)jsonObject["data"];
+								if ((JObject)jChampions[champion] != null) //If the champion exists in the data set
 								{
-									JArray jLabel = (JArray)jChampion[label]; //spells
-									jName = (JObject)jLabel[Convert.ToInt16(buttonNum)]; //spells are numbered as follows: 0 for Q, 1 for W, 2 for E, 3 for R 
-									newVars = string.Format(@"{{
+									JObject jChampion = (JObject)jChampions[champion];
+
+									JObject jName = new JObject();
+									string newVars = "";
+									JObject jsonNewVars = new JObject();
+
+									if (label == "spells")
+									{
+										JArray jLabel = (JArray)jChampion[label]; //spells
+										jName = (JObject)jLabel[Convert.ToInt16(buttonNum)]; //spells are numbered as follows: 0 for Q, 1 for W, 2 for E, 3 for R 
+										newVars = string.Format(@"{{
 												""coeff"" : [
 													{0}
 												],
@@ -78,41 +80,42 @@ namespace LeagueBuildStats.Classes.Champions
 												""link"" : ""{2}"",
 												""ranksWith"" : null
 											}}", coeff, key, link);
-									jsonNewVars = JObject.Parse(newVars);
+										jsonNewVars = JObject.Parse(newVars);
 
-									//try first method of adding vars
-									try
-									{
-										JArray jVars = (JArray)jName["vars"]; //This fails if vars = null
-										jVars.Add(jsonNewVars);
+										//try first method of adding vars
+										try
+										{
+											JArray jVars = (JArray)jName["vars"]; //This fails if vars = null
+											jVars.Add(jsonNewVars);
+										}
+										//otherwise vars = null and must be replaced with JArray
+										catch
+										{
+											jName.Remove("vars");
+											jName.Add(new JProperty("vars", new JArray()));
+											JArray jVars = (JArray)jName["vars"];
+											jVars.Add(jsonNewVars);
+										}
 									}
-									//otherwise vars = null and must be replaced with JArray
-									catch
+									else //stats Failed attempt at updating stats in the json : Update currently takes place at RunStatCorrections()
 									{
-										jName.Remove("vars");
-										jName.Add(new JProperty("vars", new JArray()));
-										JArray jVars = (JArray)jName["vars"];
-										jVars.Add(jsonNewVars);
+										//JObject jLabel = (JObject)jChampion[label]; //stats
+										////jName = (JObject)jLabel[key]; //AttackSpeedOffset
+										//newVars = string.Format("\"attackspeedoffset\": {0}", coeff);
+										//var property = jLabel.Property(key);
+										//var value = (string)property.Value;
+										//jLabel.Property(key).Value = newVars;
 									}
-								}
-								else //stats Failed attempt at updating stats in the json : Update currently takes place at RunStatCorrections()
-								{
-									//JObject jLabel = (JObject)jChampion[label]; //stats
-									////jName = (JObject)jLabel[key]; //AttackSpeedOffset
-									//newVars = string.Format("\"attackspeedoffset\": {0}", coeff);
-									//var property = jLabel.Property(key);
-									//var value = (string)property.Value;
-									//jLabel.Property(key).Value = newVars;
-								}
 
-								
 
-								
+
+
+								}
 							}
-						}
-						catch (Exception ex)
-						{
-							MessageBox.Show(ex.ToString());
+							catch (Exception ex)
+							{
+								MessageBox.Show(ex.ToString());
+							}
 						}
 					}
 				}
@@ -191,25 +194,28 @@ namespace LeagueBuildStats.Classes.Champions
 					foreach (XmlNode champNode in xndNode)
 					{
 						//Execute the updates
-						try
-						{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
-							string champion = champNode.Attributes["champion"].Value;
-							string label = champNode.Attributes["label"].Value;
-							string button = champNode.Attributes["button"].Value;
-							string buttonNum = champNode.Attributes["buttonNum"].Value;
-							string key = champNode.Attributes["key"].Value;
-							string coeff = champNode.Attributes["coeff"].Value;
-							string link = champNode.Attributes["link"].Value;
-
-							if (label == "stats")
-							{
-								ChampionStatic championStatic = (champions.Champions[champion]);
-								championStatic.Stats.AttackSpeedOffset = Convert.ToDouble(coeff); //TODO: currently this only works with AttackSpeedOffset
-							}
-						}
-						catch (Exception ex)
+						if (champNode.Name != "#comment")
 						{
-							MessageBox.Show(ex.ToString());
+							try
+							{ //<Ability champion="Thresh" button="e" buttonNum="2" key="f1" coeff="&quot;(num of souls)&quot;" link=""/>
+								string champion = champNode.Attributes["champion"].Value;
+								string label = champNode.Attributes["label"].Value;
+								string button = champNode.Attributes["button"].Value;
+								string buttonNum = champNode.Attributes["buttonNum"].Value;
+								string key = champNode.Attributes["key"].Value;
+								string coeff = champNode.Attributes["coeff"].Value;
+								string link = champNode.Attributes["link"].Value;
+
+								if (label == "stats")
+								{
+									ChampionStatic championStatic = (champions.Champions[champion]);
+									championStatic.Stats.AttackSpeedOffset = Convert.ToDouble(coeff); //TODO: currently this only works with AttackSpeedOffset
+								}
+							}
+							catch (Exception ex)
+							{
+								MessageBox.Show(ex.ToString());
+							}
 						}
 					}
 				}

@@ -253,14 +253,34 @@ namespace LeagueBuildStats.Forms
 							var varsCoeff = (Newtonsoft.Json.Linq.JArray)spellVars.Coeff;
 							int index = 0;
 							int icount = varsCoeff.Count;
+							bool isPercent = false;
 							foreach (string sVar in varsCoeff)
 							{
-								sReplacement += sVar;
+								string sVarNew = sVar;
+								try 
+								{
+									double dVar = Convert.ToDouble(sVarNew);
+									if (dVar < 3)
+									{
+										sVarNew = (dVar * 100).ToString();
+										isPercent = true;
+									}
+								}
+								catch
+								{
+									//do nothing
+								}
+
+								sReplacement += sVarNew;
 								if ((index + 1) != icount)
 								{
 									sReplacement += "/";
 								}
 								index++;
+							}
+							if (isPercent)
+							{
+								sReplacement += "%";
 							}
 						}
 
@@ -363,9 +383,9 @@ namespace LeagueBuildStats.Forms
 							dynText = "1% per ";
 							ofAdAp = " bonus AD";
 						}
-						else if (spellVars.Link.Contains("@custom.percent")) //This one was made up by for ChampionDataCorrections
+						else if (spellVars.Link.Contains("@custom.MagicDamage")) //This one was made up by for ChampionDataCorrections
 						{
-							ofAdAp = "%";
+							ofAdAp = "";
 						}
 						else if (spellVars.Link.Contains("@custom.percentOfAttack")) //This one was made up by for ChampionDataCorrections
 						{
@@ -378,6 +398,10 @@ namespace LeagueBuildStats.Forms
 						else if (spellVars.Link.Contains("@custom.percentOfAP")) //This one was made up by for ChampionDataCorrections
 						{
 							ofAdAp = "% of AP";
+						}
+						else if (spellVars.Link.Contains("@custom.percent")) //This one was made up by for ChampionDataCorrections
+						{
+							ofAdAp = "%";
 						}
 						
 
