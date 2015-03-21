@@ -15,7 +15,6 @@ namespace LeagueBuildStats.Classes.DragUtils
 	{
 		public Drag() { }
 		
-
 		[StructLayout(LayoutKind.Sequential)]
 		private struct ICONINFO
 		{
@@ -26,30 +25,8 @@ namespace LeagueBuildStats.Classes.DragUtils
 			public IntPtr hbmColor;
 		}
 
-		[DllImport("user32")]
-		private static extern bool GetIconInfo(IntPtr hIcon, out ICONINFO pIconInfo);
-
-		[DllImport("user32.dll")]
-		private static extern IntPtr LoadCursorFromFile(string lpFileName);
-
 		[DllImport("gdi32.dll", SetLastError = true)]
 		private static extern bool DeleteObject(IntPtr hObject);
-
-		private Bitmap BitmapFromCursor(Cursor cur)
-		{
-			ICONINFO ii;
-			GetIconInfo(cur.Handle, out ii);
-
-			Bitmap bmp = Bitmap.FromHbitmap(ii.hbmColor);
-			DeleteObject(ii.hbmColor);
-			DeleteObject(ii.hbmMask);
-
-			BitmapData bmData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
-			Bitmap dstBitmap = new Bitmap(bmData.Width, bmData.Height, bmData.Stride, PixelFormat.Format32bppArgb, bmData.Scan0);
-			bmp.UnlockBits(bmData);
-
-			return new Bitmap(dstBitmap);
-		}
 
 		public Control Dragged;
 		public bool isDragging;
@@ -69,11 +46,9 @@ namespace LeagueBuildStats.Classes.DragUtils
 			Dragged = new Control();
 		}
 
-		internal Image ItemImage()
+		public Image ItemImage()
 		{
 			return bm;
 		}
 	}
-
-
 }

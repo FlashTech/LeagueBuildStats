@@ -60,7 +60,7 @@ namespace LeagueBuildStats.Classes.Items
 			return success;
 		}
 
-		private bool StoreRiotItemData(ItemListStatic items)
+		public bool StoreRiotItemData(ItemListStatic items)
 		{
 			bool success = false;
 			try
@@ -92,7 +92,7 @@ namespace LeagueBuildStats.Classes.Items
 			return success;
 		}
 
-		private void SortRiotItemData(ItemListStatic items)
+		public void SortRiotItemData(ItemListStatic items)
 		{
 			itemGold_Names.Clear();
 			//Sort items by price

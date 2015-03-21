@@ -57,7 +57,7 @@ namespace LeagueBuildStats.Classes.Masteries
 			return success;
 		}
 
-		private bool StoreRiotMasteryData(MasteryListStatic masteries)
+		public bool StoreRiotMasteryData(MasteryListStatic masteries)
 		{
 			bool success = false;
 			try
@@ -89,7 +89,7 @@ namespace LeagueBuildStats.Classes.Masteries
 			return success;
 		}
 
-		internal bool LoadRiotMasteryData(string version)
+		public bool LoadRiotMasteryData(string version)
 		{
 			bool success = false;
 			try

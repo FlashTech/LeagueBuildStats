@@ -56,7 +56,7 @@ namespace LeagueBuildStats.Classes.Runes
 			return success;
 		}
 
-		private bool StoreRiotRuneData(RuneListStatic runes)
+		public bool StoreRiotRuneData(RuneListStatic runes)
 		{
 			bool success = false;
 			try
@@ -88,7 +88,7 @@ namespace LeagueBuildStats.Classes.Runes
 			return success;
 		}
 
-		private void SortRiotRuneData(RuneListStatic runes)
+		public void SortRiotRuneData(RuneListStatic runes)
 		{
 			//This was the only way I could seem to filter out the random rare runes
 			RuneListStatic runesThinned = new RuneListStatic();
@@ -124,7 +124,7 @@ namespace LeagueBuildStats.Classes.Runes
 			this.version = runes.Version;
 		}
 
-		private void GenerateRuneDictionaryList(List<KeyValuePair<int, RuneStatic>> runeSorted)
+		public void GenerateRuneDictionaryList(List<KeyValuePair<int, RuneStatic>> runeSorted)
 		{
 			//Generates keyvaluepair used in runeStatic
 			Dictionary<string, int> listOfNames = new Dictionary<string, int>();
@@ -167,7 +167,7 @@ namespace LeagueBuildStats.Classes.Runes
 		}
 
 
-		internal bool LoadRiotRuneData(string version)
+		public bool LoadRiotRuneData(string version)
 		{
 			bool success = false;
 			try

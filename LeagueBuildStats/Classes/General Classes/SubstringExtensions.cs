@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeagueBuildStats.Classes.General_Classes
 {
-	static class SubstringExtensions
+	public static class SubstringExtensions
 	{
 		/// <summary>
 		/// Get string value between [first] a and [last] b.

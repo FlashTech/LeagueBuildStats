@@ -81,7 +81,7 @@ namespace LeagueBuildStats.Classes
 			}
 		}
 
-		private bool DoPeriodicFlush()
+		public bool DoPeriodicFlush()
 		{
 			TimeSpan logAge = DateTime.Now - LastFlushed;
 			if (logAge.TotalSeconds >= maxLogAge)
@@ -98,7 +98,7 @@ namespace LeagueBuildStats.Classes
 		/// <summary>
 		/// Flushes the Queue to the physical log file
 		/// </summary>
-		private void FlushLog()
+		public void FlushLog()
 		{
 			while (logQueue.Count > 0)
 			{

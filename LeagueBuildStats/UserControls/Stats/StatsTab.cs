@@ -39,8 +39,7 @@ namespace LeagueBuildStats.UserControls
 			
 		}
 
-		private EventHandler onClick;
-		private Image nullImage = null;
+		
 
 		private void PrepareLevelMenu()
 		{

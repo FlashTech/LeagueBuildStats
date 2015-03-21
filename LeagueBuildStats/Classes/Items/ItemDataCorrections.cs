@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace LeagueBuildStats.Classes.Items
 {
-	class ItemDataCorrections
+	public class ItemDataCorrections
 	{
-		internal static void RunCorrections(ItemListStatic item)
+		public static void RunCorrections(ItemListStatic item)
 		{
 			var keys = new List<int>(item.Items.Keys);
 			foreach (int key in keys)
@@ -26,7 +26,7 @@ namespace LeagueBuildStats.Classes.Items
 			}
 		}
 
-		private static void ItemCorrection(ItemStatic temp)
+		public static void ItemCorrection(ItemStatic temp)
 		{
 			
 			string descriptionMain;
@@ -97,7 +97,7 @@ namespace LeagueBuildStats.Classes.Items
 		}
 
 
-		private static void StatCorrection(string descriptionMain, StatsStatic statsStatic)
+		public static void StatCorrection(string descriptionMain, StatsStatic statsStatic)
 		{
 			MatchCollection matches;
 

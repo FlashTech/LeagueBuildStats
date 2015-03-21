@@ -65,7 +65,7 @@ namespace LeagueBuildStats.Classes
 			return success;
 		}
 
-		private bool StoreRiotVersionData()
+		public bool StoreRiotVersionData()
 		{
 
 			bool success = false;

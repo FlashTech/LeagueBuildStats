@@ -250,7 +250,7 @@ namespace LeagueBuildStats
 		}
 
 
-		private string SpanFixer(string tempDescription)
+		public string SpanFixer(string tempDescription)
 		{
 			MatchCollection spansFound = Regex.Matches(tempDescription, "</span>|<span");
 			int ind = 0;

@@ -34,7 +34,7 @@ namespace LeagueBuildStats.Classes.Champions
 		public ChampionListStatic champions;
 		public List<KeyValuePair<string, ChampionStatic>> championsOrder = new List<KeyValuePair<string, ChampionStatic>>();
 		public string version = "";
-		static int Compare1(KeyValuePair<string, ChampionStatic> a, KeyValuePair<string, ChampionStatic> b)
+		public static int Compare1(KeyValuePair<string, ChampionStatic> a, KeyValuePair<string, ChampionStatic> b)
 		{
 			return a.Key.CompareTo(b.Key);
 		}
@@ -86,7 +86,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 
 
 
-		private bool StoreRiotChampionData(ChampionListStatic champions)
+		public bool StoreRiotChampionData(ChampionListStatic champions)
 		{
 			bool success = false;
 			try
@@ -118,7 +118,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 			return success;
 		}
 
-		private void SortRiotChampionData(ChampionListStatic champions)
+		public void SortRiotChampionData(ChampionListStatic champions)
 		{
 			//Sort Champions by name
 			championsOrder = new List<KeyValuePair<string, ChampionStatic>>();
@@ -136,7 +136,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 			version = champions.Version;
 		}
 
-		internal bool LoadRiotChampionData(string version)
+		public bool LoadRiotChampionData(string version)
 		{
 			bool success = false;
 			try
@@ -194,7 +194,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 			return success;
 		}
 
-		private void FindMissingBaseAttackSpeeds(ChampionListStatic champions)
+		public void FindMissingBaseAttackSpeeds(ChampionListStatic champions)
 		{
 			List<string> tempChampsMissingBaseAS = new List<string>();
 			foreach (ChampionStatic thisChamp in champions.Champions.Values)
@@ -218,7 +218,7 @@ Note: This error may happen when selecting versions below 3.7.1", ex.Message), "
 		/// TEMP TESTER FUNCTION
 		/// </summary>
 		/// <param name="champions"></param>
-		private void FindMissingParamsInSpells(ChampionListStatic champions)
+		public void FindMissingParamsInSpells(ChampionListStatic champions)
 		{
 			List<string> tempMissingResource = new List<string>();
 			List<string> links = new System.Collections.Generic.List<string>();

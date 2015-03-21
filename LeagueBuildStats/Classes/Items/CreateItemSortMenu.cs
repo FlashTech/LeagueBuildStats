@@ -116,7 +116,7 @@ namespace LeagueBuildStats.Classes.Items
 
 
 
-		private void InitializeSearchControls()
+		public void InitializeSearchControls()
 		{
 			txtEditSearchBar = new DevExpress.XtraEditors.TextEdit();
 			drpDownBtnSearchButton = new DevExpress.XtraEditors.DropDownButton();
@@ -152,7 +152,7 @@ namespace LeagueBuildStats.Classes.Items
 			PerformSearch();
 		}
 
-		private void PerformSearch()
+		public void PerformSearch()
 		{
 			//Clear tags selected
 			selectedTags.Clear();

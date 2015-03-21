@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LeagueBuildStats.Classes.Masteries
 {
-	class MasteryDataCorrections
+	public class MasteryDataCorrections
 	{
-		internal static void RunCorrections(MasteryListStatic masteries)
+		public static void RunCorrections(MasteryListStatic masteries)
 		{
 			
 
@@ -40,7 +40,7 @@ namespace LeagueBuildStats.Classes.Masteries
 			}
 		}
 
-		private static void RunListOfCorrections(MasteryStatic temp)
+		public static void RunListOfCorrections(MasteryStatic temp)
 		{
 			MatchCollection matches;
 

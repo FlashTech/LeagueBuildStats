@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LeagueBuildStats.Classes.Champions
 {
-	class CreateChampionSortMenu
+	public class CreateChampionSortMenu
 	{
 		private PublicStaticVariables publicStaticVariables = new PublicStaticVariables();
 		private List<string> selectedTags = new List<string>();
@@ -56,7 +56,7 @@ namespace LeagueBuildStats.Classes.Champions
 			this.yPos = posY + 17;
 		}
 
-		internal void ClearSelections()
+		public void ClearSelections()
 		{
 			foreach (Control c in pnlItemSort.Controls)
 			{
@@ -136,7 +136,7 @@ namespace LeagueBuildStats.Classes.Champions
 
 
 
-		private void InitializeSearchControls()
+		public void InitializeSearchControls()
 		{
 			txtEditSearchBar = new DevExpress.XtraEditors.TextEdit();
 			drpDownBtnSearchButton = new DevExpress.XtraEditors.DropDownButton();
@@ -167,12 +167,12 @@ namespace LeagueBuildStats.Classes.Champions
 			drpDownBtnSearchButton.MouseClick += drpDownBtnSearchButton_MouseClick;
 		}
 
-		void drpDownBtnSearchButton_MouseClick(object sender, MouseEventArgs e)
+		public void drpDownBtnSearchButton_MouseClick(object sender, MouseEventArgs e)
 		{
 			PerformSearch();
 		}
 
-		private void PerformSearch()
+		public void PerformSearch()
 		{
 			//Clear tags selected
 			selectedTags.Clear();
@@ -221,7 +221,7 @@ namespace LeagueBuildStats.Classes.Champions
 			
 		}
 
-		void txtEditSearchBar_KeyPress(object sender, KeyPressEventArgs e)
+		public void txtEditSearchBar_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == Convert.ToInt32(Keys.Enter))
 			{

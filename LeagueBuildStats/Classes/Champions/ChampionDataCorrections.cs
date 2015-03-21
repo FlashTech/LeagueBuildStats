@@ -12,10 +12,10 @@ using System.Xml.XPath;
 
 namespace LeagueBuildStats.Classes.Champions
 {
-	class ChampionDataCorrections
+	public class ChampionDataCorrections
 	{
 
-		internal static string RunCorrections(string jsonString, string version)
+		public static string RunCorrections(string jsonString, string version)
 		{
 			var jsonObject = JObject.Parse(jsonString);
 
@@ -125,7 +125,7 @@ namespace LeagueBuildStats.Classes.Champions
 		}
 
 
-		private static bool CheckIfVersionIsGreaterEqual(string version, string p)
+		public static bool CheckIfVersionIsGreaterEqual(string version, string p)
 		{
 			//Setup i to be the lowest counter of version delimiters like 2.21.1 over 3.20.4.1235 would be 3
 			string[] splitVersion = version.Split('.');
@@ -166,7 +166,7 @@ namespace LeagueBuildStats.Classes.Champions
 
 
 
-		internal static ChampionListStatic RunStatCorrections(ChampionListStatic champions, string version)
+		public static ChampionListStatic RunStatCorrections(ChampionListStatic champions, string version)
 		{
 			//Load xml file with all Champion corrections
 			XmlDocument xdcDocument = new XmlDocument();
