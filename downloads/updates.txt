@@ -1,5 +1,20 @@
 ;aiu;
 
+[v0.0.1.19 patch]
+Name=League Build Stats 0.0.1.19 Patch
+URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.19/LeagueBuildStatsPatcher-0.0.1.19.msp
+Size=413696
+ReleaseDate=10/02/2015
+MD5=7e2a8d45d654019c8fef55cacbe045c7
+ServerFileName=LeagueBuildStatsPatcher-0.0.1.19.msp
+Flags=IsPatch
+RegistryKey=HKUD\SOFTWARE\League Build Stats\Version
+Version=0.0.1.19
+Description=Each patch includes all previous patches!! (Please select the latest patch only)
+Enhancement=Updated champion tooltip percent stats and various corrections
+BugFix=Fixed initial update checker from sometimes staying open
+Replaces=All
+
 [v0.0.1.18 patch]
 Name=League Build Stats 0.0.1.18 Patch
 URL=http://flashtech.github.io/LeagueBuildStats/downloads/0.0.1.18/LeagueBuildStatsPatcher-0.0.1.18.msp
