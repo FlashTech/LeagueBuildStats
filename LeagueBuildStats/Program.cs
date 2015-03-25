@@ -22,7 +22,7 @@ namespace LeagueBuildStats
 
 				CheckForUpdatesForm checkForUpdatesForm = new CheckForUpdatesForm();
 
-				Application.Run(checkForUpdatesForm);
+				Application.Run();
 			}
 			catch (Exception ex)
 			{

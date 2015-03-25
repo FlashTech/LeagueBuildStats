@@ -65,9 +65,10 @@ namespace LeagueBuildStats.Forms
 
 		private void CloseThisFormAndLaunchMainForm()
 		{
+			this.Visible = false;
 			this.Hide();
 			var leagueBuildStatsForm = new LeagueBuildStatsForm(); //this takes ages
-			leagueBuildStatsForm.Closed += (s, args) => this.Close();
+			leagueBuildStatsForm.Closed += (s, args) => Application.Exit();
 			leagueBuildStatsForm.Show();
 		}
 
