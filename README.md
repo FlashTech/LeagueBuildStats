@@ -6,4 +6,10 @@ A utility that allows you to browse up to date [League Of Legends](http://www.le
 
 LeagueBuildStats isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
 
-![League Build Stats](http://flashtech.github.io/LeagueBuildStats/images/League%20Build%20Stats%20screenshot.png)
+
+#### League Build Stats - Introduction/Sneak-Peek Video
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=S0nDVQffowg
+" target="_blank"><img src="http://flashtech.github.io/LeagueBuildStats/images/League%20Build%20Stats%20screenshot%202.jpg" 
+alt="League Build Stats - Introduction/Sneak-Peek" width="844" height="513" border="10" /></a>
+
