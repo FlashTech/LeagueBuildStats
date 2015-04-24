@@ -639,6 +639,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 				c.Parent.Tag = null;
 				c.Dispose();
 				UpdateTotalGoldCost();
+				form1.statsTab.UpdateStatsTab();
 			}
 		}
 
@@ -791,6 +792,7 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 			{
 				c.Parent.Tag = null;
 				c.Dispose();
+				form1.statsTab.UpdateStatsTab();
 			}
 		}
 
