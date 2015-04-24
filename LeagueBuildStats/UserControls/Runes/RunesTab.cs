@@ -17,6 +17,8 @@ using LeagueBuildStats.Forms;
 using Infragistics.Win.UltraWinToolTip;
 using Infragistics.Win;
 using LeagueBuildStats.UserControls.Runes;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 
 namespace LeagueBuildStats.UserControls
 {
@@ -40,6 +42,8 @@ namespace LeagueBuildStats.UserControls
 			this.form = form;
 			InitializeComponent();
 
+			InitializeSortDropdown();
+
 			runeStatistics = new RuneStatistics(this);
 			runeStatistics.Dock = DockStyle.Fill;
 			pnlCtrlStatisticsContainer.Controls.Add(runeStatistics);
@@ -59,13 +63,56 @@ namespace LeagueBuildStats.UserControls
 					p.MouseEnter +=p_MouseEnter;
 
 					//All Runes have the same tooltip that is updated dynamically
-					ultraToolTipManager1.SetUltraToolTip(p, tipInfo);
+					ultraToolTipManagerRunes.SetUltraToolTip(p, tipInfo);
 				}
 			}
 
 			//Tooltip Prepraration
 			tipInfo.ToolTipTextStyle = ToolTipTextStyle.Formatted;
-			ultraToolTipManager1.DisplayStyle = ToolTipDisplayStyle.Office2007;
+			ultraToolTipManagerRunes.DisplayStyle = ToolTipDisplayStyle.Office2007;
+		}
+
+		List<KeyValuePair<string, string>> sortSelections = new List<KeyValuePair<string, string>>();
+
+		private void InitializeSortDropdown()
+		{
+			popupMenuSort.Manager = barManagerSort;
+			dropDownBtnRuneTag.DropDownControl = popupMenuSort;
+
+			sortSelections.Add(new KeyValuePair<string, string>("all","All"));
+			sortSelections.Add(new KeyValuePair<string, string>("health", "Health"));
+			sortSelections.Add(new KeyValuePair<string, string>("mana", "Mana"));
+			sortSelections.Add(new KeyValuePair<string, string>("physicalAttack", "Attack"));
+			sortSelections.Add(new KeyValuePair<string, string>("magic", "Magic"));
+			sortSelections.Add(new KeyValuePair<string, string>("defense", "Defense"));
+			sortSelections.Add(new KeyValuePair<string, string>("utility", "Utility"));
+			
+			foreach (KeyValuePair<string, string> selection in sortSelections)
+			{
+				BarButtonItem barButtonItemNew = new BarButtonItem();
+				barButtonItemNew.Caption = selection.Value;
+				barButtonItemNew.ItemClick += barButtonItemNew_ItemClick;
+				barButtonItemNew.Name = selection.Key;
+				popupMenuSort.AddItem(barButtonItemNew);
+			}
+		}
+
+		private void barButtonItemNew_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			try
+			{
+				BarManager barManager = sender as BarManager;
+				string selection = barManager.PressedLink.Item.Caption;
+				string selName = barManager.PressedLink.Item.Name;
+
+				dropDownBtnRuneTag.Text = selection;
+
+				SortAndUpdateRunes();
+			}
+			catch (Exception ex)
+			{
+				XtraMessageBox.Show(ex.ToString());
+			}
 		}
 
 		void btnClearAll_MouseClick(object sender, MouseEventArgs e)
@@ -163,7 +210,7 @@ namespace LeagueBuildStats.UserControls
 			if (e.Button == MouseButtons.Left)
 			{
 				PictureBox p = sender as PictureBox;
-				ultraToolTipManager1.ShowToolTip(p);
+				ultraToolTipManagerRunes.ShowToolTip(p);
 			}
 			else if (e.Button == MouseButtons.Right)
 			{
@@ -178,18 +225,39 @@ namespace LeagueBuildStats.UserControls
 			}
 		}
 
+		
 		private void radioBntTier_CheckedChanged(object sender, EventArgs e)
+		{
+			SortAndUpdateRunes();
+		}
+
+		private void SortAndUpdateRunes()
 		{
 			navBarControl1.BeginUpdate();
 			try
 			{
-				RadioButton radiobtn = sender as RadioButton;
-				string tierNumber = radiobtn.Text.Replace("Tier ", "");
+				string tierNumber = "";
+				if (radioBntTier3.Checked == true)
+				{
+					tierNumber = "3";
+				}
+				else if (radioBntTier2.Checked == true)
+				{
+					tierNumber = "2";
+				}
+				else if (radioBntTier1.Checked == true)
+				{
+					tierNumber = "1";
+				}
+
 				foreach (NavBarItem navItem in navBarControl1.Items)
 				{
-					if (navItem.Tag.ToString() == tierNumber)
+					KeyValuePair<string, string> runeTagPair = (KeyValuePair<string, string>)navItem.Tag;
+					string selection = dropDownBtnRuneTag.Text;
+					string selKey = sortSelections.FindLast(o => o.Value == selection).Key;
+					if (runeTagPair.Key == tierNumber)
 					{
-						if (radiobtn.Checked == true)
+						if (runeTagPair.Value.Contains(selKey) || selKey == "all")
 						{
 							navItem.Visible = true;
 						}
@@ -197,6 +265,10 @@ namespace LeagueBuildStats.UserControls
 						{
 							navItem.Visible = false;
 						}
+					}
+					else
+					{
+						navItem.Visible = false;
 					}
 				}
 			}
@@ -276,10 +348,33 @@ namespace LeagueBuildStats.UserControls
 
 				foreach (KeyValuePair<int, RuneStatic> rune in getRunesFromServer.runeSorted)
 				{
+					string runeTag = "";
+					if (rune.Value.Tags.Count > 0)
+					{
+						foreach (string s in rune.Value.Tags)
+						{
+							foreach (KeyValuePair<string, string> selection in sortSelections)
+							{
+								if (selection.Key == s)
+								{
+									runeTag += s;
+								}
+							}
+						}
+					}
+					if (rune.Value.SanitizedDescription.Contains("mana"))
+					{
+						runeTag += "mana";
+					}
+					if (rune.Value.SanitizedDescription.Contains("health"))
+					{
+						runeTag += "health";
+					}
+
 					NavBarItem navBarItemNew = new NavBarItem();
 					navBarItemNew.Caption = rune.Value.Description;
 					navBarItemNew.Name = rune.Value.Id.ToString();
-					navBarItemNew.Tag = rune.Value.Metadata.Tier;
+					navBarItemNew.Tag = new KeyValuePair<string, string>(rune.Value.Metadata.Tier.ToString(), runeTag);
 					navBarItemNew.LinkClicked += navBarItemNew_LinkClicked;
 					switch (rune.Value.Metadata.Type)
 					{
@@ -307,7 +402,8 @@ namespace LeagueBuildStats.UserControls
 				//Default only Teir 3 is visible
 				foreach (NavBarItem navItem in navBarControl1.Items)
 				{
-					if (navItem.Tag.ToString() != "3")
+					string itemTier = ((KeyValuePair<string, string>)navItem.Tag).Key;
+					if (itemTier != "3")
 					{
 						navItem.Visible = false;
 					}

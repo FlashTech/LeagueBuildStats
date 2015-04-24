@@ -36,15 +36,15 @@
 			this.radioBntTier2 = new System.Windows.Forms.RadioButton();
 			this.radioBntTier1 = new System.Windows.Forms.RadioButton();
 			this.dropDownBtnRuneTag = new DevExpress.XtraEditors.DropDownButton();
-			this.popupMenuType = new DevExpress.XtraBars.PopupMenu(this.components);
-			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+			this.popupMenuSort = new DevExpress.XtraBars.PopupMenu(this.components);
+			this.barManagerSort = new DevExpress.XtraBars.BarManager(this.components);
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
 			this.pnlRuneMain = new System.Windows.Forms.Panel();
 			this.btnClearAll = new DevExpress.XtraEditors.DropDownButton();
-			this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+			this.ultraToolTipManagerRunes = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
 			this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
 			this.picBoxRuneBackground = new System.Windows.Forms.PictureBox();
 			this.picBoxRuneSlot30 = new System.Windows.Forms.PictureBox();
@@ -85,8 +85,8 @@
 			this.panelControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
 			this.panelControl2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.popupMenuType)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupMenuSort)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManagerSort)).BeginInit();
 			this.pnlRuneMain.SuspendLayout();
 			this.xtraScrollableControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxRuneBackground)).BeginInit();
@@ -207,19 +207,19 @@
 			this.dropDownBtnRuneTag.TabIndex = 8;
 			this.dropDownBtnRuneTag.Text = "All";
 			// 
-			// popupMenuType
+			// popupMenuSort
 			// 
-			this.popupMenuType.Manager = this.barManager1;
-			this.popupMenuType.Name = "popupMenuType";
+			this.popupMenuSort.Manager = this.barManagerSort;
+			this.popupMenuSort.Name = "popupMenuSort";
 			// 
-			// barManager1
+			// barManagerSort
 			// 
-			this.barManager1.DockControls.Add(this.barDockControlTop);
-			this.barManager1.DockControls.Add(this.barDockControlBottom);
-			this.barManager1.DockControls.Add(this.barDockControlLeft);
-			this.barManager1.DockControls.Add(this.barDockControlRight);
-			this.barManager1.Form = this;
-			this.barManager1.MaxItemId = 0;
+			this.barManagerSort.DockControls.Add(this.barDockControlTop);
+			this.barManagerSort.DockControls.Add(this.barDockControlBottom);
+			this.barManagerSort.DockControls.Add(this.barDockControlLeft);
+			this.barManagerSort.DockControls.Add(this.barDockControlRight);
+			this.barManagerSort.Form = this;
+			this.barManagerSort.MaxItemId = 0;
 			// 
 			// barDockControlTop
 			// 
@@ -267,11 +267,11 @@
 			this.btnClearAll.TabIndex = 9;
 			this.btnClearAll.Text = "Clear All";
 			// 
-			// ultraToolTipManager1
+			// ultraToolTipManagerRunes
 			// 
-			this.ultraToolTipManager1.AutoPopDelay = 0;
-			this.ultraToolTipManager1.ContainingControl = this;
-			this.ultraToolTipManager1.InitialDelay = 50;
+			this.ultraToolTipManagerRunes.AutoPopDelay = 0;
+			this.ultraToolTipManagerRunes.ContainingControl = this;
+			this.ultraToolTipManagerRunes.InitialDelay = 50;
 			// 
 			// xtraScrollableControl1
 			// 
@@ -703,8 +703,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
 			this.panelControl2.ResumeLayout(false);
 			this.panelControl2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.popupMenuType)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.popupMenuSort)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManagerSort)).EndInit();
 			this.pnlRuneMain.ResumeLayout(false);
 			this.xtraScrollableControl1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.picBoxRuneBackground)).EndInit();
@@ -755,14 +755,14 @@
 		private System.Windows.Forms.RadioButton radioBntTier2;
 		private System.Windows.Forms.RadioButton radioBntTier1;
 		private DevExpress.XtraEditors.DropDownButton dropDownBtnRuneTag;
-		private DevExpress.XtraBars.PopupMenu popupMenuType;
-		private DevExpress.XtraBars.BarManager barManager1;
+		private DevExpress.XtraBars.PopupMenu popupMenuSort;
+		private DevExpress.XtraBars.BarManager barManagerSort;
 		private DevExpress.XtraBars.BarDockControl barDockControlTop;
 		private DevExpress.XtraBars.BarDockControl barDockControlBottom;
 		private DevExpress.XtraBars.BarDockControl barDockControlLeft;
 		private DevExpress.XtraBars.BarDockControl barDockControlRight;
 		private System.Windows.Forms.Panel pnlRuneMain;
-		private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+		private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManagerRunes;
 		private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
 		private System.Windows.Forms.PictureBox picBoxRuneBackground;
 		private System.Windows.Forms.PictureBox picBoxRuneSlot30;
