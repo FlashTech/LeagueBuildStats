@@ -57,6 +57,9 @@ namespace LeagueBuildStats.UserControls.MainTopBar
 
 			InitializeEvents();
 
+			popupMenuVersions.Manager = barManagerVersion;
+
+
 			itemPanels.Add(pnlItem1);
 			itemPanels.Add(pnlItem2);
 			itemPanels.Add(pnlItem3);
@@ -291,8 +294,6 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 		{
 			try
 			{
-				int id = 1;
-
 				//Get current selected verions
 				string currentVersion = "";
 				if (dropDownButtonRiotVersion.Text.Contains(" "))
@@ -310,13 +311,10 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 					currentVersion += " Current LoL";
 				}
 
-
-				popupMenuVersions.LinksPersistInfo.Clear();
-				//barManager1.Items.Clear();
+				popupMenuVersions.ItemLinks.Clear();
 				foreach (string s in form1.getAllVersionAvailable.versions)
 				{
 					BarButtonItem barButtonItemNew = new BarButtonItem();
-					popupMenuVersions.LinksPersistInfo.Add(new LinkPersistInfo(barButtonItemNew));
 
 					if (form1.getAllVersionAvailable.realm.V == s)
 					{
@@ -335,12 +333,8 @@ registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc."
 						barButtonItemNew.Caption = s;
 					}
 					barButtonItemNew.ItemClick += barButtonItemVersionList_ItemClick;
-					barButtonItemNew.Id = id;
 					barButtonItemNew.Name = s;
-
-					//barManager1.Items.Add(barButtonItemNew);
-
-					id++;
+					popupMenuVersions.AddItem(barButtonItemNew);
 				}
 			}
 			catch (Exception ex)

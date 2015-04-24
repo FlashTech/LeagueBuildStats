@@ -48,14 +48,14 @@
 			this.pnlItem1 = new System.Windows.Forms.Panel();
 			this.dropDownButtonRiotVersion = new DevExpress.XtraEditors.DropDownButton();
 			this.popupMenuVersions = new DevExpress.XtraBars.PopupMenu(this.components);
-			this.barManagerVersion = new DevExpress.XtraBars.BarManager(this.components);
+			this.lblControlLeagueVersionText = new DevExpress.XtraEditors.LabelControl();
+			this.simpleBtnChkUpdates = new DevExpress.XtraEditors.SimpleButton();
+			this.ultraToolTipManagerGearIcon = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-			this.lblControlLeagueVersionText = new DevExpress.XtraEditors.LabelControl();
-			this.simpleBtnChkUpdates = new DevExpress.XtraEditors.SimpleButton();
-			this.ultraToolTipManagerGearIcon = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+			this.barManagerVersion = new DevExpress.XtraBars.BarManager(this.components);
 			this.xtraScrollableControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxGold)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
@@ -268,14 +268,27 @@
 			this.popupMenuVersions.Manager = this.barManagerVersion;
 			this.popupMenuVersions.Name = "popupMenuVersions";
 			// 
-			// barManagerVersion
+			// lblControlLeagueVersionText
 			// 
-			this.barManagerVersion.DockControls.Add(this.barDockControlTop);
-			this.barManagerVersion.DockControls.Add(this.barDockControlBottom);
-			this.barManagerVersion.DockControls.Add(this.barDockControlLeft);
-			this.barManagerVersion.DockControls.Add(this.barDockControlRight);
-			this.barManagerVersion.Form = this;
-			this.barManagerVersion.MaxItemId = 3;
+			this.lblControlLeagueVersionText.Location = new System.Drawing.Point(3, 7);
+			this.lblControlLeagueVersionText.Name = "lblControlLeagueVersionText";
+			this.lblControlLeagueVersionText.Size = new System.Drawing.Size(133, 13);
+			this.lblControlLeagueVersionText.TabIndex = 16;
+			this.lblControlLeagueVersionText.Text = "League of Legends Version:";
+			// 
+			// simpleBtnChkUpdates
+			// 
+			this.simpleBtnChkUpdates.Location = new System.Drawing.Point(283, 2);
+			this.simpleBtnChkUpdates.Name = "simpleBtnChkUpdates";
+			this.simpleBtnChkUpdates.Size = new System.Drawing.Size(67, 23);
+			this.simpleBtnChkUpdates.TabIndex = 15;
+			this.simpleBtnChkUpdates.Text = "Refresh List";
+			// 
+			// ultraToolTipManagerGearIcon
+			// 
+			this.ultraToolTipManagerGearIcon.AutoPopDelay = 0;
+			this.ultraToolTipManagerGearIcon.ContainingControl = this;
+			this.ultraToolTipManagerGearIcon.InitialDelay = 50;
 			// 
 			// barDockControlTop
 			// 
@@ -305,27 +318,14 @@
 			this.barDockControlRight.Location = new System.Drawing.Point(740, 0);
 			this.barDockControlRight.Size = new System.Drawing.Size(0, 102);
 			// 
-			// lblControlLeagueVersionText
+			// barManagerVersion
 			// 
-			this.lblControlLeagueVersionText.Location = new System.Drawing.Point(3, 7);
-			this.lblControlLeagueVersionText.Name = "lblControlLeagueVersionText";
-			this.lblControlLeagueVersionText.Size = new System.Drawing.Size(133, 13);
-			this.lblControlLeagueVersionText.TabIndex = 16;
-			this.lblControlLeagueVersionText.Text = "League of Legends Version:";
-			// 
-			// simpleBtnChkUpdates
-			// 
-			this.simpleBtnChkUpdates.Location = new System.Drawing.Point(283, 2);
-			this.simpleBtnChkUpdates.Name = "simpleBtnChkUpdates";
-			this.simpleBtnChkUpdates.Size = new System.Drawing.Size(67, 23);
-			this.simpleBtnChkUpdates.TabIndex = 15;
-			this.simpleBtnChkUpdates.Text = "Refresh List";
-			// 
-			// ultraToolTipManagerGearIcon
-			// 
-			this.ultraToolTipManagerGearIcon.AutoPopDelay = 0;
-			this.ultraToolTipManagerGearIcon.ContainingControl = this;
-			this.ultraToolTipManagerGearIcon.InitialDelay = 50;
+			this.barManagerVersion.DockControls.Add(this.barDockControlTop);
+			this.barManagerVersion.DockControls.Add(this.barDockControlBottom);
+			this.barManagerVersion.DockControls.Add(this.barDockControlLeft);
+			this.barManagerVersion.DockControls.Add(this.barDockControlRight);
+			this.barManagerVersion.Form = this;
+			this.barManagerVersion.MaxItemId = 3;
 			// 
 			// MainTopBar
 			// 
@@ -357,11 +357,6 @@
 		private DevExpress.XtraEditors.DropDownButton dropDownButtonRiotVersion;
 		private DevExpress.XtraEditors.LabelControl lblControlLeagueVersionText;
 		private DevExpress.XtraEditors.SimpleButton simpleBtnChkUpdates;
-		private DevExpress.XtraBars.BarManager barManagerVersion;
-		private DevExpress.XtraBars.BarDockControl barDockControlTop;
-		private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-		private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-		private DevExpress.XtraBars.BarDockControl barDockControlRight;
 		private DevExpress.XtraBars.PopupMenu popupMenuVersions;
 		private System.Windows.Forms.Panel pnlItem6;
 		private System.Windows.Forms.Panel pnlItem5;
@@ -377,6 +372,11 @@
 		private System.Windows.Forms.PictureBox picBoxGold;
 		private System.Windows.Forms.Label lblPriceOfItems;
 		private System.Windows.Forms.Label label1;
+		private DevExpress.XtraBars.BarManager barManagerVersion;
+		private DevExpress.XtraBars.BarDockControl barDockControlTop;
+		private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+		private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+		private DevExpress.XtraBars.BarDockControl barDockControlRight;
 
 	}
 }
