@@ -36,8 +36,8 @@ namespace LeagueBuildStats.UserControls
 
 			PrepareLevelMenu();
 
-			
 		}
+
 
 		private EventHandler onClick;
 		private Image nullImage = null;
@@ -102,8 +102,12 @@ namespace LeagueBuildStats.UserControls
 
 		private void MenuLevel_MouseClick(string p)
 		{
-			btnChampLevel.Text = "Level: " + p;
-			btnChampLevel.Tag = p;
+			if ((string)btnChampLevel.Tag != p)
+			{
+				btnChampLevel.Text = "Level: " + p;
+				btnChampLevel.Tag = p;
+				UpdateStatsTab();
+			}
 		}
 
 
