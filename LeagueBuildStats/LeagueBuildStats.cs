@@ -196,6 +196,7 @@ namespace LeagueBuildStats
 
 		private void xtraTabControl_Selecting(object sender, DevExpress.XtraTab.TabPageCancelEventArgs e)
 		{
+			// PageIndex (Items=0, Champions=1, Runes=2, Masteries=3, Stats=4)
 			if (e.PageIndex == 4)
 			{
 				statsTab.UpdateStatsTab();
