@@ -31,7 +31,6 @@
 			this.components = new System.ComponentModel.Container();
 			this.pnlControlChampions = new DevExpress.XtraEditors.PanelControl();
 			this.xtraScrollableControlChampions = new DevExpress.XtraEditors.XtraScrollableControl();
-			this.flowLayoutPanelItems2 = new LeagueBuildStats.Classes.MyFlowLayoutPanel();
 			this.pnlControlChampionSort = new DevExpress.XtraEditors.PanelControl();
 			this.pnlChampionSort = new System.Windows.Forms.Panel();
 			this.pnlCtrlChampionInfo = new DevExpress.XtraEditors.PanelControl();
@@ -49,6 +48,11 @@
 			this.lblInfoName = new System.Windows.Forms.Label();
 			this.picboxInfoChamp = new System.Windows.Forms.PictureBox();
 			this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+			this.flowLayoutPanelItems2 = new LeagueBuildStats.Classes.MyFlowLayoutPanel();
+			this.lblStatAttack = new System.Windows.Forms.Label();
+			this.lblStatDefense = new System.Windows.Forms.Label();
+			this.lblStatMagic = new System.Windows.Forms.Label();
+			this.lblStatDifficulty = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pnlControlChampions)).BeginInit();
 			this.pnlControlChampions.SuspendLayout();
 			this.xtraScrollableControlChampions.SuspendLayout();
@@ -67,6 +71,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoAbil0)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoPassive)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlInfoStats)).BeginInit();
+			this.grpCtrlInfoStats.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picboxInfoChamp)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -87,16 +92,6 @@
 			this.xtraScrollableControlChampions.Name = "xtraScrollableControlChampions";
 			this.xtraScrollableControlChampions.Size = new System.Drawing.Size(766, 529);
 			this.xtraScrollableControlChampions.TabIndex = 0;
-			// 
-			// flowLayoutPanelItems2
-			// 
-			this.flowLayoutPanelItems2.AutoSize = true;
-			this.flowLayoutPanelItems2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.flowLayoutPanelItems2.Location = new System.Drawing.Point(0, 0);
-			this.flowLayoutPanelItems2.MinimumSize = new System.Drawing.Size(0, 200);
-			this.flowLayoutPanelItems2.Name = "flowLayoutPanelItems2";
-			this.flowLayoutPanelItems2.Size = new System.Drawing.Size(766, 200);
-			this.flowLayoutPanelItems2.TabIndex = 1;
 			// 
 			// pnlControlChampionSort
 			// 
@@ -129,7 +124,7 @@
 			this.pnlCtrlChampionInfo.Controls.Add(this.picboxInfoChamp);
 			this.pnlCtrlChampionInfo.Location = new System.Drawing.Point(3, 200);
 			this.pnlCtrlChampionInfo.Name = "pnlCtrlChampionInfo";
-			this.pnlCtrlChampionInfo.Size = new System.Drawing.Size(278, 277);
+			this.pnlCtrlChampionInfo.Size = new System.Drawing.Size(278, 312);
 			this.pnlCtrlChampionInfo.TabIndex = 0;
 			// 
 			// grpCtrlInfoAttributes
@@ -138,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.grpCtrlInfoAttributes.Controls.Add(this.lblInfoSecondary);
 			this.grpCtrlInfoAttributes.Controls.Add(this.lblInfoPrimary);
-			this.grpCtrlInfoAttributes.Location = new System.Drawing.Point(1, 221);
+			this.grpCtrlInfoAttributes.Location = new System.Drawing.Point(1, 252);
 			this.grpCtrlInfoAttributes.MaximumSize = new System.Drawing.Size(276, 55);
 			this.grpCtrlInfoAttributes.MinimumSize = new System.Drawing.Size(276, 55);
 			this.grpCtrlInfoAttributes.Name = "grpCtrlInfoAttributes";
@@ -238,9 +233,13 @@
 			this.grpCtrlInfoStats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.grpCtrlInfoStats.Controls.Add(this.lblStatDifficulty);
+			this.grpCtrlInfoStats.Controls.Add(this.lblStatMagic);
+			this.grpCtrlInfoStats.Controls.Add(this.lblStatDefense);
+			this.grpCtrlInfoStats.Controls.Add(this.lblStatAttack);
 			this.grpCtrlInfoStats.Location = new System.Drawing.Point(1, 137);
 			this.grpCtrlInfoStats.Name = "grpCtrlInfoStats";
-			this.grpCtrlInfoStats.Size = new System.Drawing.Size(276, 81);
+			this.grpCtrlInfoStats.Size = new System.Drawing.Size(276, 113);
 			this.grpCtrlInfoStats.TabIndex = 9;
 			this.grpCtrlInfoStats.Text = "Stats";
 			// 
@@ -280,6 +279,52 @@
 			this.ultraToolTipManager1.ContainingControl = this;
 			this.ultraToolTipManager1.InitialDelay = 50;
 			// 
+			// flowLayoutPanelItems2
+			// 
+			this.flowLayoutPanelItems2.AutoSize = true;
+			this.flowLayoutPanelItems2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.flowLayoutPanelItems2.Location = new System.Drawing.Point(0, 0);
+			this.flowLayoutPanelItems2.MinimumSize = new System.Drawing.Size(0, 200);
+			this.flowLayoutPanelItems2.Name = "flowLayoutPanelItems2";
+			this.flowLayoutPanelItems2.Size = new System.Drawing.Size(766, 200);
+			this.flowLayoutPanelItems2.TabIndex = 1;
+			// 
+			// lblStatAttack
+			// 
+			this.lblStatAttack.BackColor = System.Drawing.Color.DarkRed;
+			this.lblStatAttack.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblStatAttack.Location = new System.Drawing.Point(4, 24);
+			this.lblStatAttack.Name = "lblStatAttack";
+			this.lblStatAttack.Size = new System.Drawing.Size(267, 19);
+			this.lblStatAttack.TabIndex = 0;
+			// 
+			// lblStatDefense
+			// 
+			this.lblStatDefense.BackColor = System.Drawing.Color.DarkGreen;
+			this.lblStatDefense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblStatDefense.Location = new System.Drawing.Point(4, 45);
+			this.lblStatDefense.Name = "lblStatDefense";
+			this.lblStatDefense.Size = new System.Drawing.Size(267, 19);
+			this.lblStatDefense.TabIndex = 1;
+			// 
+			// lblStatMagic
+			// 
+			this.lblStatMagic.BackColor = System.Drawing.Color.DarkBlue;
+			this.lblStatMagic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblStatMagic.Location = new System.Drawing.Point(4, 66);
+			this.lblStatMagic.Name = "lblStatMagic";
+			this.lblStatMagic.Size = new System.Drawing.Size(267, 19);
+			this.lblStatMagic.TabIndex = 2;
+			// 
+			// lblStatDifficulty
+			// 
+			this.lblStatDifficulty.BackColor = System.Drawing.Color.Indigo;
+			this.lblStatDifficulty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblStatDifficulty.Location = new System.Drawing.Point(4, 87);
+			this.lblStatDifficulty.Name = "lblStatDifficulty";
+			this.lblStatDifficulty.Size = new System.Drawing.Size(267, 19);
+			this.lblStatDifficulty.TabIndex = 3;
+			// 
 			// ChampionsTab
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,6 +354,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoAbil0)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.picBoxInfoPassive)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.grpCtrlInfoStats)).EndInit();
+			this.grpCtrlInfoStats.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.picboxInfoChamp)).EndInit();
 			this.ResumeLayout(false);
 
@@ -336,5 +382,9 @@
 		private DevExpress.XtraEditors.GroupControl grpCtrlInfoStats;
 		private System.Windows.Forms.Label lblInfoSecondary;
 		private System.Windows.Forms.Label lblInfoPrimary;
+		private System.Windows.Forms.Label lblStatDifficulty;
+		private System.Windows.Forms.Label lblStatMagic;
+		private System.Windows.Forms.Label lblStatDefense;
+		private System.Windows.Forms.Label lblStatAttack;
 	}
 }

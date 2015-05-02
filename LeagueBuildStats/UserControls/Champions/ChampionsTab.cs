@@ -37,9 +37,17 @@ namespace LeagueBuildStats.Forms
 		private UltraToolTipInfo tipInfoSpell2 = new UltraToolTipInfo();
 		private UltraToolTipInfo tipInfoSpell3 = new UltraToolTipInfo();
 
+		private UltraToolTipInfo tipStatsAttack = new UltraToolTipInfo();
+		private UltraToolTipInfo tipStatsDefense = new UltraToolTipInfo();
+		private UltraToolTipInfo tipStatsMagic = new UltraToolTipInfo();
+		private UltraToolTipInfo tipStatsDifficulty = new UltraToolTipInfo();
+
+
 		public Drag dragger = new Drag();
 
 		private CreateChampionSortMenu createChampionSortMenu;
+
+		private int statBarMaxWidth = 0;
 
 		public ChampionsTab(LeagueBuildStatsForm form)
 		{
@@ -62,11 +70,21 @@ namespace LeagueBuildStats.Forms
 			tipInfoSpell2.ToolTipTextStyle = ToolTipTextStyle.Formatted;
 			tipInfoSpell3.ToolTipTextStyle = ToolTipTextStyle.Formatted;
 
+			tipStatsAttack.ToolTipTextStyle = ToolTipTextStyle.Formatted;
+			tipStatsDefense.ToolTipTextStyle = ToolTipTextStyle.Formatted;
+			tipStatsMagic.ToolTipTextStyle = ToolTipTextStyle.Formatted;
+			tipStatsDifficulty.ToolTipTextStyle = ToolTipTextStyle.Formatted;
+
 			ultraToolTipManager1.SetUltraToolTip(picBoxInfoPassive, tipInfoPassive);
 			ultraToolTipManager1.SetUltraToolTip(picBoxInfoAbil0, tipInfoSpell0);
 			ultraToolTipManager1.SetUltraToolTip(picBoxInfoAbil1, tipInfoSpell1);
 			ultraToolTipManager1.SetUltraToolTip(picBoxInfoAbil2, tipInfoSpell2);
 			ultraToolTipManager1.SetUltraToolTip(picBoxInfoAbil3, tipInfoSpell3);
+
+			ultraToolTipManager1.SetUltraToolTip(lblStatAttack, tipStatsAttack);
+			ultraToolTipManager1.SetUltraToolTip(lblStatDefense, tipStatsDefense);
+			ultraToolTipManager1.SetUltraToolTip(lblStatMagic, tipStatsMagic);
+			ultraToolTipManager1.SetUltraToolTip(lblStatDifficulty, tipStatsDifficulty);
 
 			//Prep Champion Info Section
 			pnlCtrlChampionInfo.Location = new Point(pnlCtrlChampionInfo.Location.X, createChampionSortMenu.yPos);
@@ -74,9 +92,30 @@ namespace LeagueBuildStats.Forms
 			lblInfoDesc.Text = "";
 			lblInfoPrimary.Text = "";
 			lblInfoSecondary.Text = "";
+
+
+			//Initialize Info Stats Bars
+			statBarMaxWidth = lblStatAttack.Width;
+			ResizeStatBars(1, 1, 1, 1);
 		}
 
-		internal void ClearChampionInfoSection ()
+		private void ResizeStatBars(int attack, int defense, int magic, int difficulty)
+		{
+			lblStatAttack.Width = statBarMaxWidth / 10 * attack;
+			lblStatDefense.Width = statBarMaxWidth / 10 * defense;
+			lblStatMagic.Width = statBarMaxWidth / 10 * magic;
+			lblStatDifficulty.Width = statBarMaxWidth / 10 * difficulty;
+
+			string fontStyle = "<font style='color:White; font-family:Tahoma; font-size:10pt; text-smoothing-mode:AntiAlias;'>";
+
+			tipStatsAttack.ToolTipTextFormatted = fontStyle + "Attack: " + attack.ToString() + "</font>";
+			tipStatsDefense.ToolTipTextFormatted = fontStyle + "Defense: " + defense.ToString() + "</font>";
+			tipStatsMagic.ToolTipTextFormatted = fontStyle + "Magic: " + magic.ToString() + "</font>";
+			tipStatsDifficulty.ToolTipTextFormatted = fontStyle + "Difficulty: " + difficulty.ToString() + "</font>";
+		}
+
+
+		internal void ClearChampionInfoSection()
 		{
 			lblInfoName.Text = "";
 			lblInfoDesc.Text = "";
@@ -147,6 +186,9 @@ namespace LeagueBuildStats.Forms
 			tempImage = Image.FromFile(file);
 			picBoxInfoAbil3.Image = CommonMethods.cropImage(tempImage, new Rectangle(thischampCtrl.Spells[3].Image.X, thischampCtrl.Spells[3].Image.Y, thischampCtrl.Spells[3].Image.Width, thischampCtrl.Spells[3].Image.Height));
 			GenerateTooltip(thischampCtrl.Spells[3], tipInfoSpell3);
+
+			//Update Stat Bars
+			ResizeStatBars(thischampCtrl.Info.Attack, thischampCtrl.Info.Defense, thischampCtrl.Info.Magic, thischampCtrl.Info.Difficulty);
 		}
 
 		
