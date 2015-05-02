@@ -64,7 +64,7 @@
 			this.xtraTabControl.Location = new System.Drawing.Point(0, 108);
 			this.xtraTabControl.Name = "xtraTabControl";
 			this.xtraTabControl.SelectedTabPage = this.Items;
-			this.xtraTabControl.Size = new System.Drawing.Size(1134, 543);
+			this.xtraTabControl.Size = new System.Drawing.Size(1134, 559);
 			this.xtraTabControl.TabIndex = 0;
 			this.xtraTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.Items,
@@ -76,37 +76,37 @@
 			// Items
 			// 
 			this.Items.Name = "Items";
-			this.Items.Size = new System.Drawing.Size(1132, 516);
+			this.Items.Size = new System.Drawing.Size(1132, 532);
 			this.Items.Text = "Items";
 			// 
 			// Champions
 			// 
 			this.Champions.Name = "Champions";
-			this.Champions.Size = new System.Drawing.Size(1132, 516);
+			this.Champions.Size = new System.Drawing.Size(1132, 532);
 			this.Champions.Text = "Champions";
 			// 
 			// Runes
 			// 
 			this.Runes.Name = "Runes";
-			this.Runes.Size = new System.Drawing.Size(1132, 516);
+			this.Runes.Size = new System.Drawing.Size(1132, 532);
 			this.Runes.Text = "Runes";
 			// 
 			// Masteries
 			// 
 			this.Masteries.Name = "Masteries";
-			this.Masteries.Size = new System.Drawing.Size(1132, 516);
+			this.Masteries.Size = new System.Drawing.Size(1132, 532);
 			this.Masteries.Text = "Masteries";
 			// 
 			// Stats
 			// 
 			this.Stats.Name = "Stats";
-			this.Stats.Size = new System.Drawing.Size(1132, 516);
+			this.Stats.Size = new System.Drawing.Size(1132, 532);
 			this.Stats.Text = "Stats";
 			// 
 			// picBoxCursor2
 			// 
 			this.picBoxCursor2.Image = global::LeagueBuildStats.Properties.Resources.do_not_delete_this;
-			this.picBoxCursor2.Location = new System.Drawing.Point(-32, -32);
+			this.picBoxCursor2.Location = new System.Drawing.Point(0, 0);
 			this.picBoxCursor2.Name = "picBoxCursor2";
 			this.picBoxCursor2.Size = new System.Drawing.Size(48, 48);
 			this.picBoxCursor2.TabIndex = 5;
@@ -145,7 +145,7 @@
 			// 
 			this.barDockControlBottom.CausesValidation = false;
 			this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.barDockControlBottom.Location = new System.Drawing.Point(0, 647);
+			this.barDockControlBottom.Location = new System.Drawing.Point(0, 663);
 			this.barDockControlBottom.Size = new System.Drawing.Size(1130, 0);
 			// 
 			// barDockControlLeft
@@ -153,14 +153,14 @@
 			this.barDockControlLeft.CausesValidation = false;
 			this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
 			this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-			this.barDockControlLeft.Size = new System.Drawing.Size(0, 647);
+			this.barDockControlLeft.Size = new System.Drawing.Size(0, 663);
 			// 
 			// barDockControlRight
 			// 
 			this.barDockControlRight.CausesValidation = false;
 			this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
 			this.barDockControlRight.Location = new System.Drawing.Point(1130, 0);
-			this.barDockControlRight.Size = new System.Drawing.Size(0, 647);
+			this.barDockControlRight.Size = new System.Drawing.Size(0, 663);
 			// 
 			// layoutControlItem1
 			// 
@@ -186,12 +186,12 @@
 			this.bar1.OptionsBar.AllowRename = true;
 			this.bar1.Text = "Custom 1";
 			// 
-			// Form1
+			// LeagueBuildStatsForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-			this.ClientSize = new System.Drawing.Size(1130, 647);
+			this.ClientSize = new System.Drawing.Size(1130, 663);
 			this.Controls.Add(this.picBoxCursor2);
 			this.Controls.Add(this.panelCtlMainTopBar);
 			this.Controls.Add(this.xtraTabControl);
@@ -201,7 +201,7 @@
 			this.Controls.Add(this.barDockControlTop);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MinimumSize = new System.Drawing.Size(810, 685);
-			this.Name = "Form1";
+			this.Name = "LeagueBuildStatsForm";
 			this.Text = "League Build Stats - For League of Legends (LoL)";
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).EndInit();
 			this.xtraTabControl.ResumeLayout(false);
