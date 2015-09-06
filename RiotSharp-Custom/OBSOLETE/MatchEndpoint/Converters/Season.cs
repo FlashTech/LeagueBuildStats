@@ -1,23 +1,28 @@
-﻿namespace RiotSharp.StatsEndpoint
+﻿namespace RiotSharp.MatchEndpoint
 {
     /// <summary>
-    /// Season (Stats API).
+    /// Season (Match API).
     /// </summary>
     public enum Season
     {
+        /// <summary>
+        /// Pre season 3.
+        /// </summary>
+        PreSeason3,
+
         /// <summary>
         /// Season 3.
         /// </summary>
         Season3,
 
         /// <summary>
-        /// Season 2014.
+        /// Pre season 2014.
         /// </summary>
-        Season2014,
+        PreSeason2014,
 
         /// <summary>
-        /// Season 2015.
+        /// Season 2014
         /// </summary>
-        Season2015
+        Season2014
     }
 }

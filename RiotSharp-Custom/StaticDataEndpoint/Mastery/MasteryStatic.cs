@@ -12,9 +12,6 @@ namespace RiotSharp.StaticDataEndpoint
     {
         internal MasteryStatic() { }
 
-		//Todo: added this to store stats at each level
-		public List<StatsStatic> StatsList { get; set; }
-
         /// <summary>
         /// List of string descripting the mastery.
         /// </summary>

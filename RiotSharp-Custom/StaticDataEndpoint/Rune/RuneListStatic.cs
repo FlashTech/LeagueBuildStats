@@ -10,10 +10,7 @@ namespace RiotSharp.StaticDataEndpoint
     [Serializable]
     public class RuneListStatic
     {
-		/// <summary>
-		/// Steve: Made this public
-		/// </summary>
-        public RuneListStatic() { }
+        internal RuneListStatic() { }
 
         /// <summary>
         /// Basic data (empty object so far).

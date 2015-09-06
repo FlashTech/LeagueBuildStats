@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RiotSharp.MatchEndpoint;
+using System;
 using System.Collections.Generic;
 
 namespace RiotSharp
@@ -23,7 +24,16 @@ namespace RiotSharp
             string concatenatedIds = string.Empty;
             for (int i = 0; i < ids.Count - 1; i++)
             {
-                concatenatedIds += ids[i].ToString() + ",";
+                concatenatedIds += ids[i] + ",";
+            }
+            return concatenatedIds + ids[ids.Count - 1];
+        }
+        public static string BuildIdsString(List<long> ids)
+        {
+            string concatenatedIds = string.Empty;
+            for (int i = 0; i < ids.Count - 1; i++)
+            {
+                concatenatedIds += ids[i] + ",";
             }
             return concatenatedIds + ids[ids.Count - 1];
         }
@@ -46,6 +56,15 @@ namespace RiotSharp
                 concatenatedQueues += queues[i].ToCustomString();
             }
             return concatenatedQueues + queues[queues.Count - 1].ToCustomString();
+        }
+        public static string BuildSeasonString(List<Season> seasons)
+        {
+            string concatenatedQueues = string.Empty;
+            for (int i = 0; i < seasons.Count - 1; i++)
+            {
+                concatenatedQueues += seasons[i].ToCustomString();
+            }
+            return concatenatedQueues + seasons[seasons.Count - 1].ToCustomString();
         }
     }
 }

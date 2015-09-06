@@ -40,9 +40,14 @@
         /// </summary>
         Ascension,
 
-		/// <summary>
-		/// Unknown mode games.
-		/// </summary>
-		Unknown
+        /// <summary>
+        /// Introduction game mode.
+        /// </summary>
+        Intro,
+
+        /// <summary>
+        /// King Poro game mode.
+        /// </summary>
+        KingPoro
     }
 }

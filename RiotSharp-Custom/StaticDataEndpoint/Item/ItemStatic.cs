@@ -10,8 +10,7 @@ namespace RiotSharp.StaticDataEndpoint
     [Serializable]
     public class ItemStatic
     {
-        //Todo
-		public List<KeyValuePair<string, StatsStatic>> UniqueStats { get; set; }
+        internal ItemStatic() { }
 
         /// <summary>
         /// Equals ";".
