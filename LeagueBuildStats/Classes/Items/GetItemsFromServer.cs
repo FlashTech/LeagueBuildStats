@@ -138,7 +138,7 @@ namespace LeagueBuildStats.Classes.Items
 				int enchantBaseId = 0;
 				ItemStatic enchantBaseItem;
 				CreateItemDiv newItem = new CreateItemDiv();
-				if (i.Name.Contains("Enchantment:"))
+				if (i.Name.Contains("Enchantment:") && i.From != null) //todo: added && i.From != null
 				{
 					enchantBaseId = Convert.ToInt16(i.From[0]);
 					items.Items.TryGetValue(enchantBaseId, out enchantBaseItem);

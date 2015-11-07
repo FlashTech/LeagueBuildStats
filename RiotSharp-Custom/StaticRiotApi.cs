@@ -97,6 +97,35 @@ namespace RiotSharp
             return wrapper.ChampionListStatic;
         }
 
+		/// <summary>
+		/// Get a list of all champions synchronously. Todo: Steven
+		/// </summary>
+		/// <param name="region">Region from which to retrieve the data.</param>
+		/// <param name="version"> from which to retrieve the data.</param>
+		/// <param name="championData">Data to retrieve.</param>
+		/// <param name="language">Language of the data to be retrieved.</param>
+		/// <returns>A ChampionListStatic object containing all champions.</returns>
+		public ChampionListStatic GetChampions(Region region, string version, ChampionData championData = ChampionData.none,
+			Language language = Language.en_US)
+		{
+			//TODO: Note: I removed use of Cashe because it messed up the reusability with different versions
+			string json = requester.CreateRequest(
+				string.Format(ChampionRootUrl, region.ToString()),
+				RootDomain,
+				new List<string>() {
+					string.Format("version={0}", version),
+                    string.Format("locale={0}", language.ToString()),
+                    championData == ChampionData.none ?
+                    string.Empty :
+                    string.Format("champData={0}", championData.ToString())
+                });
+
+			var champs = JsonConvert.DeserializeObject<ChampionListStatic>(json);
+			var wrapper = new ChampionListStaticWrapper(champs, language, championData);
+			Cache.Add<ChampionListStaticWrapper>(ChampionsCacheKey, wrapper);
+			return wrapper.ChampionListStatic;
+		}
+
         /// <summary>
         /// Get a list of all champions asynchronously.
         /// </summary>
@@ -241,6 +270,32 @@ namespace RiotSharp
             }
             return wrapper.ItemListStatic;
         }
+
+		/// <summary>
+		/// Get a list of all items synchronously. todo: Steven
+		/// </summary>
+		/// <param name="region">Region from which to retrieve the data.</param>
+		/// <param name="itemData">Data to retrieve.</param>
+		/// <param name="language">Language of the data to be retrieved.</param>
+		/// <returns>An ItemListStatic object containing all items.</returns>
+		public ItemListStatic GetItems(Region region, string version, ItemData itemData = ItemData.none,
+			Language language = Language.en_US)
+		{
+			//TODO: Note: I removed use of Cashe because it messed up the reusability with different versions
+			var json = requester.CreateRequest(
+				string.Format(ItemRootUrl, region.ToString()),
+				RootDomain,
+				new List<string>() {
+					string.Format("version={0}", version),
+                    string.Format("locale={0}", language.ToString()),
+                    itemData == ItemData.none ?
+                    string.Empty :
+                    string.Format("itemListData={0}", itemData.ToString())
+                });
+			var items = JsonConvert.DeserializeObject<ItemListStatic>(json);
+			var wrapper = new ItemListStaticWrapper(items, language, itemData);
+			return wrapper.ItemListStatic;
+		}
 
         /// <summary>
         /// Get a list of all items synchronously.
@@ -488,6 +543,32 @@ namespace RiotSharp
             return wrapper.MasteryListStatic;
         }
 
+		/// <summary>
+		/// Get a list of all masteries synchronously. Todo: Steve: Added custom getMasteries using version
+		/// </summary>
+		/// <param name="region">Region from which to retrieve the data.</param>
+		/// <param name="masteryData">Data to retrieve.</param>
+		/// <param name="language">Language of the data to be retrieved.</param>
+		/// <returns>An MasteryListStatic object containing all masteries.</returns>
+		public MasteryListStatic GetMasteries(Region region, string version, MasteryData masteryData = MasteryData.none,
+			Language language = Language.en_US)
+		{
+			var json = requester.CreateRequest(
+				string.Format(MasteryRootUrl, region.ToString()),
+				RootDomain,
+				new List<string>() {
+					string.Format("version={0}", version),
+                    string.Format("locale={0}", language.ToString()),
+                    masteryData == MasteryData.none ?
+                    string.Empty :
+                    string.Format("masteryListData={0}", masteryData.ToString())
+                });
+			var masteries = JsonConvert.DeserializeObject<MasteryListStatic>(json);
+			var wrapper = new MasteryListStaticWrapper(masteries, language, masteryData);
+
+			return wrapper.MasteryListStatic;
+		}
+
         /// <summary>
         /// Get a list of all masteries asynchronously.
         /// </summary>
@@ -659,6 +740,31 @@ namespace RiotSharp
             }
             return wrapper.RuneListStatic;
         }
+
+		/// <summary>
+		/// Get a list of all runes synchronously. Todo: Steven
+		/// </summary>
+		/// <param name="region">Region from which to retrieve the data.</param>
+		/// <param name="runeData">Data to retrieve.</param>
+		/// <param name="language">Language of the data to be retrieved.</param>
+		/// <returns>A RuneListStatic object containing all runes.</returns>
+		public RuneListStatic GetRunes(Region region, string version, RuneData runeData = RuneData.none
+			, Language language = Language.en_US)
+		{
+			var json = requester.CreateRequest(
+				string.Format(RuneRootUrl, region.ToString()),
+				RootDomain,
+				new List<string>() {
+					string.Format("version={0}", version),
+                    string.Format("locale={0}", language.ToString()),
+                    runeData == RuneData.none ?
+                    string.Empty :
+                    string.Format("runeListData={0}", runeData.ToString())
+                });
+			var runes = JsonConvert.DeserializeObject<RuneListStatic>(json);
+			RuneListStaticWrapper wrapper = new RuneListStaticWrapper(runes, language, runeData);
+			return wrapper.RuneListStatic;
+		}
 
         /// <summary>
         /// Get a list of all runes asynchronously.

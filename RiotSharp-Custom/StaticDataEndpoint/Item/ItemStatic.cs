@@ -12,6 +12,9 @@ namespace RiotSharp.StaticDataEndpoint
     {
         internal ItemStatic() { }
 
+		//Todo
+		public List<KeyValuePair<string, StatsStatic>> UniqueStats { get; set; }
+
         /// <summary>
         /// Equals ";".
         /// </summary>

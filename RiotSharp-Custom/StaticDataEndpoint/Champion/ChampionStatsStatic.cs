@@ -9,7 +9,10 @@ namespace RiotSharp.StaticDataEndpoint
     [Serializable]
     public class ChampionStatsStatic
     {
-        internal ChampionStatsStatic() { }
+		/// <summary>
+		/// Steve: Made this public
+		/// </summary>
+		public ChampionStatsStatic() { }
 
         /// <summary>
         /// Base armor.

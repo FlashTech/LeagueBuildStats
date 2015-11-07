@@ -9,7 +9,51 @@ namespace RiotSharp.StaticDataEndpoint
     [Serializable]
     public class StatsStatic
     {
-        internal StatsStatic() { }
+        public StatsStatic() { }
+
+
+		//Todo
+		public double PercentTenacityMod { get; set; }
+
+		//Todo
+		public double PercentBonusPhysicalDamageMod { get; set; }
+
+		//Todo
+		public double PercentBonusMagicResistMod { get; set; }
+
+		//Todo
+		public double PercentBonusArmorMod { get; set; }
+
+		//Todo
+		public double PercentIncreasedDamageMod { get; set; }
+
+		//Todo
+		public double PercentIncreasedDamageModMelee { get; set; }
+
+		//Todo
+		public double PercentIncreasedDamageModRanged { get; set; }
+
+		//Todo
+		public double PercentSlowReistance { get; set; }
+
+		//Todo
+		public double PercentManaAsBonusAttack { get; set; }
+
+		//Todo
+		public double PercentManaAsBonusAbility { get; set; }
+
+		//Todo
+		public double PercentMaxHealthAsHealthRegen { get; set; }
+
+		//Todo
+		public double FlatMagicDamageOnHit { get; set; }
+
+		//Todo
+		public double FlatMagicDamageFromPercentAbility { get; set; }
+
+		//Todo
+		public double OnHitMagicDamageFromPercentAbility { get; set; }
+
 
         public double FlatArmorMod { get; set; }
 
